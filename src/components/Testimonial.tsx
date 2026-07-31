@@ -20,45 +20,45 @@ export default function Testimonial({ testimonials }: TestimonialProps) {
 
   if (!testimonials || testimonials.length === 0) return null;
 
+  const current = testimonials[currentIndex];
+
   return (
-    <div className="relative w-full max-w-5xl mx-auto py-16 px-6 md:px-12">
-      <div className="absolute top-10 left-10 text-[var(--accent)] opacity-10 font-fraunces text-9xl pointer-events-none">
-        &ldquo;
-      </div>
-      
-      <div className="relative z-10 flex flex-col items-center text-center">
-        <img src="/icons/quote.svg" alt="Quote" className="w-12 h-12 mb-8" />
-        
-        <div className="relative w-full min-h-[200px] flex items-center justify-center">
-          {testimonials.map((t, index) => (
-            <div
-              key={index}
-              className={`absolute top-0 left-0 w-full h-full flex flex-col items-center justify-center transition-opacity duration-700 ease-in-out ${
-                index === currentIndex ? 'opacity-100 z-10' : 'opacity-0 z-0'
-              }`}
-            >
-              <p className="headline-display text-2xl md:text-3xl lg:text-4xl leading-tight mb-8 max-w-4xl text-near-black">
-                "{t.quote}"
-              </p>
-              <div className="flex flex-col items-center">
-                <p className="font-bold text-lg text-near-black">{t.author}</p>
-                <p className="text-warm-taupe">{t.role}, {t.company}</p>
-              </div>
-            </div>
-          ))}
+    <div className="w-full max-w-4xl mx-auto py-12 px-6">
+      <div className="paper-card p-8 md:p-12 relative overflow-hidden text-center bg-cream/90 border border-tan shadow-paper">
+        {/* Subtle decorative quotation mark */}
+        <div className="absolute top-4 left-6 text-[var(--accent)] opacity-10 font-display text-8xl pointer-events-none select-none">
+          &ldquo;
         </div>
 
-        <div className="flex space-x-3 mt-12">
-          {testimonials.map((_, index) => (
-            <button
-              key={index}
-              onClick={() => setCurrentIndex(index)}
-              className={`w-3 h-3 rounded-full transition-colors duration-300 ${
-                index === currentIndex ? 'bg-[var(--accent)]' : 'bg-tan hover:bg-warm-taupe'
-              }`}
-              aria-label={`Go to testimonial ${index + 1}`}
-            />
-          ))}
+        <div className="relative z-10 flex flex-col items-center">
+          <div className="w-12 h-12 rounded-full bg-ivory border border-tan flex items-center justify-center mb-6 shadow-sm">
+            <img src="/icons/quote.svg" alt="Quote" className="w-6 h-6" />
+          </div>
+
+          <p className="headline-display text-lg md:text-xl lg:text-2xl leading-relaxed mb-6 max-w-2xl text-[#2A2416] transition-all duration-300">
+            "{current.quote}"
+          </p>
+
+          <div className="flex flex-col items-center space-y-0.5">
+            <p className="font-bold text-base text-[#2A2416]">{current.author}</p>
+            <p className="text-xs text-[#6B6152] font-medium">{current.role}, {current.company}</p>
+          </div>
+
+          {/* Dots */}
+          {testimonials.length > 1 && (
+            <div className="flex space-x-2 mt-8">
+              {testimonials.map((_, index) => (
+                <button
+                  key={index}
+                  onClick={() => setCurrentIndex(index)}
+                  className={`h-2.5 rounded-full transition-all duration-300 ${
+                    index === currentIndex ? 'w-8 bg-[var(--accent)]' : 'w-2.5 bg-tan hover:bg-warm-taupe'
+                  }`}
+                  aria-label={`Go to testimonial ${index + 1}`}
+                />
+              ))}
+            </div>
+          )}
         </div>
       </div>
     </div>

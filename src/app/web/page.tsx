@@ -1,204 +1,172 @@
 import React from 'react';
 import Link from 'next/link';
+import Nav from '@/components/Nav';
+import Footer from '@/components/Footer';
+import ProcessTimeline from '@/components/ProcessTimeline';
+import ContactSection from '@/components/ContactSection';
+import Testimonial from '@/components/Testimonial';
+import TechStackChips from '@/components/TechStackChips';
 import { testimonials } from '@/lib/data';
-
-const StatWidget = ({ main, label, trend, footerStats }: { main: string; label: string; trend: string; footerStats: { label: string; value: string }[] }) => (
-  <div className="paper-card p-6 flex flex-col gap-4 max-w-sm mt-8 relative z-10 bg-[#F5EFE3]">
-    <div className="flex justify-between items-start">
-      <div>
-        <div className="text-4xl font-bold font-fraunces text-[var(--accent)]">{main}</div>
-        <div className="text-sm text-[#6B6152] font-medium mt-1 uppercase tracking-wider">{label}</div>
-      </div>
-      <div className="paper-badge bg-[#F5EFE3] text-green-700 border-green-200">{trend}</div>
-    </div>
-    <div className="h-px w-full bg-[#D9C8A9]" />
-    <div className="flex justify-between text-sm">
-      {footerStats.map((stat, i) => (
-        <div key={i} className="flex flex-col">
-          <span className="text-[#6B6152]">{stat.label}</span>
-          <span className="font-semibold text-[#2A2416]">{stat.value}</span>
-        </div>
-      ))}
-    </div>
-  </div>
-);
-
-const LeadForm = ({ division }: { division: string }) => (
-  <form className="flex flex-col gap-4 max-w-md mx-auto w-full paper-card p-8 bg-[#F5EFE3] text-left text-[#2A2416]">
-    <h3 className="text-xl font-bold font-fraunces mb-2">Request a Quote</h3>
-    <input type="text" placeholder="Name" className="form-input" required />
-    <input type="email" placeholder="Email" className="form-input" required />
-    <textarea placeholder="Project Details" className="form-input" rows={4} required></textarea>
-    <button type="submit" className="btn-primary w-full mt-2">Get a Quote</button>
-  </form>
-);
 
 export const metadata = {
   title: 'Web Development — Orbitex',
-  description: 'Fast, elegant, conversion-first websites and web applications.',
+  description: 'Fast, elegant, conversion-first websites and web applications built to scale.',
 };
+
+const webSteps = [
+  { title: 'Discovery & UX Research', description: 'Understanding brand identity, user personas, site hierarchy, and conversion pathways.', icon: 'search' },
+  { title: 'UI Design & Wireframing', description: 'Creating interactive Figma prototypes with paper diorama aesthetics and modern typography.', icon: 'settings' },
+  { title: 'Next.js & Frontend Build', description: 'Developing with Next.js, Tailwind CSS, TypeScript, and responsive component libraries.', icon: 'check' },
+  { title: 'Core Web Vitals Tuning', description: 'Optimizing load speeds (<1s), Lighthouse metrics (90+), SEO tags, and accessibility.', icon: 'star' },
+  { title: 'Launch & CMS Handoff', description: 'Deploying to high-availability CDN infrastructure and training your team on CMS content updates.', icon: 'external-link' },
+];
+
+const webTechStack = [
+  'React', 'Next.js', 'TypeScript', 'Tailwind CSS', 'Node.js', 
+  'Prisma', 'PostgreSQL', 'Vercel', 'Figma', 'Framer Motion', 
+  'Three.js', 'Shopify', 'WordPress'
+];
 
 export default function WebDivisionPage() {
   const webTestimonials = testimonials.filter(t => t.divisions.includes('web'));
 
   return (
-    <div className="division-web min-h-screen bg-[#FBF7F0] text-[#2A2416]">
-      {/* a) Hero */}
-      <section className="pt-32 pb-20 px-6 md:px-12 max-w-7xl mx-auto flex flex-col md:flex-row items-center gap-12">
-        <div className="flex-1">
-          <h1 className="headline-display text-5xl md:text-7xl mb-6">Fast, elegant, conversion-first websites</h1>
-          <p className="text-xl text-[#6B6152] mb-8 max-w-2xl">
-            We build web experiences that are designed to perform and built to impress. From marketing sites to full-scale web applications.
-          </p>
-          <div className="flex flex-wrap gap-3 mb-8">
-            <span className="paper-badge">&lt;1s Load Time</span>
-            <span className="paper-badge">90+ Lighthouse</span>
-            <span className="paper-badge">30+ Projects</span>
-          </div>
-          <button className="btn-primary">Get a Quote</button>
-        </div>
-        <div className="flex-1 w-full flex justify-end">
-          <StatWidget 
-            main="96" 
-            label="Lighthouse Score" 
-            trend="+12" 
-            footerStats={[
-              { label: 'Load Time', value: '0.8s' },
-              { label: 'Conversion', value: '+34%' },
-              { label: 'Core Web Vitals', value: 'All Green' }
-            ]} 
-          />
-        </div>
-      </section>
+    <div className="division-web min-h-screen bg-ivory text-[#2A2416]">
+      <Nav />
 
-      {/* b) Services Grid */}
-      <section className="section-muted py-24 px-6 md:px-12">
-        <div className="max-w-7xl mx-auto">
-          <h2 className="text-3xl font-bold font-fraunces mb-12">Our Services</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {[
-              { title: 'Website Design & Development', desc: 'Custom marketing websites that tell your story and drive action.' },
-              { title: 'Web Applications', desc: 'Complex web platforms built with modern frontend frameworks.' },
-              { title: 'E-commerce Solutions', desc: 'Scalable storefronts optimized for seamless shopping experiences.' },
-              { title: 'CMS Builds', desc: 'Empowering your team with easy-to-use content management systems.' },
-              { title: 'Performance & CRO', desc: 'Speed optimization and conversion rate improvements for existing sites.' },
-              { title: 'Ongoing Maintenance', desc: 'Proactive updates, security, and support to keep your site running smoothly.' }
-            ].map((s, i) => (
-              <div key={i} className="paper-card p-6 bg-[#F5EFE3]">
-                <img src="/icons/external-link.svg" alt="icon" className="w-8 h-8 mb-4 opacity-80" />
-                <h3 className="text-xl font-bold mb-2">{s.title}</h3>
-                <p className="text-[#6B6152] text-sm line-clamp-2">{s.desc}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      <main className="pt-24">
+        {/* a) Hero */}
+        <section className="py-20 px-6 md:px-12 max-w-7xl mx-auto flex flex-col md:flex-row items-center gap-12">
+          <div className="flex-1 space-y-6">
+            <h1 className="headline-display text-4xl md:text-6xl text-[#2A2416]">
+              Fast, elegant, conversion-first websites
+            </h1>
+            <p className="text-base md:text-lg text-[#6B6152] max-w-2xl">
+              We design and engineer bespoke websites and web applications that combine stunning design with lightning-fast performance.
+            </p>
 
-      {/* c) Process Timeline */}
-      <section className="py-24 px-6 md:px-12 max-w-7xl mx-auto">
-        <h2 className="text-3xl font-bold font-fraunces mb-12 text-center">How We Work</h2>
-        <div className="flex flex-col md:flex-row gap-4 justify-between items-start text-center max-w-4xl mx-auto">
-          {['Discover', 'Design', 'Build', 'Launch', 'Iterate'].map((step, i) => (
-            <div key={i} className="flex-1 flex flex-col items-center gap-4 relative">
-              <div className="w-12 h-12 rounded-full bg-[var(--accent)] text-white flex items-center justify-center font-bold font-fraunces text-xl z-10">
-                {i + 1}
+            {/* Sleek Rounded Rectangular Stat Chips */}
+            <div className="flex flex-wrap gap-3 pt-2">
+              <div className="bg-cream border border-tan px-4 py-2 rounded-xl flex items-center gap-2 shadow-sm font-semibold text-xs md:text-sm text-[#2A2416]">
+                <img src="/icons/check.svg" alt="" className="w-4 h-4 text-[var(--accent)]" />
+                <span>&lt;1s Page Load Benchmark</span>
               </div>
-              {i < 4 && <div className="hidden md:block absolute top-6 left-1/2 w-full h-px bg-[#D9C8A9] -z-0" />}
-              <div className="font-semibold">{step}</div>
+              <div className="bg-cream border border-tan px-4 py-2 rounded-xl flex items-center gap-2 shadow-sm font-semibold text-xs md:text-sm text-[#2A2416]">
+                <img src="/icons/check.svg" alt="" className="w-4 h-4 text-[var(--accent)]" />
+                <span>90+ Lighthouse Performance</span>
+              </div>
+              <div className="bg-cream border border-tan px-4 py-2 rounded-xl flex items-center gap-2 shadow-sm font-semibold text-xs md:text-sm text-[#2A2416]">
+                <img src="/icons/check.svg" alt="" className="w-4 h-4 text-[var(--accent)]" />
+                <span>30+ Web Projects Delivered</span>
+              </div>
             </div>
-          ))}
-        </div>
-      </section>
 
-      {/* d) Portfolio Section */}
-      <section className="section-muted py-24 px-6 md:px-12">
-        <div className="max-w-7xl mx-auto">
-          <h2 className="text-3xl font-bold font-fraunces mb-12">Featured Work</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {[1, 2, 3, 4, 5, 6].map((item) => (
-              <div key={item} className="paper-card overflow-hidden group bg-[#F5EFE3] flex flex-col relative">
-                <div className="h-48 w-full bg-gradient-to-br from-[#E2E8F0] to-[#CBD5E1] relative">
-                  <div className="absolute inset-0 bg-[var(--accent)] opacity-10 mix-blend-multiply" />
-                  {/* Hover Overlay */}
-                  <div className="absolute inset-0 bg-[#2A2416]/80 flex items-center justify-center gap-4 opacity-0 group-hover:opacity-100 transition-opacity">
-                    <img src="/icons/eye.svg" alt="view" className="w-8 h-8 text-white filter invert" />
-                    <img src="/icons/external-link.svg" alt="link" className="w-8 h-8 text-white filter invert" />
-                  </div>
-                </div>
-                <div className="p-6 flex-grow flex flex-col gap-2">
-                  <h3 className="text-xl font-bold font-fraunces">Project Name {item}</h3>
-                  <p className="text-[#6B6152] text-sm mb-4">A brief description of the web project and its impact on the client's business.</p>
-                  <Link href="#" className="text-[var(--accent)] font-semibold hover:underline inline-flex items-center gap-2 mt-auto">
-                    View Project <img src="/icons/arrow-cta.svg" alt="arrow" className="w-4 h-4" />
-                  </Link>
-                </div>
-              </div>
-            ))}
+            <div className="pt-4">
+              <Link href="#contact" className="btn-primary">
+                <span>Get a Web Quote</span>
+                <img src="/icons/arrow-cta.svg" alt="" className="w-4 h-4" />
+              </Link>
+            </div>
           </div>
-        </div>
-      </section>
 
-      {/* e) Tech Stack Chips */}
-      <section className="py-24 px-6 md:px-12 max-w-7xl mx-auto text-center">
-        <h2 className="text-2xl font-bold font-fraunces mb-8">Our Tech Stack</h2>
-        <div className="flex flex-wrap justify-center gap-3">
-          {['React', 'Next.js', 'TypeScript', 'Tailwind CSS', 'Node.js', 'Prisma', 'PostgreSQL', 'Vercel', 'Figma', 'Framer Motion', 'Three.js', 'Shopify', 'WordPress'].map((tech) => (
-            <span key={tech} className="paper-badge text-lg px-4 py-2 border-[#D9C8A9] text-[#6B6152]">{tech}</span>
-          ))}
-        </div>
-      </section>
-
-      {/* f) Testimonial */}
-      {webTestimonials.length > 0 && (
-        <section className="section-muted py-24 px-6 md:px-12">
-          <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-3xl font-bold font-fraunces mb-12">Client Success</h2>
-            <div className="paper-card p-8 md:p-12 bg-[#F5EFE3] text-left relative">
-              <img src="/icons/star.svg" alt="star" className="w-8 h-8 mb-6 text-[var(--accent)]" />
-              <p className="text-xl md:text-2xl font-medium mb-8 leading-relaxed text-[#2A2416]">
-                "{webTestimonials[0].quote}"
-              </p>
-              <div className="flex items-center gap-4">
-                <div className="w-12 h-12 rounded-full bg-[#D9C8A9]" />
-                <div>
-                  <div className="font-bold">{webTestimonials[0].author}</div>
-                  <div className="text-sm text-[#6B6152]">{webTestimonials[0].role}, {webTestimonials[0].company}</div>
-                </div>
+          {/* Right Hero Image Card */}
+          <div className="flex-1 w-full flex justify-center">
+            <div className="paper-card p-3 bg-cream border border-tan shadow-card max-w-md w-full">
+              <div className="aspect-[4/3] rounded-xl overflow-hidden relative bg-beige">
+                <img
+                  src="https://images.unsplash.com/photo-1467238307002-480ffdd960d3?auto=format&fit=crop&w=1000&q=80"
+                  alt="Web Development & UI Design"
+                  className="w-full h-full object-cover"
+                />
+              </div>
+              <div className="p-4 flex justify-between items-center">
+                <span className="font-display font-bold text-sm text-[#2A2416]">Web Development Agency</span>
+                <span className="text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full bg-[var(--accent)]/15 text-[var(--accent)]">
+                  Web Division
+                </span>
               </div>
             </div>
           </div>
         </section>
-      )}
 
-      {/* g) FAQ */}
-      <section className="py-24 px-6 md:px-12 max-w-3xl mx-auto">
-        <h2 className="text-3xl font-bold font-fraunces mb-12 text-center">Frequently Asked Questions</h2>
-        <div className="flex flex-col gap-4">
-          {[
-            { q: 'Do you handle hosting and domains?', a: 'We can manage your hosting on Vercel, AWS, or your preferred provider.' },
-            { q: 'Will I be able to edit content myself?', a: 'Yes. We build with CMS integrations so your team can easily update content.' },
-            { q: 'How many revisions are included?', a: 'Design phase includes 3 rounds of revisions to ensure you love the final product.' },
-            { q: 'Do you optimize for mobile?', a: 'Every site is mobile-first by default, perfectly responsive across all devices.' },
-            { q: 'What about SEO?', a: 'Technical SEO is baked into every build from the start.' }
-          ].map((faq, i) => (
-            <details key={i} className="paper-card p-6 bg-[#F5EFE3] group cursor-pointer">
-              <summary className="font-bold text-lg list-none flex justify-between items-center">
-                {faq.q}
-                <img src="/icons/chevron-down.svg" alt="expand" className="w-5 h-5 group-open:rotate-180 transition-transform" />
-              </summary>
-              <p className="mt-4 text-[#6B6152] leading-relaxed">{faq.a}</p>
-            </details>
-          ))}
-        </div>
-      </section>
+        {/* b) Services Grid */}
+        <section className="section-muted py-20 px-6 md:px-12">
+          <div className="max-w-7xl mx-auto">
+            <div className="text-center max-w-3xl mx-auto mb-14 space-y-3">
+              <h2 className="headline-display text-3xl md:text-4xl text-[#2A2416]">Web Services</h2>
+              <p className="text-[#6B6152] text-base">Comprehensive web engineering services designed for modern digital brands.</p>
+            </div>
 
-      {/* h) CTA Band */}
-      <section className="cta-band py-24 px-6 md:px-12 bg-[var(--accent)] text-white text-center rounded-t-[40px] mt-12">
-        <div className="max-w-4xl mx-auto">
-          <h2 className="text-4xl md:text-5xl font-bold font-fraunces mb-8">Let's build a website that works as hard as you do.</h2>
-          <LeadForm division="web" />
-        </div>
-      </section>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {[
+                { title: 'Website Design & Dev', desc: 'Bespoke corporate websites built with custom UI components and paper aesthetics.', icon: 'settings' },
+                { title: 'Web Applications', desc: 'Complex interactive web applications and client portals engineered for speed.', icon: 'check' },
+                { title: 'E-commerce Solutions', desc: 'High-converting online store builds with seamless payment checkout flows.', icon: 'external-link' },
+                { title: 'CMS Builds', desc: 'Headless and traditional CMS integrations empowering non-technical teams to manage content.', icon: 'edit' },
+                { title: 'Performance & CRO', desc: 'Core Web Vitals auditing, load speed optimization, and conversion rate testing.', icon: 'star' },
+                { title: 'Ongoing Maintenance', desc: 'Proactive security updates, uptime monitoring, and continuous site enhancements.', icon: 'clock' }
+              ].map((s, i) => (
+                <div key={i} className="paper-card p-6 bg-cream border border-tan space-y-3">
+                  <div className="w-10 h-10 rounded-xl bg-ivory border border-tan flex items-center justify-center shadow-sm">
+                    <img src={`/icons/${s.icon}.svg`} alt="" className="w-5 h-5 opacity-75" />
+                  </div>
+                  <h3 className="headline-display text-xl text-[#2A2416]">{s.title}</h3>
+                  <p className="text-[#6B6152] text-xs leading-relaxed">{s.desc}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* c) Process Timeline */}
+        <ProcessTimeline steps={webSteps} title="Web Launch Process" />
+
+        {/* d) Portfolio Showcase */}
+        <section className="py-20 px-6 md:px-12 max-w-7xl mx-auto">
+          <div className="text-center max-w-3xl mx-auto mb-14 space-y-3">
+            <h2 className="headline-display text-3xl md:text-4xl text-[#2A2416]">Featured Web Projects</h2>
+            <p className="text-[#6B6152] text-base">A selection of recent websites and web applications built by our team.</p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {[
+              { name: 'Fintech Portal', desc: 'Next.js banking portal with real-time dashboard analytics.', img: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=600&q=80' },
+              { name: 'E-commerce Brand', desc: 'Shopify & Headless Next.js storefront with 1.2s load speeds.', img: 'https://images.unsplash.com/photo-1472851294608-062f824d29cc?auto=format&fit=crop&w=600&q=80' },
+              { name: 'SaaS Platform Site', desc: 'High-converting product landing site with interactive pricing.', img: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=600&q=80' }
+            ].map((proj, idx) => (
+              <div key={idx} className="paper-card p-4 bg-cream border border-tan space-y-3 group">
+                <div className="aspect-video rounded-xl overflow-hidden relative bg-beige">
+                  <img src={proj.img} alt={proj.name} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
+                </div>
+                <h3 className="headline-display text-lg text-[#2A2416]">{proj.name}</h3>
+                <p className="text-xs text-[#6B6152]">{proj.desc}</p>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* e) Tech Stack Chips */}
+        <section className="py-20 section-muted">
+          <div className="max-w-7xl mx-auto px-6 text-center space-y-8">
+            <h2 className="headline-display text-3xl md:text-4xl text-[#2A2416]">Web Development Stack</h2>
+            <div className="max-w-4xl mx-auto flex justify-center">
+              <TechStackChips techs={webTechStack} />
+            </div>
+          </div>
+        </section>
+
+        {/* f) Testimonials */}
+        {webTestimonials.length > 0 && (
+          <section className="py-16">
+            <Testimonial testimonials={webTestimonials} />
+          </section>
+        )}
+
+        {/* g) Contact Section */}
+        <ContactSection division="web" headline="Let's build a website that works as hard as you do." />
+      </main>
+
+      <Footer />
     </div>
   );
 }

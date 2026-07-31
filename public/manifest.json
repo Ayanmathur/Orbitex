@@ -1,0 +1,21 @@
+{
+  "name": "Orbitex — Software, Web & Growth Studio",
+  "short_name": "Orbitex",
+  "description": "Founder-led studio behind 6 products, 30+ client partnerships, and three specialist teams.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#FBF7F0",
+  "theme_color": "#FBF7F0",
+  "icons": [
+    {
+      "src": "/branding/favicon/android-chrome-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/branding/favicon/android-chrome-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

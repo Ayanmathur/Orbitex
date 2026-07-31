@@ -113,28 +113,28 @@ export default function LeadForm({ division = 'hub' }: LeadFormProps) {
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div className="flex flex-col space-y-2">
-            <label htmlFor="fullName" className="text-sm font-medium text-near-black">Full Name *</label>
+            <label htmlFor="fullName" className="text-sm font-semibold text-[#2A2416]">Full Name *</label>
             <input required type="text" id="fullName" name="fullName" value={formData.fullName} onChange={handleChange} className="form-input" />
           </div>
           <div className="flex flex-col space-y-2">
-            <label htmlFor="email" className="text-sm font-medium text-near-black">Email *</label>
+            <label htmlFor="email" className="text-sm font-semibold text-[#2A2416]">Email *</label>
             <input required type="email" id="email" name="email" value={formData.email} onChange={handleChange} className="form-input" />
           </div>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div className="flex flex-col space-y-2">
-            <label htmlFor="phone" className="text-sm font-medium text-near-black">Phone Number *</label>
+            <label htmlFor="phone" className="text-sm font-semibold text-[#2A2416]">Phone Number *</label>
             <input required type="tel" id="phone" name="phone" value={formData.phone} onChange={handleChange} className="form-input" />
           </div>
           <div className="flex flex-col space-y-2">
-            <label htmlFor="company" className="text-sm font-medium text-near-black">Company Name</label>
+            <label htmlFor="company" className="text-sm font-semibold text-[#2A2416]">Company Name</label>
             <input type="text" id="company" name="company" value={formData.company} onChange={handleChange} className="form-input" />
           </div>
         </div>
 
         <div className="flex flex-col space-y-2">
-          <label htmlFor="service" className="text-sm font-medium text-near-black">Service/Project interested in</label>
+          <label htmlFor="service" className="text-sm font-semibold text-[#2A2416]">Service/Project interested in</label>
           <div className="relative">
             <select id="service" name="service" value={formData.service} onChange={handleChange} className="form-input appearance-none w-full">
               <option value="">Select an option</option>
@@ -147,7 +147,7 @@ export default function LeadForm({ division = 'hub' }: LeadFormProps) {
         </div>
 
         <div className="flex flex-col space-y-2">
-          <label htmlFor="message" className="text-sm font-medium text-near-black">Message</label>
+          <label htmlFor="message" className="text-sm font-semibold text-[#2A2416]">Message</label>
           <textarea id="message" name="message" value={formData.message} onChange={handleChange} rows={5} placeholder="Goals, timeline, and anything else that'll help us scope this" className="form-input resize-y"></textarea>
         </div>
 

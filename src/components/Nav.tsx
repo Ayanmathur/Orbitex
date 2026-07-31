@@ -30,8 +30,8 @@ export default function Nav() {
   return (
     <>
       <nav
-        className={`fixed top-0 left-0 w-full z-50 transition-all duration-350 ease-out py-4 ${
-          scrolled ? 'bg-ivory shadow-nav py-2' : 'bg-transparent'
+        className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ease-out ${
+          scrolled ? 'bg-ivory/95 backdrop-blur-md shadow-nav py-3 border-b border-tan/40' : 'bg-transparent py-5'
         }`}
       >
         <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
@@ -39,15 +39,15 @@ export default function Nav() {
             <img src="/branding/svg/primary-logo.svg" alt="Orbitex Logo" className="h-8 w-auto" />
           </Link>
 
-          <div className="hidden md:flex items-center space-x-1 bg-cream/50 px-2 py-1 rounded-full border border-tan/30 backdrop-blur-sm">
+          <div className="hidden md:flex items-center space-x-1 bg-cream/80 px-3 py-1.5 rounded-full border border-tan/60 shadow-sm backdrop-blur-sm">
             {links.map((link) => {
               const isActive = pathname === link.href;
               return (
                 <Link
                   key={link.href}
                   href={link.href}
-                  className={`px-4 py-2 rounded-full text-sm font-medium transition-colors duration-250 ease-out ${
-                    isActive ? 'font-bold' : 'text-near-black hover:bg-black/5'
+                  className={`px-4 py-1.5 rounded-full text-sm font-medium transition-colors duration-200 ${
+                    isActive ? 'font-bold' : 'text-[#2A2416] hover:bg-black/5'
                   }`}
                   style={isActive ? { backgroundColor: 'color-mix(in srgb, var(--accent) 15%, transparent)', color: 'var(--accent)' } : {}}
                 >
@@ -58,13 +58,13 @@ export default function Nav() {
           </div>
 
           <div className="hidden md:flex items-center">
-            <Link href="/quote" className="btn-primary rounded-full px-6 py-2.5 text-sm font-medium">
+            <Link href="/#contact" className="btn-primary rounded-full px-6 py-2 text-sm font-semibold">
               Get a Quote
             </Link>
           </div>
 
           <div className="md:hidden flex items-center">
-            <button onClick={() => setMobileOpen(true)} className="p-2 text-near-black">
+            <button onClick={() => setMobileOpen(true)} className="p-2 text-[#2A2416]">
               <Icon name="hamburger-menu" size={24} />
             </button>
           </div>
@@ -73,13 +73,13 @@ export default function Nav() {
 
       {/* Mobile Menu */}
       <div
-        className={`fixed inset-0 z-[60] bg-ivory transform transition-transform duration-350 ease-out ${
+        className={`fixed inset-0 z-[60] bg-ivory transform transition-transform duration-300 ease-out ${
           mobileOpen ? 'translate-x-0' : 'translate-x-full'
         }`}
       >
-        <div className="flex justify-between items-center px-6 py-4 border-b border-tan">
+        <div className="flex justify-between items-center px-6 py-5 border-b border-tan">
           <img src="/branding/svg/primary-logo.svg" alt="Orbitex Logo" className="h-8 w-auto" />
-          <button onClick={() => setMobileOpen(false)} className="p-2 text-near-black">
+          <button onClick={() => setMobileOpen(false)} className="p-2 text-[#2A2416]">
             <Icon name="close" size={24} />
           </button>
         </div>
@@ -89,16 +89,16 @@ export default function Nav() {
               key={link.href}
               href={link.href}
               onClick={() => setMobileOpen(false)}
-              className="text-2xl font-display font-bold text-near-black"
+              className="text-xl font-display font-bold text-[#2A2416]"
             >
               {link.label}
             </Link>
           ))}
           <div className="pt-8">
             <Link
-              href="/quote"
+              href="/#contact"
               onClick={() => setMobileOpen(false)}
-              className="btn-primary block text-center rounded-full px-6 py-3 text-lg font-medium"
+              className="btn-primary block text-center rounded-full px-6 py-3 text-base font-semibold"
             >
               Get a Quote
             </Link>

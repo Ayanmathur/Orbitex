@@ -1,113 +1,81 @@
 'use client';
 
-import { useState } from 'react';
-import Image from 'next/image';
-import Link from 'next/link';
+import React, { useState } from 'react';
 import Nav from '@/components/Nav';
 import Footer from '@/components/Footer';
+import ContactSection from '@/components/ContactSection';
 
-const POSTS = [
-  { id: 1, title: 'Building Scalable SaaS: Lessons from 6 Products', tag: 'Software', date: 'Oct 12, 2024', excerpt: 'Discover the architectural decisions that helped scale our software products.', link: '/blog/scalable-saas' },
-  { id: 2, title: 'Core Web Vitals: The Performance Metrics That Matter', tag: 'Web', date: 'Oct 05, 2024', excerpt: 'A deep dive into measuring and improving web performance.', link: '/blog/core-web-vitals' },
-  { id: 3, title: 'SEO in 2024: What Actually Moves the Needle', tag: 'Marketing', date: 'Sep 28, 2024', excerpt: 'Separating signal from noise in modern search engine optimization.', link: '/blog/seo-2024' },
-  { id: 4, title: 'API-First Architecture: Why It Matters', tag: 'Software', date: 'Sep 21, 2024', excerpt: 'How designing your API before your UI leads to better products.', link: '/blog/api-first' },
-  { id: 5, title: 'Conversion Rate Optimization: Beyond A/B Testing', tag: 'Web', date: 'Sep 15, 2024', excerpt: 'Holistic strategies for turning more visitors into customers.', link: '/blog/cro-beyond-ab' },
-  { id: 6, title: 'Google Ads vs Meta Ads: Where to Spend Your Budget', tag: 'Marketing', date: 'Sep 02, 2024', excerpt: 'A strategic framework for allocating your paid acquisition budget.', link: '/blog/google-vs-meta' },
+const posts = [
+  { id: 1, title: 'Building Scalable SaaS: Lessons from 6 Products', tag: 'software', date: 'Jul 28, 2026', excerpt: 'How full-stack architecture decisions and automated testing prevent technical debt in production.' },
+  { id: 2, title: 'Core Web Vitals: The Performance Metrics That Matter', tag: 'web', date: 'Jul 20, 2026', excerpt: 'Practical techniques for optimizing Next.js applications for <1s LCP and sub-50ms INP.' },
+  { id: 3, title: 'SEO in 2024: What Actually Moves the Needle', tag: 'marketing', date: 'Jul 15, 2026', excerpt: 'Why technical audits, entity clustering, and high-intent content hubs outshine legacy backlinks.' },
+  { id: 4, title: 'API-First Architecture: Why It Matters for Scale', tag: 'software', date: 'Jul 10, 2026', excerpt: 'Decoupling frontend web apps and backend services to streamline multi-platform deployments.' },
+  { id: 5, title: 'Conversion Rate Optimization: Beyond A/B Testing', tag: 'web', date: 'Jul 02, 2026', excerpt: 'Designing paper-cutout micro-interactions that reduce user friction and boost funnel conversion.' },
+  { id: 6, title: 'Google Ads vs Meta Ads: Where to Spend Your Budget', tag: 'marketing', date: 'Jun 25, 2026', excerpt: 'Allocating ad spend between high-intent search queries and top-of-funnel social discovery.' },
 ];
 
-const FILTERS = ['All', 'Software', 'Web', 'Marketing'];
-
 export default function BlogPage() {
-  const [activeFilter, setActiveFilter] = useState('All');
+  const [activeFilter, setActiveFilter] = useState<'all' | 'software' | 'web' | 'marketing'>('all');
 
-  const filteredPosts = POSTS.filter(post => 
-    activeFilter === 'All' || post.tag === activeFilter
-  );
-
-  const getTagClass = (tag: string) => {
-    switch (tag) {
-      case 'Software': return 'division-software bg-[var(--accent)] text-white';
-      case 'Web': return 'division-web bg-[var(--accent)] text-white';
-      case 'Marketing': return 'division-marketing bg-[var(--accent)] text-white';
-      default: return 'bg-[var(--color-beige)] text-[var(--color-near-black)]';
-    }
-  };
+  const filteredPosts = activeFilter === 'all' ? posts : posts.filter(p => p.tag === activeFilter);
 
   return (
-    <main className="division-hub min-h-screen bg-[var(--color-ivory)] text-[var(--color-near-black)]">
+    <div className="division-hub min-h-screen bg-ivory text-[#2A2416]">
       <Nav />
-      
-      {/* Featured Post */}
-      <section className="px-6 py-12 md:py-24 max-w-7xl mx-auto">
-        <div className="paper-card relative overflow-hidden flex flex-col md:flex-row min-h-[400px]">
-          <div className="absolute inset-0 bg-gradient-to-br from-[var(--color-cream)] to-[var(--color-beige)] z-0" />
-          <div className="relative z-10 p-8 md:p-16 flex flex-col justify-center max-w-2xl">
-            <span className="paper-badge self-start mb-6 border-[var(--color-beige)]">Featured</span>
-            <h1 className="headline-display text-4xl md:text-5xl font-bold mb-4">
-              Designing the Future: Our 2025 Vision
-            </h1>
-            <p className="text-lg text-[var(--color-warm-taupe)] mb-8">
-              Explore how Orbitex is bridging the gap between innovative software, high-performance web experiences, and data-driven marketing.
-            </p>
-            <div className="flex items-center gap-6">
-              <span className="text-sm font-medium">Nov 01, 2024</span>
-              <Link href="/blog/vision-2025" className="btn-primary">
-                Read More &rarr;
-              </Link>
-            </div>
-          </div>
-          <div className="relative z-10 hidden md:block flex-1 opacity-10 m-12">
-             {/* Decorative placeholder */}
-             <div className="w-full h-full bg-[var(--color-near-black)] rounded-full blur-3xl"></div>
-          </div>
-        </div>
-      </section>
 
-      {/* Filter and Grid */}
-      <section className="px-6 pb-24 max-w-7xl mx-auto">
-        <div className="flex flex-wrap items-center justify-center gap-4 mb-12">
-          {FILTERS.map(filter => (
-            <button
-              key={filter}
-              onClick={() => setActiveFilter(filter)}
-              className={`px-6 py-2 rounded-full transition-all duration-300 font-medium ${
-                activeFilter === filter
-                  ? 'bg-[var(--color-near-black)] text-[var(--color-ivory)]'
-                  : 'bg-[var(--color-cream)] text-[var(--color-warm-taupe)] hover:bg-[var(--color-beige)]'
-              }`}
-            >
-              {filter}
-            </button>
-          ))}
-        </div>
+      <main className="pt-28 pb-20">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="text-center max-w-3xl mx-auto mb-14 space-y-3">
+            <h1 className="headline-display text-4xl md:text-5xl text-[#2A2416]">Orbitex Engineering & Growth Blog</h1>
+            <p className="text-[#6B6152] text-base">Insights, technical case studies, and growth playbooks from our studio teams.</p>
+          </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {filteredPosts.map(post => (
-            <div 
-              key={post.id} 
-              className={`paper-card p-6 flex flex-col h-full animate-fade-in group hover:shadow-xl transition-all duration-300 division-${post.tag.toLowerCase()}`}
-            >
-              <div className="flex justify-between items-center mb-6">
-                <span className={`text-xs font-bold px-3 py-1 rounded-full ${getTagClass(post.tag)}`}>
-                  {post.tag}
-                </span>
-                <span className="text-sm text-[var(--color-warm-taupe)]">{post.date}</span>
-              </div>
-              <h2 className="font-serif text-2xl font-bold mb-4 group-hover:text-[var(--accent)] transition-colors">
-                {post.title}
-              </h2>
-              <p className="text-[var(--color-warm-taupe)] mb-8 flex-1">
-                {post.excerpt}
-              </p>
-              <Link href={post.link} className="font-medium text-[var(--accent)] hover:underline flex items-center gap-2 mt-auto">
-                Read More <span>&rarr;</span>
-              </Link>
-            </div>
-          ))}
+          {/* Filter Pills */}
+          <div className="flex justify-center gap-2 mb-12">
+            {(['all', 'software', 'web', 'marketing'] as const).map((filter) => (
+              <button
+                key={filter}
+                onClick={() => setActiveFilter(filter)}
+                className={`px-5 py-2 rounded-full text-xs font-semibold uppercase tracking-wider transition-all ${
+                  activeFilter === filter
+                    ? 'bg-[#2A2416] text-white shadow-md'
+                    : 'bg-cream text-[#6B6152] border border-tan hover:bg-beige'
+                }`}
+              >
+                {filter}
+              </button>
+            ))}
+          </div>
+
+          {/* Blog Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-20">
+            {filteredPosts.map((post) => (
+              <article key={post.id} className="paper-card p-6 bg-cream border border-tan space-y-3 flex flex-col justify-between">
+                <div className="space-y-2">
+                  <div className="flex justify-between items-center text-xs">
+                    <span className="font-semibold uppercase tracking-wider text-[var(--accent)]">{post.tag}</span>
+                    <span className="text-[#6B6152]">{post.date}</span>
+                  </div>
+                  <h2 className="headline-display text-xl text-[#2A2416] hover:text-[var(--accent)] transition-colors cursor-pointer">
+                    {post.title}
+                  </h2>
+                  <p className="text-xs text-[#6B6152] leading-relaxed">{post.excerpt}</p>
+                </div>
+                <div className="pt-4">
+                  <span className="text-xs font-bold text-[#2A2416] hover:underline cursor-pointer inline-flex items-center">
+                    Read Article <span className="ml-1">→</span>
+                  </span>
+                </div>
+              </article>
+            ))}
+          </div>
+
+          {/* Contact Section */}
+          <ContactSection division="hub" />
         </div>
-      </section>
+      </main>
 
       <Footer />
-    </main>
+    </div>
   );
 }
