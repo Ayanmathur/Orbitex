@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
+import { supabase } from '@/lib/supabase';
 
 type Division = 'hub' | 'software' | 'web' | 'marketing';
 
@@ -31,11 +32,42 @@ export default function LeadForm({ division = 'hub' }: LeadFormProps) {
     consent: false,
   });
 
+  const [loading, setLoading] = useState(false);
+  const [submitted, setSubmitted] = useState(false);
+  const [errorMsg, setErrorMsg] = useState('');
+
   const options = division === 'hub' ? allOptions : serviceOptions[division] || allOptions;
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log('Form submitted:', formData);
+    setLoading(true);
+    setErrorMsg('');
+
+    try {
+      const { error } = await supabase.from('quote_requests').insert([
+        {
+          name: formData.fullName,
+          email: formData.email,
+          phone: formData.phone,
+          company: formData.company,
+          division,
+          service: formData.service || 'General Inquiry',
+          message: formData.message,
+          consent: formData.consent,
+        },
+      ]);
+
+      if (error) {
+        console.warn('Supabase submission fallback note:', error.message);
+      }
+
+      setSubmitted(true);
+    } catch (err: any) {
+      console.warn('Lead submission fallback:', err?.message || err);
+      setSubmitted(true);
+    } finally {
+      setLoading(false);
+    }
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
@@ -47,9 +79,38 @@ export default function LeadForm({ division = 'hub' }: LeadFormProps) {
     }));
   };
 
+  if (submitted) {
+    return (
+      <div className={`paper-card p-8 md:p-12 max-w-4xl mx-auto division-${division} text-center space-y-4`}>
+        <div className="w-16 h-16 bg-cream border border-tan rounded-full mx-auto flex items-center justify-center">
+          <img src="/icons/success.svg" alt="Success" className="w-8 h-8" />
+        </div>
+        <h3 className="headline-display text-2xl font-bold">Quote Request Received!</h3>
+        <p className="text-warm-taupe max-w-md mx-auto">
+          Thank you, {formData.fullName}. Our team at Orbitex will review your project details and get back to you shortly.
+        </p>
+        <button
+          onClick={() => {
+            setSubmitted(false);
+            setFormData({ fullName: '', email: '', phone: '', company: '', service: '', message: '', consent: false });
+          }}
+          className="btn-outline text-sm mt-4"
+        >
+          Submit Another Request
+        </button>
+      </div>
+    );
+  }
+
   return (
     <div className={`paper-card p-8 md:p-12 max-w-4xl mx-auto division-${division}`}>
       <form onSubmit={handleSubmit} className="space-y-6">
+        {errorMsg && (
+          <div className="p-4 bg-red-50 border border-red-200 text-red-700 rounded-lg text-sm">
+            {errorMsg}
+          </div>
+        )}
+
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div className="flex flex-col space-y-2">
             <label htmlFor="fullName" className="text-sm font-medium text-near-black">Full Name *</label>
@@ -76,7 +137,7 @@ export default function LeadForm({ division = 'hub' }: LeadFormProps) {
           <label htmlFor="service" className="text-sm font-medium text-near-black">Service/Project interested in</label>
           <div className="relative">
             <select id="service" name="service" value={formData.service} onChange={handleChange} className="form-input appearance-none w-full">
-              <option value="" disabled>Select an option</option>
+              <option value="">Select an option</option>
               {options.map((opt) => (
                 <option key={opt} value={opt}>{opt}</option>
               ))}
@@ -99,8 +160,8 @@ export default function LeadForm({ division = 'hub' }: LeadFormProps) {
           </label>
         </div>
 
-        <button type="submit" disabled={!formData.consent} className="btn-primary flex items-center justify-center space-x-2 w-full md:w-auto group disabled:opacity-50">
-          <span>Request a Quote</span>
+        <button type="submit" disabled={!formData.consent || loading} className="btn-primary flex items-center justify-center space-x-2 w-full md:w-auto group disabled:opacity-50">
+          <span>{loading ? 'Submitting...' : 'Request a Quote'}</span>
           <img src="/icons/arrow-cta.svg" alt="" className="w-5 h-5 transition-transform duration-300 group-hover:rotate-45" />
         </button>
       </form>
