@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useRef, useEffect, useState } from 'react';
+import CountUp from './CountUp';
 
 interface StampBadgeProps {
   value: string;
@@ -110,7 +111,7 @@ export default function StampBadge({
           className="font-display font-bold leading-none"
           style={{ color: 'var(--accent)', opacity: 0.75, fontSize: size * 0.28 }}
         >
-          {value}
+          <CountUp value={value} />
         </span>
         <span
           className="font-semibold uppercase tracking-widest leading-tight mt-0.5"

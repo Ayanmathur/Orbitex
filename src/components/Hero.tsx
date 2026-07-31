@@ -1,6 +1,9 @@
-import React from 'react';
+'use client';
+
+import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Icon from './Icon';
+import CountUp from './CountUp';
 
 interface CTA {
   text: string;
@@ -34,6 +37,23 @@ export default function Hero({
   backgroundImage,
   children,
 }: HeroProps) {
+  const [mouseOffset, setMouseOffset] = useState({ x: 0, y: 0 });
+
+  useEffect(() => {
+    // Disable parallax on touch devices
+    if (window.matchMedia('(hover: none)').matches) return;
+
+    const handleMouseMove = (e: MouseEvent) => {
+      const { innerWidth, innerHeight } = window;
+      const x = (e.clientX / innerWidth - 0.5) * 2; // -1 to 1
+      const y = (e.clientY / innerHeight - 0.5) * 2; // -1 to 1
+      setMouseOffset({ x, y });
+    };
+
+    window.addEventListener('mousemove', handleMouseMove);
+    return () => window.removeEventListener('mousemove', handleMouseMove);
+  }, []);
+
   return (
     <section className="relative w-full overflow-hidden flex items-center min-h-[85vh] pt-24 pb-20">
       
@@ -45,16 +65,19 @@ export default function Hero({
             src={backgroundImage} 
             alt="" 
             className="w-full h-full object-cover"
-            style={{ filter: 'contrast(1.05) saturate(0.7) brightness(0.85)' }}
+            style={{ 
+              filter: 'contrast(1.05) saturate(0.7) brightness(0.85)',
+              transform: `translate(${mouseOffset.x * 3}px, ${mouseOffset.y * 3}px)`
+            }}
           />
-          {/* Warm-neutral color-grade overlay — NOT dark navy, just a warm cream wash */}
+          {/* Warm-neutral color-grade overlay */}
           <div 
             className="absolute inset-0"
             style={{ 
               background: `linear-gradient(135deg, rgba(251,247,240,0.82) 0%, rgba(245,239,227,0.65) 40%, rgba(237,227,208,0.55) 100%)` 
             }}
           />
-          {/* Matte grain overlay — like it's printed on uncoated paper */}
+          {/* Matte grain overlay */}
           <div className="absolute inset-0 opacity-[0.06]" style={{
             backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)'/%3E%3C/svg%3E")`,
           }} />
@@ -64,7 +87,7 @@ export default function Hero({
         <div className="absolute inset-0 z-0 bg-ivory" />
       )}
 
-      {/* Torn/deckled bottom edge transition — one roughness moment per §2 */}
+      {/* Torn/deckled bottom edge transition */}
       <div className="absolute bottom-0 left-0 right-0 z-30 pointer-events-none">
         <svg viewBox="0 0 1440 40" preserveAspectRatio="none" className="w-full h-[40px] block">
           <path 
@@ -97,8 +120,10 @@ export default function Hero({
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
           
           {/* Left Column: Headline, Subheadline, Dual CTAs, Trust Chips */}
-          <div className="lg:col-span-7 space-y-6">
-            {/* Subtle matte scrim behind text for contrast on darker image areas */}
+          <div 
+            className="lg:col-span-7 space-y-6 transition-transform duration-200 ease-out"
+            style={{ transform: `translate(${mouseOffset.x * -4}px, ${mouseOffset.y * -4}px)` }}
+          >
             <h1 className="headline-display text-4xl md:text-5xl lg:text-6xl text-[#2A2416] leading-tight drop-shadow-[0_1px_2px_rgba(251,247,240,0.5)] torn-reveal">
               {headline}
             </h1>
@@ -127,7 +152,7 @@ export default function Hero({
                 {stats.map((stat, idx) => (
                   <div key={idx} className="bg-cream/80 border border-tan rounded-xl px-4 py-2 flex items-center space-x-2 shadow-tier-1">
                     <span className="font-display font-bold text-[#2A2416] text-base">
-                      {stat.value}{stat.suffix}
+                      <CountUp value={`${stat.value}${stat.suffix || ''}`} />
                     </span>
                     <span className="text-xs font-semibold uppercase tracking-wider text-[#6B6152]">{stat.label}</span>
                   </div>
@@ -136,8 +161,11 @@ export default function Hero({
             )}
           </div>
 
-          {/* Right Column: Floating Stat Widget / Paper Diorama Child Layer */}
-          <div className="lg:col-span-5 flex justify-center lg:justify-end z-20">
+          {/* Right Column: Floating Stat Widget / Paper Diorama Child Layer (Tier 4 with layer parallax displacement) */}
+          <div 
+            className="lg:col-span-5 flex justify-center lg:justify-end z-20 transition-transform duration-200 ease-out"
+            style={{ transform: `translate(${mouseOffset.x * 8}px, ${mouseOffset.y * 8}px)` }}
+          >
             {children}
           </div>
 

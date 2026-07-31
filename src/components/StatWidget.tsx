@@ -2,6 +2,7 @@
 
 import React, { useEffect, useState } from 'react';
 import Icon from './Icon';
+import CountUp from './CountUp';
 
 interface StatFooter {
   label: string;
@@ -34,16 +35,16 @@ export default function StatWidget({
   }, []);
 
   return (
-    <div className="relative w-full max-w-md mx-auto">
+    <div className="relative w-full max-w-md mx-auto group">
       {/* Decorative satellite mini-card behind main widget at Tier 2 */}
-      <div className="hidden sm:block absolute -top-3 -right-3 w-32 h-24 bg-cream/70 border border-tan/50 rounded-2xl rotate-3 shadow-tier-2 -z-10" />
+      <div className="hidden sm:block absolute -top-3 -right-3 w-32 h-24 bg-cream/70 border border-tan/50 rounded-2xl rotate-3 shadow-tier-2 -z-10 group-hover:rotate-6 transition-transform duration-300 ease-out" />
 
       {/* Main Tier 4 Metric Card */}
       <div className="paper-card bg-cream border border-tan rounded-[24px] p-6 shadow-tier-4 w-full">
         {/* Header */}
         <div className="flex justify-between items-start mb-6">
           <div className="flex items-center space-x-3">
-            <div className="paper-badge bg-ivory rounded-xl p-2 border border-tan shadow-tier-1 flex items-center justify-center">
+            <div className="paper-badge bg-ivory rounded-xl p-2 border border-tan shadow-tier-1 flex items-center justify-center group-hover:scale-105 transition-transform duration-250">
                <Icon name="check" size={20} />
             </div>
             <div>
@@ -59,7 +60,9 @@ export default function StatWidget({
 
         {/* Hero Metric & Trend */}
         <div className="flex items-baseline space-x-4 mb-6">
-          <h2 className="font-display text-4xl font-bold text-near-black">{mainMetric}</h2>
+          <h2 className="font-display text-4xl font-bold text-near-black">
+            <CountUp value={mainMetric} />
+          </h2>
           <div 
             className="flex items-center px-2.5 py-1 rounded-full text-xs font-semibold border border-tan/30"
             style={{ 
@@ -99,9 +102,11 @@ export default function StatWidget({
         {/* Footer Satellite Mini-cards (Tier 1) */}
         <div className="grid grid-cols-3 gap-2">
           {footerStats.map((stat, idx) => (
-            <div key={idx} className="bg-ivory border border-tan/80 rounded-xl p-3 flex flex-col items-center justify-center text-center shadow-tier-1">
-              <span className="text-xs text-warm-taupe mb-1">{stat.label}</span>
-              <span className="font-semibold text-near-black text-sm">{stat.value}</span>
+            <div key={idx} className="bg-ivory border border-tan/50 rounded-xl p-2.5 text-center shadow-tier-1">
+              <span className="block text-xs font-bold text-near-black font-display">
+                <CountUp value={stat.value} />
+              </span>
+              <span className="block text-[10px] text-warm-taupe truncate font-medium">{stat.label}</span>
             </div>
           ))}
         </div>
