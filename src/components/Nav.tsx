@@ -34,12 +34,20 @@ export default function Nav() {
         {!scrolled && <TopUtilityBar />}
         
         <nav
-          className={`w-full transition-all duration-300 ease-out ${
+          className={`w-full transition-all duration-300 ease-out relative ${
             scrolled
-              ? 'bg-ivory/95 backdrop-blur-md shadow-nav py-3 border-b border-tan/40'
-              : 'bg-ivory/80 backdrop-blur-sm py-4 border-b border-tan/30'
+              ? 'bg-ivory/95 backdrop-blur-md shadow-nav py-3'
+              : 'bg-ivory/80 backdrop-blur-sm py-4'
           }`}
         >
+          {/* Horizontal Rope Border — bottom */}
+          <div className="absolute bottom-0 left-0 right-0 h-[5px] pointer-events-none z-10 overflow-hidden">
+            <svg className="w-full h-full" preserveAspectRatio="none" viewBox="0 0 1440 5">
+              <line x1="0" y1="2.5" x2="1440" y2="2.5" stroke="#D9C8A9" strokeWidth="2" />
+              <line x1="0" y1="2.5" x2="1440" y2="2.5" stroke="#C4B18E" strokeWidth="1.5" strokeDasharray="4 3" />
+              <line x1="0" y1="3.5" x2="1440" y2="3.5" stroke="rgba(42,36,22,0.1)" strokeWidth="1" />
+            </svg>
+          </div>
           <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
             <Link href="/" className="flex-shrink-0">
               <img src="/branding/svg/primary-logo.svg" alt="Orbitex Logo" className="h-8 w-auto" />

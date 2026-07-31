@@ -25,7 +25,15 @@ export default function Footer() {
   };
 
   return (
-    <footer className="bg-[#1A1814] border-t border-[#36322A] pt-16 pb-8 text-[#FBF7F0]">
+    <footer className="bg-[#1A1814] relative pt-16 pb-8 text-[#FBF7F0]">
+      {/* Horizontal Rope Border — top */}
+      <div className="absolute top-0 left-0 right-0 h-[5px] pointer-events-none z-10 overflow-hidden">
+        <svg className="w-full h-full" preserveAspectRatio="none" viewBox="0 0 1440 5">
+          <line x1="0" y1="2.5" x2="1440" y2="2.5" stroke="#D9C8A9" strokeWidth="2" />
+          <line x1="0" y1="2.5" x2="1440" y2="2.5" stroke="#C4B18E" strokeWidth="1.5" strokeDasharray="4 3" />
+          <line x1="0" y1="1" x2="1440" y2="1" stroke="rgba(42,36,22,0.1)" strokeWidth="1" />
+        </svg>
+      </div>
       <div className="max-w-7xl mx-auto px-6">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-8 mb-16">
           
