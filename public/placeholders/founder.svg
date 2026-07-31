@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="500" viewBox="0 0 400 500" fill="none">
+  <rect width="400" height="500" rx="20" fill="#EDE3D0"/>
+  <circle cx="200" cy="180" r="70" fill="#D9C8A9"/>
+  <path d="M80 400C80 320 133 280 200 280C267 280 320 320 320 400V440H80V400Z" fill="#D9C8A9"/>
+  <text x="200" y="470" font-family="Fraunces, serif" font-size="20" font-weight="600" fill="#2A2416" text-anchor="middle">Ayan Mathur</text>
+</svg>

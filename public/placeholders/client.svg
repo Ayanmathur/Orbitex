@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="180" height="80" viewBox="0 0 180 80" fill="none">
+  <rect width="180" height="80" rx="12" fill="#F5EFE3" stroke="#D9C8A9" stroke-width="1"/>
+  <rect x="20" y="24" width="32" height="32" rx="8" fill="#EDE3D0"/>
+  <text x="64" y="46" font-family="Inter, sans-serif" font-size="14" font-weight="600" fill="#6B6152">Client</text>
+</svg>
