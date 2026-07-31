@@ -34,7 +34,7 @@ export default function ProcessTimeline({
         {/* Process Timeline Wrapper */}
         <div className="relative">
           
-          {/* DESKTOP STRING: Sagging twine connecting through step cards */}
+          {/* DESKTOP STRING: Sagging twine connecting through step card hole punches */}
           <div className="hidden lg:block absolute inset-0 pointer-events-none z-20">
             <svg viewBox="0 0 1200 400" preserveAspectRatio="none" className="w-full h-full">
               <defs>
@@ -43,9 +43,9 @@ export default function ProcessTimeline({
                 </filter>
               </defs>
 
-              {/* Base Twine String */}
+              {/* Straight & Sagging Base Twine String through Hole Punches at y=32 */}
               <path
-                d="M 120 32 Q 240 38, 360 32 Q 480 38, 600 32 Q 720 38, 840 32 Q 960 38, 1080 32"
+                d="M 0 32 Q 120 36, 240 32 Q 360 36, 480 32 Q 600 36, 720 32 Q 840 36, 960 32 Q 1080 36, 1200 32"
                 fill="none"
                 stroke="#D9C8A9"
                 strokeWidth="3"
@@ -54,7 +54,7 @@ export default function ProcessTimeline({
               />
               {/* Twisted Twine Texture */}
               <path
-                d="M 120 32 Q 240 38, 360 32 Q 480 38, 600 32 Q 720 38, 840 32 Q 960 38, 1080 32"
+                d="M 0 32 Q 120 36, 240 32 Q 360 36, 480 32 Q 600 36, 720 32 Q 840 36, 960 32 Q 1080 36, 1200 32"
                 fill="none"
                 stroke="#C4B18E"
                 strokeWidth="3"
@@ -62,7 +62,7 @@ export default function ProcessTimeline({
                 strokeLinecap="round"
               />
 
-              {/* Pin-heads at each step position */}
+              {/* Pin-heads at each step card center */}
               <g fill="var(--accent)">
                 <circle cx="120" cy="32" r="4" filter="url(#stringShadow)" />
                 <circle cx="360" cy="32" r="4" filter="url(#stringShadow)" />
@@ -73,11 +73,11 @@ export default function ProcessTimeline({
             </svg>
           </div>
 
-          {/* MOBILE ROPE: Vertical Straight Twine on Left & Right Sides */}
-          <div className="lg:hidden absolute left-2.5 top-8 bottom-8 w-1 pointer-events-none z-0 border-l-4 border-solid border-[#D9C8A9]" />
-          <div className="lg:hidden absolute left-2.5 top-8 bottom-8 w-1 pointer-events-none z-0 border-l-4 border-dashed border-[#C4B18E]" />
-          <div className="lg:hidden absolute right-2.5 top-8 bottom-8 w-1 pointer-events-none z-0 border-r-4 border-solid border-[#D9C8A9]" />
-          <div className="lg:hidden absolute right-2.5 top-8 bottom-8 w-1 pointer-events-none z-0 border-r-4 border-dashed border-[#C4B18E]" />
+          {/* MOBILE ROPE: Vertical Straight Twine on Left & Right Sides directly passing through hole punches */}
+          <div className="lg:hidden absolute left-5 top-0 bottom-0 w-1 pointer-events-none z-20 border-l-4 border-solid border-[#D9C8A9]" />
+          <div className="lg:hidden absolute left-5 top-0 bottom-0 w-1 pointer-events-none z-20 border-l-4 border-dashed border-[#C4B18E]" />
+          <div className="lg:hidden absolute right-5 top-0 bottom-0 w-1 pointer-events-none z-20 border-r-4 border-solid border-[#D9C8A9]" />
+          <div className="lg:hidden absolute right-5 top-0 bottom-0 w-1 pointer-events-none z-20 border-r-4 border-dashed border-[#C4B18E]" />
 
           {/* Step Cards Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6 relative z-10">
@@ -86,13 +86,13 @@ export default function ProcessTimeline({
               return (
                 <div
                   key={idx}
-                  className="paper-card p-6 relative flex flex-col justify-between min-h-[260px] bg-cream border border-tan tier-3 group hover:-translate-y-2 transition-all duration-300"
+                  className="paper-card p-6 relative flex flex-col justify-between min-h-[260px] bg-cream border border-tan tier-3 group hover:-translate-y-2 transition-all duration-300 pin-accent"
                 >
-                  {/* Left Paper Hole Punch (Physical Die-Cut Hole) */}
-                  <div className="paper-hole-punch -left-2.5 top-8" />
+                  {/* Left Paper Hole Punch — Aligned with mobile left rope */}
+                  <div className="paper-hole-punch left-3 top-8" />
                   
-                  {/* Right Paper Hole Punch (Physical Die-Cut Hole) */}
-                  <div className="paper-hole-punch -right-2.5 top-8" />
+                  {/* Right Paper Hole Punch — Aligned with mobile right rope */}
+                  <div className="paper-hole-punch right-3 top-8" />
 
                   {/* Header: Number & Icon */}
                   <div className="flex justify-between items-start mb-4">

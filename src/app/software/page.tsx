@@ -142,7 +142,7 @@ export default function SoftwareDivisionPage() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {softwareProducts.map((p, i) => (
-              <div key={i} className={`paper-card p-8 flex flex-col justify-between bg-cream border border-tan fold-corner ${p.comingSoon ? 'border-dashed opacity-85' : ''}`}>
+              <div key={i} className={`paper-card p-8 flex flex-col justify-between bg-cream border border-tan fold-corner pin-accent ${p.comingSoon ? 'border-dashed opacity-85' : ''}`}>
                 <div className="space-y-3">
                   <div className="flex justify-between items-center">
                     <h3 className="headline-display text-2xl text-[#2A2416]">{p.name}</h3>

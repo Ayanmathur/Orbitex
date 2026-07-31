@@ -129,7 +129,7 @@ export default function HubHome() {
             {products.map((product) => (
               <div 
                 key={product.id}
-                className={`paper-card p-6 min-w-[280px] md:min-w-[360px] snap-center flex flex-col justify-between ${
+                className={`paper-card p-6 min-w-[280px] md:min-w-[360px] snap-center flex flex-col justify-between pin-accent ${
                   product.comingSoon ? 'opacity-70 border-dashed bg-transparent' : 'bg-cream tier-3'
                 }`}
               >
@@ -169,24 +169,18 @@ export default function HubHome() {
               </p>
             </div>
 
-            {/* Stamp Badges — Trust Markers */}
-            <div className="flex flex-wrap justify-center gap-6 mb-12">
+            {/* Stamp Badges & Sticky Note — Trust Markers */}
+            <div className="flex flex-wrap justify-center items-center gap-6 mb-12">
               <StampBadge value="30+" label="Clients" rotation={-5} />
               <StampBadge value="6" label="Products" rotation={3} />
               <StampBadge value="3" label="Divisions" rotation={-3} />
+              <StickyNote rotation={2} className="!max-w-[240px] text-xs">
+                <p className="italic">"One team, one standard. We stopped outsourcing disconnected parts and built the whole engine under one roof."</p>
+                <p className="text-[10px] mt-1.5 font-bold uppercase tracking-wider text-[var(--accent)] opacity-70">— Ayan Mathur, Founder</p>
+              </StickyNote>
             </div>
 
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-              <div className="lg:col-span-9">
-                <BentoCollage />
-              </div>
-              <div className="lg:col-span-3 flex justify-center lg:justify-start">
-                <StickyNote rotation={2}>
-                  <p className="text-xs italic">"One team, one standard. We stopped outsourcing disconnected parts and built the whole engine under one roof."</p>
-                  <p className="text-[10px] mt-2 font-bold uppercase tracking-wider text-[var(--accent)] opacity-70">— Ayan Mathur, Founder</p>
-                </StickyNote>
-              </div>
-            </div>
+            <BentoCollage />
           </div>
         </section>
 

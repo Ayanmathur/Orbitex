@@ -68,7 +68,10 @@ export default function Nav() {
                     style={isActive ? { backgroundColor: 'color-mix(in srgb, var(--accent) 15%, transparent)', color: 'var(--accent)' } : {}}
                   >
                     {isActive && (
-                      <div className="absolute -top-1 left-1/2 -translate-x-1/2 w-6 h-1 bg-cream rounded-t-sm" />
+                      <>
+                        <div className="absolute -top-1 left-1/2 -translate-x-1/2 w-6 h-1 bg-cream rounded-t-sm" />
+                        <div className="absolute -top-1.5 left-1/2 -translate-x-1/2 w-2 h-2 rounded-full bg-[var(--accent)] shadow-sm opacity-90" />
+                      </>
                     )}
                     {link.label}
                   </Link>
