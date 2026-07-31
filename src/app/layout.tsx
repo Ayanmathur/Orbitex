@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Inter, Fraunces } from "next/font/google";
 import "@/styles/globals.css";
+import RopeScrollbar from "@/components/RopeScrollbar";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -54,6 +55,7 @@ export default function RootLayout({
       </head>
       <body className="antialiased bg-ivory text-[#2A2416]">
         {children}
+        <RopeScrollbar />
       </body>
     </html>
   );

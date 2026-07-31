@@ -61,6 +61,17 @@ html {
   -moz-osx-font-smoothing: grayscale;
 }
 
+/* Hide scrollbar globally for all elements (IE, Edge and Firefox) */
+* {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Hide scrollbar globally for all elements (Chrome, Safari and Opera) */
+*::-webkit-scrollbar {
+  display: none;
+}
+
 body {
   font-family: var(--font-body);
   font-size: 15px;

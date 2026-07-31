@@ -21,7 +21,7 @@ export default function ServiceGrid({
   subtitle = "Specialized engineering and growth solutions designed for scale and durability.",
 }: ServiceGridProps) {
   return (
-    <section className="py-20 px-6 md:px-12 section-muted relative">
+    <section className="py-20 px-6 md:px-12 relative">
       <div className="max-w-7xl mx-auto">
         <div className="text-center max-w-3xl mx-auto mb-16 space-y-3">
           <h2 className="headline-display text-3xl md:text-4xl text-[#2A2416]">
