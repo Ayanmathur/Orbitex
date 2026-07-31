@@ -1,36 +1,58 @@
-import React from 'react';
+'use client';
+
+import React, { useState } from 'react';
 import Link from 'next/link';
 import Nav from '@/components/Nav';
 import Footer from '@/components/Footer';
+import Hero from '@/components/Hero';
+import StatWidget from '@/components/StatWidget';
 import ProcessTimeline from '@/components/ProcessTimeline';
 import ContactSection from '@/components/ContactSection';
 import Testimonial from '@/components/Testimonial';
 import TechStackChips from '@/components/TechStackChips';
+import ProductDrawer, { DrawerItem } from '@/components/ProductDrawer';
 import { products, testimonials } from '@/lib/data';
 import TornStrip from '@/components/TornStrip';
 
-export const metadata = {
-  title: 'Software Development — Orbitex',
-  description: 'Custom software built to run your business with reliability and scale.',
-};
+const softwareServices = [
+  { title: 'Custom Software Development', description: 'End-to-end bespoke solutions tailored to your unique workflows and operating requirements.', icon: 'settings' },
+  { title: 'Product Engineering', description: 'Building scalable SaaS platforms and digital products from scratch.', icon: 'check' },
+  { title: 'API & Backend Systems', description: 'Robust architectures powering your data and third-party integrations.', icon: 'external-link' },
+  { title: 'AI & Automation Integration', description: 'Leveraging intelligence to streamline operations and save manual effort.', icon: 'star' },
+  { title: 'Maintenance & Support', description: 'Ongoing SLA support to ensure your software never misses a beat.', icon: 'clock' }
+];
 
 const softwareSteps = [
   { title: 'Discovery & Audit', description: 'Deep dive into business requirements, existing systems, and technical constraints.', icon: 'search' },
   { title: 'System Architecture', description: 'Designing high-performance backend, database schema, and API contracts.', icon: 'settings' },
   { title: 'Agile Engineering', description: 'Sprint-based development with continuous integration and clean code standards.', icon: 'check' },
   { title: 'QA & Security Scans', description: 'Automated testing, load testing, SAST security checks, and code reviews.', icon: 'star' },
-  { title: 'Ship & Maintain', description: 'Zero-downtime deployment and long-term maintenance & support retainers.', icon: 'external-link' },
-];
-
-const techStack = [
-  'Java', 'Python', 'TypeScript', 'React', 'Next.js', 'Node.js', 
-  'Flutter', 'PostgreSQL', 'MongoDB', 'Redis', 'Docker', 
-  'Kubernetes', 'AWS', 'GraphQL', 'REST APIs'
+  { title: 'Ship & Maintain', description: 'Zero-downtime deployment and long-term maintenance & support retainers.', icon: 'external-link' }
 ];
 
 export default function SoftwareDivisionPage() {
+  const [selectedDrawerItem, setSelectedDrawerItem] = useState<DrawerItem | null>(null);
+  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const softwareProducts = products.filter(p => p.division === 'software');
   const softwareTestimonials = testimonials.filter(t => t.divisions.includes('software'));
+
+  const openDrawer = (p: typeof softwareProducts[0]) => {
+    setSelectedDrawerItem({
+      id: p.id,
+      name: p.name,
+      category: 'Software Solution',
+      description: p.description,
+      fullDetails: `${p.name} is a high-availability software platform developed by Orbitex Software Division. Designed with clean architecture, API-first integrations, and robust security.`,
+      features: ['API-First Microservices Architecture', 'Role-Based Access Control (RBAC)', 'PostgreSQL & Redis Caching Layer', 'Continuous Deployment Pipeline'],
+      techStack: ['Python', 'Java', 'Next.js', 'PostgreSQL', 'Docker', 'AWS'],
+      metrics: [
+        { label: 'Uptime SLA', value: '99.99%' },
+        { label: 'API Speed', value: '38ms' },
+      ],
+      link: p.link,
+    });
+    setIsDrawerOpen(true);
+  };
 
   return (
     <div className="division-software min-h-screen bg-ivory text-[#2A2416]">
@@ -114,19 +136,13 @@ export default function SoftwareDivisionPage() {
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {[
-                { title: 'Custom Software Development', desc: 'End-to-end bespoke solutions tailored to your unique workflows and requirements.', icon: 'settings' },
-                { title: 'Product Engineering', desc: 'Building scalable SaaS platforms and digital products from scratch.', icon: 'check' },
-                { title: 'API & Backend Systems', desc: 'Robust architectures powering your data and third-party integrations.', icon: 'external-link' },
-                { title: 'AI & Automation Integration', desc: 'Leveraging intelligence to streamline operations and save manual effort.', icon: 'star' },
-                { title: 'Maintenance & Support', desc: 'Ongoing SLA support to ensure your software never misses a beat.', icon: 'clock' }
-              ].map((s, i) => (
+              {softwareServices.map((s, i) => (
                 <div key={i} className="paper-card p-6 bg-cream border border-tan space-y-3 tier-3 fold-corner">
                   <div className="w-10 h-10 rounded-xl bg-ivory border border-tan flex items-center justify-center shadow-sm">
                     <img src={`/icons/${s.icon}.svg`} alt="" className="w-5 h-5 opacity-75" />
                   </div>
                   <h3 className="headline-display text-xl text-[#2A2416]">{s.title}</h3>
-                  <p className="text-[#6B6152] text-xs leading-relaxed">{s.desc}</p>
+                  <p className="text-[#6B6152] text-xs leading-relaxed">{s.description}</p>
                 </div>
               ))}
             </div>
@@ -158,10 +174,13 @@ export default function SoftwareDivisionPage() {
 
                 <div className="pt-6">
                   {!p.comingSoon && (
-                    <Link href={p.link} className="btn-outline text-xs py-2 px-4 inline-flex items-center">
+                    <button 
+                      onClick={() => openDrawer(p)}
+                      className="btn-outline text-xs py-2 px-4 inline-flex items-center cursor-pointer hover:border-[var(--accent)]"
+                    >
                       <span>Explore Product</span>
                       <span className="ml-1.5">→</span>
-                    </Link>
+                    </button>
                   )}
                 </div>
               </div>
@@ -180,7 +199,7 @@ export default function SoftwareDivisionPage() {
               Modern languages, frameworks, and infrastructure tools powering our software architectures.
             </p>
             <div className="max-w-4xl mx-auto flex justify-center">
-              <TechStackChips techs={techStack} />
+              <TechStackChips techs={['Java', 'Python', 'TypeScript', 'React', 'Next.js', 'Node.js', 'Flutter', 'PostgreSQL', 'MongoDB', 'Redis', 'Docker', 'Kubernetes', 'AWS', 'GraphQL', 'REST APIs']} />
             </div>
           </div>
         </section>
@@ -198,6 +217,12 @@ export default function SoftwareDivisionPage() {
       </main>
 
       <Footer />
+
+      <ProductDrawer 
+        isOpen={isDrawerOpen} 
+        onClose={() => setIsDrawerOpen(false)} 
+        item={selectedDrawerItem} 
+      />
     </div>
   );
 }

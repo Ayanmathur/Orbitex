@@ -1,35 +1,83 @@
-import React from 'react';
+'use client';
+
+import React, { useState } from 'react';
 import Link from 'next/link';
 import Nav from '@/components/Nav';
 import Footer from '@/components/Footer';
+import Hero from '@/components/Hero';
+import StatWidget from '@/components/StatWidget';
 import ProcessTimeline from '@/components/ProcessTimeline';
 import ContactSection from '@/components/ContactSection';
 import Testimonial from '@/components/Testimonial';
 import TechStackChips from '@/components/TechStackChips';
+import ProductDrawer, { DrawerItem } from '@/components/ProductDrawer';
 import { testimonials } from '@/lib/data';
 import TornStrip from '@/components/TornStrip';
 
-export const metadata = {
-  title: 'Web Development — Orbitex',
-  description: 'Fast, elegant, conversion-first websites and web applications built to scale.',
-};
+const webServices = [
+  { title: 'Website Design & Dev', description: 'Bespoke corporate websites built with custom UI components and paper aesthetics.', icon: 'settings' },
+  { title: 'Web Applications', description: 'Complex interactive web applications and client portals engineered for speed.', icon: 'check' },
+  { title: 'E-commerce Solutions', description: 'High-converting online store builds with seamless payment checkout flows.', icon: 'external-link' },
+  { title: 'CMS Builds', description: 'Headless and traditional CMS integrations empowering non-technical teams to manage content.', icon: 'edit' },
+  { title: 'Performance & CRO', description: 'Core Web Vitals auditing, load speed optimization, and conversion rate testing.', icon: 'star' },
+  { title: 'Ongoing Maintenance', description: 'Proactive security updates, uptime monitoring, and continuous site enhancements.', icon: 'clock' }
+];
 
 const webSteps = [
   { title: 'Discovery & UX Research', description: 'Understanding brand identity, user personas, site hierarchy, and conversion pathways.', icon: 'search' },
   { title: 'UI Design & Wireframing', description: 'Creating interactive Figma prototypes with paper diorama aesthetics and modern typography.', icon: 'settings' },
   { title: 'Next.js & Frontend Build', description: 'Developing with Next.js, Tailwind CSS, TypeScript, and responsive component libraries.', icon: 'check' },
   { title: 'Core Web Vitals Tuning', description: 'Optimizing load speeds (<1s), Lighthouse metrics (90+), SEO tags, and accessibility.', icon: 'star' },
-  { title: 'Launch & CMS Handoff', description: 'Deploying to high-availability CDN infrastructure and training your team on CMS content updates.', icon: 'external-link' },
-];
-
-const webTechStack = [
-  'React', 'Next.js', 'TypeScript', 'Tailwind CSS', 'Node.js', 
-  'Prisma', 'PostgreSQL', 'Vercel', 'Figma', 'Framer Motion', 
-  'Three.js', 'Shopify', 'WordPress'
+  { title: 'Launch & CMS Handoff', description: 'Deploying to high-availability CDN infrastructure and training your team on CMS content updates.', icon: 'external-link' }
 ];
 
 export default function WebDivisionPage() {
+  const [selectedDrawerItem, setSelectedDrawerItem] = useState<DrawerItem | null>(null);
+  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const webTestimonials = testimonials.filter(t => t.divisions.includes('web'));
+
+  const webProjects = [
+    { 
+      id: 'fintech-portal',
+      name: 'Fintech Portal', 
+      desc: 'Next.js banking portal with real-time dashboard analytics.', 
+      img: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=80',
+      techStack: ['Next.js', 'React', 'TypeScript', 'Tailwind CSS', 'Recharts', 'PostgreSQL'],
+      metrics: [{ label: 'Performance', value: '98/100' }, { label: 'Load Speed', value: '0.7s' }]
+    },
+    { 
+      id: 'ecommerce-brand',
+      name: 'E-commerce Brand', 
+      desc: 'Shopify & Headless Next.js storefront with 1.2s load speeds.', 
+      img: 'https://images.unsplash.com/photo-1472851294608-062f824d29cc?auto=format&fit=crop&w=800&q=80',
+      techStack: ['Shopify Storefront API', 'Next.js', 'TypeScript', 'Tailwind CSS', 'Vercel'],
+      metrics: [{ label: 'Conversion', value: '+34%' }, { label: 'FCP Speed', value: '0.8s' }]
+    },
+    { 
+      id: 'saas-platform-site',
+      name: 'SaaS Platform Site', 
+      desc: 'High-converting product landing site with interactive pricing.', 
+      img: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80',
+      techStack: ['Next.js', 'Framer Motion', 'TypeScript', 'Tailwind CSS', 'Prisma'],
+      metrics: [{ label: 'Lighthouse', value: '99/100' }, { label: 'Leads/Mo', value: '1,450+' }]
+    }
+  ];
+
+  const openDrawer = (proj: typeof webProjects[0]) => {
+    setSelectedDrawerItem({
+      id: proj.id,
+      name: proj.name,
+      category: 'Web Project Showcase',
+      description: proj.desc,
+      fullDetails: `${proj.name} is a high-performance web experience engineered by Orbitex Web Division. Optimized for mobile-first responsiveness, Core Web Vitals, and conversion rate optimization (CRO).`,
+      image: proj.img,
+      features: ['Mobile-First Accessible Design System', 'Sub-second Core Web Vitals Performance', 'Integrated CMS Content Workflows', 'SEO & Analytics Setup'],
+      techStack: proj.techStack,
+      metrics: proj.metrics,
+      link: '#',
+    });
+    setIsDrawerOpen(true);
+  };
 
   return (
     <div className="division-web min-h-screen bg-ivory text-[#2A2416]">
@@ -112,21 +160,14 @@ export default function WebDivisionPage() {
               <p className="text-[#6B6152] text-base">Comprehensive web engineering services designed for modern digital brands.</p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {[
-                { title: 'Website Design & Dev', desc: 'Bespoke corporate websites built with custom UI components and paper aesthetics.', icon: 'settings' },
-                { title: 'Web Applications', desc: 'Complex interactive web applications and client portals engineered for speed.', icon: 'check' },
-                { title: 'E-commerce Solutions', desc: 'High-converting online store builds with seamless payment checkout flows.', icon: 'external-link' },
-                { title: 'CMS Builds', desc: 'Headless and traditional CMS integrations empowering non-technical teams to manage content.', icon: 'edit' },
-                { title: 'Performance & CRO', desc: 'Core Web Vitals auditing, load speed optimization, and conversion rate testing.', icon: 'star' },
-                { title: 'Ongoing Maintenance', desc: 'Proactive security updates, uptime monitoring, and continuous site enhancements.', icon: 'clock' }
-              ].map((s, i) => (
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              {webServices.map((service, i) => (
                 <div key={i} className="paper-card p-6 bg-cream border border-tan space-y-3 tier-3 fold-corner">
-                  <div className="w-10 h-10 rounded-xl bg-ivory border border-tan flex items-center justify-center shadow-sm">
-                    <img src={`/icons/${s.icon}.svg`} alt="" className="w-5 h-5 opacity-75" />
+                  <div className="paper-badge bg-ivory text-[#2A2416]">
+                    <img src={`/icons/${service.icon || 'settings'}.svg`} alt="" className="w-5 h-5 opacity-75" />
                   </div>
-                  <h3 className="headline-display text-xl text-[#2A2416]">{s.title}</h3>
-                  <p className="text-[#6B6152] text-xs leading-relaxed">{s.desc}</p>
+                  <h3 className="headline-display text-xl text-[#2A2416]">{service.title}</h3>
+                  <p className="text-xs text-[#6B6152] leading-relaxed">{service.description}</p>
                 </div>
               ))}
             </div>
@@ -136,24 +177,27 @@ export default function WebDivisionPage() {
         {/* c) Process Timeline */}
         <ProcessTimeline steps={webSteps} title="Web Launch Process" />
 
-        {/* d) Portfolio Showcase (High Quality Verified Unsplash Images) */}
-        <section className="py-20 px-6 md:px-12 max-w-7xl mx-auto">
+        {/* d) Portfolio Showcase */}
+        <section id="portfolio" className="py-20 px-6 md:px-12 max-w-7xl mx-auto">
           <div className="text-center max-w-3xl mx-auto mb-14 space-y-3">
             <h2 className="headline-display text-3xl md:text-4xl text-[#2A2416]">Featured Web Projects</h2>
             <p className="text-[#6B6152] text-base">A selection of recent websites and web applications built by our team.</p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {[
-              { name: 'Fintech Portal', desc: 'Next.js banking portal with real-time dashboard analytics.', img: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=80' },
-              { name: 'E-commerce Brand', desc: 'Shopify & Headless Next.js storefront with 1.2s load speeds.', img: 'https://images.unsplash.com/photo-1472851294608-062f824d29cc?auto=format&fit=crop&w=800&q=80' },
-              { name: 'SaaS Platform Site', desc: 'High-converting product landing site with interactive pricing.', img: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80' }
-            ].map((proj, idx) => (
-              <div key={idx} className="paper-card p-4 bg-cream border border-tan space-y-3 group tier-3 fold-corner paper-grain-card">
+            {webProjects.map((proj, idx) => (
+              <div 
+                key={idx} 
+                onClick={() => openDrawer(proj)}
+                className="paper-card p-4 bg-cream border border-tan space-y-3 group tier-3 fold-corner paper-grain-card cursor-pointer hover:border-[var(--accent)]"
+              >
                 <div className="aspect-video rounded-xl overflow-hidden relative bg-beige border border-tan/40">
                   <img src={proj.img} alt={proj.name} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
                 </div>
-                <h3 className="headline-display text-lg text-[#2A2416]">{proj.name}</h3>
+                <div className="flex items-center justify-between">
+                  <h3 className="headline-display text-lg text-[#2A2416]">{proj.name}</h3>
+                  <span className="text-xs text-[var(--accent)] font-bold opacity-0 group-hover:opacity-100 transition-opacity">View Details →</span>
+                </div>
                 <p className="text-xs text-[#6B6152]">{proj.desc}</p>
               </div>
             ))}
@@ -165,7 +209,7 @@ export default function WebDivisionPage() {
           <div className="max-w-7xl mx-auto px-6 text-center space-y-8">
             <h2 className="headline-display text-3xl md:text-4xl text-[#2A2416]">Web Development Stack</h2>
             <div className="max-w-4xl mx-auto flex justify-center">
-              <TechStackChips techs={webTechStack} />
+              <TechStackChips techs={['React', 'Next.js', 'TypeScript', 'Tailwind CSS', 'Node.js', 'Prisma', 'PostgreSQL', 'Vercel', 'Figma', 'Framer Motion', 'Three.js', 'Shopify', 'WordPress']} />
             </div>
           </div>
         </section>
@@ -178,11 +222,18 @@ export default function WebDivisionPage() {
         )}
 
         {/* g) Contact Section */}
-        <ContactSection division="web" headline="Let's build a website that works as hard as you do." />
+        <ContactSection division="web" />
         <TornStrip />
       </main>
 
       <Footer />
+
+      {/* Product & Project Drawer Panel */}
+      <ProductDrawer 
+        isOpen={isDrawerOpen} 
+        onClose={() => setIsDrawerOpen(false)} 
+        item={selectedDrawerItem} 
+      />
     </div>
   );
 }

@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import { supabase } from '@/lib/supabase';
+import WaxSealStamp from './WaxSealStamp';
 
 type Division = 'hub' | 'software' | 'web' | 'marketing';
 
@@ -81,23 +82,14 @@ export default function LeadForm({ division = 'hub' }: LeadFormProps) {
 
   if (submitted) {
     return (
-      <div className={`paper-card p-8 md:p-12 max-w-4xl mx-auto division-${division} text-center space-y-4`}>
-        <div className="w-16 h-16 bg-cream border border-tan rounded-full mx-auto flex items-center justify-center">
-          <img src="/icons/success.svg" alt="Success" className="w-8 h-8" />
-        </div>
-        <h3 className="headline-display text-2xl font-bold">Quote Request Received!</h3>
-        <p className="text-warm-taupe max-w-md mx-auto">
-          Thank you, {formData.fullName}. Our team at Orbitex will review your project details and get back to you shortly.
-        </p>
-        <button
-          onClick={() => {
+      <div className={`paper-card p-8 md:p-12 max-w-4xl mx-auto division-${division} text-center space-y-4 shadow-tier-4`}>
+        <WaxSealStamp 
+          title="SCOPE RECEIVED"
+          onReset={() => {
             setSubmitted(false);
             setFormData({ fullName: '', email: '', phone: '', company: '', service: '', message: '', consent: false });
           }}
-          className="btn-outline text-sm mt-4"
-        >
-          Submit Another Request
-        </button>
+        />
       </div>
     );
   }

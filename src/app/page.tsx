@@ -1,4 +1,6 @@
-import { Metadata } from 'next';
+'use client';
+
+import React, { useState } from 'react';
 import Link from 'next/link';
 import Nav from '@/components/Nav';
 import Hero from '@/components/Hero';
@@ -12,12 +14,8 @@ import Footer from '@/components/Footer';
 import StampBadge from '@/components/StampBadge';
 import TornStrip from '@/components/TornStrip';
 import StickyNote from '@/components/StickyNote';
+import ProductDrawer, { DrawerItem } from '@/components/ProductDrawer';
 import { hubStats, divisions, products, values, testimonials } from '@/lib/data';
-
-export const metadata: Metadata = {
-  title: 'Orbitex | Software, Web, and Growth Studio',
-  description: 'Orbitex is a founder-led studio behind 6 products, 30+ client partnerships, and three specialist teams under one roof.',
-};
 
 const processSteps = [
   { title: 'Discovery & Vision', description: 'We analyze your business goals, target audience, and requirements to map out a strategic blueprint.', icon: 'search' },
@@ -35,7 +33,27 @@ const hubServices = [
 ];
 
 export default function HubHome() {
+  const [selectedDrawerItem, setSelectedDrawerItem] = useState<DrawerItem | null>(null);
+  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const hubTestimonials = testimonials.filter(t => t.divisions.includes('hub'));
+
+  const openDrawer = (p: typeof products[0]) => {
+    setSelectedDrawerItem({
+      id: p.id,
+      name: p.name,
+      category: 'Product Solution',
+      description: p.description,
+      fullDetails: `${p.name} is a battle-tested product solution built and maintained by Orbitex Studio. Designed for scale, security, and exceptional user experience.`,
+      features: ['WhatsApp & Automated Messaging Integration', 'Real-time Analytics Dashboard', 'Cloud Multi-Tenant Infrastructure', '99.9% Uptime & 24/7 Monitoring'],
+      techStack: ['Next.js', 'React', 'TypeScript', 'Node.js', 'PostgreSQL', 'Tailwind CSS'],
+      metrics: [
+        { label: 'Uptime', value: '99.9%' },
+        { label: 'Active Users', value: '12,500+' },
+      ],
+      link: p.link,
+    });
+    setIsDrawerOpen(true);
+  };
 
   return (
     <div className="division-hub min-h-screen bg-ivory">
@@ -143,13 +161,13 @@ export default function HubHome() {
                     Coming Soon
                   </span>
                 ) : (
-                  <Link 
-                    href={product.link}
-                    className="btn-outline text-xs py-2 px-4 inline-flex items-center self-start"
+                  <button 
+                    onClick={() => openDrawer(product)}
+                    className="btn-outline text-xs py-2 px-4 inline-flex items-center self-start cursor-pointer hover:border-[var(--accent)]"
                   >
-                    <span>Visit Product</span>
+                    <span>Explore Product</span>
                     <span className="ml-1.5">→</span>
-                  </Link>
+                  </button>
                 )}
               </div>
             ))}
@@ -216,6 +234,13 @@ export default function HubHome() {
       </main>
 
       <Footer />
+
+      {/* Product Drawer Panel */}
+      <ProductDrawer 
+        isOpen={isDrawerOpen} 
+        onClose={() => setIsDrawerOpen(false)} 
+        item={selectedDrawerItem} 
+      />
     </div>
   );
 }

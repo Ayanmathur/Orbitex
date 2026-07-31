@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+import ThemeToggle from './ThemeToggle';
 
 export default function TopUtilityBar() {
   return (
@@ -15,6 +16,7 @@ export default function TopUtilityBar() {
           <span className="hidden sm:inline font-medium">Email: contact@orbitex.com</span>
         </div>
         <div className="flex items-center space-x-3 text-ivory/80">
+          <ThemeToggle />
           <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">
             <img src="/icons/linkedin.svg" alt="LinkedIn" className="w-3.5 h-3.5 invert opacity-80" />
           </a>

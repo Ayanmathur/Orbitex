@@ -48,6 +48,44 @@
   --motion-normal: 300ms;
 }
 
+/* ── "NIGHT STUDIO" WARM LAMP THEME ── */
+.theme-night {
+  --color-ivory:       #1C1914;
+  --color-cream:       #24201A;
+  --color-beige:       #2D2821;
+  --color-tan:         #423B31;
+  --color-warm-black:  #FBF7F0;
+  --color-warm-taupe:  #D9C8A9;
+  color-scheme: dark;
+}
+
+.theme-night body {
+  background-color: #1C1914 !important;
+  color: #FBF7F0 !important;
+}
+
+.theme-night body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  background: radial-gradient(ellipse 90% 60% at 50% 0%, rgba(217, 119, 6, 0.14) 0%, rgba(194, 98, 45, 0.05) 50%, transparent 80%);
+}
+
+.theme-night .bg-ivory { background-color: #1C1914 !important; }
+.theme-night .bg-cream { background-color: #24201A !important; }
+.theme-night .bg-beige { background-color: #2D2821 !important; }
+.theme-night .border-tan { border-color: #423B31 !important; }
+.theme-night .text-\[\#2A2416\],
+.theme-night .text-near-black { color: #FBF7F0 !important; }
+.theme-night .text-\[\#6B6152\],
+.theme-night .text-warm-taupe { color: #D9C8A9 !important; }
+.theme-night .section-muted {
+  background-color: #26211B !important;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='matrix' values='0 0 0 0 0.9 0 0 0 0 0.85 0 0 0 0 0.7 0 0 0 0.035 0'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)'/%3E%3C/svg%3E") !important;
+}
+
 /* ── Base Resets ── */
 * {
   margin: 0;
@@ -385,6 +423,22 @@ textarea.form-input {
 }
 .form-shake {
   animation: shakeKeyframes 300ms cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+}
+
+/* ── Wax Seal Stamp Impact Animation ── */
+@keyframes waxStampImpact {
+  0% {
+    transform: scale(1.4) rotate(-12deg);
+    opacity: 0;
+  }
+  70% {
+    transform: scale(0.96) rotate(2deg);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1) rotate(0deg);
+    opacity: 1;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
