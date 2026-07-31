@@ -35,9 +35,19 @@ export default function WebDivisionPage() {
       <Nav />
 
       <main className="pt-24">
-        {/* a) Hero */}
-        <section className="py-20 px-6 md:px-12 max-w-7xl mx-auto flex flex-col md:flex-row items-center gap-12">
-          <div className="flex-1 space-y-6">
+        {/* a) Hero with Background Image & Warm Paper Overlay */}
+        <section className="relative py-20 px-6 md:px-12 max-w-7xl mx-auto flex flex-col md:flex-row items-center gap-12 rounded-3xl overflow-hidden my-4 border border-tan/60 shadow-tier-3">
+          {/* Background Image Layer */}
+          <div className="absolute inset-0 z-0">
+            <img 
+              src="https://images.unsplash.com/photo-1467238307002-480ffdd960d3?auto=format&fit=crop&w=1200&q=80" 
+              alt="Web Architecture & Engineering" 
+              className="w-full h-full object-cover opacity-15 filter contrast-125"
+            />
+            <div className="absolute inset-0 bg-gradient-to-r from-[#FBF7F0] via-[#FBF7F0]/95 to-[#FBF7F0]/80" />
+          </div>
+
+          <div className="relative z-10 flex-1 space-y-6">
             <h1 className="headline-display text-4xl md:text-6xl text-[#2A2416]">
               Fast, elegant, conversion-first websites
             </h1>
@@ -70,8 +80,8 @@ export default function WebDivisionPage() {
           </div>
 
           {/* Right Hero Image Card */}
-          <div className="flex-1 w-full flex justify-center">
-            <div className="paper-card p-3 bg-cream border border-tan shadow-card max-w-md w-full">
+          <div className="relative z-10 flex-1 w-full flex justify-center">
+            <div className="paper-card p-3.5 bg-cream border border-tan shadow-tier-4 max-w-md w-full">
               <div className="aspect-[4/3] rounded-xl overflow-hidden relative bg-beige">
                 <img
                   src="https://images.unsplash.com/photo-1467238307002-480ffdd960d3?auto=format&fit=crop&w=1000&q=80"
@@ -106,7 +116,7 @@ export default function WebDivisionPage() {
                 { title: 'Performance & CRO', desc: 'Core Web Vitals auditing, load speed optimization, and conversion rate testing.', icon: 'star' },
                 { title: 'Ongoing Maintenance', desc: 'Proactive security updates, uptime monitoring, and continuous site enhancements.', icon: 'clock' }
               ].map((s, i) => (
-                <div key={i} className="paper-card p-6 bg-cream border border-tan space-y-3">
+                <div key={i} className="paper-card p-6 bg-cream border border-tan space-y-3 tier-3">
                   <div className="w-10 h-10 rounded-xl bg-ivory border border-tan flex items-center justify-center shadow-sm">
                     <img src={`/icons/${s.icon}.svg`} alt="" className="w-5 h-5 opacity-75" />
                   </div>
@@ -121,7 +131,7 @@ export default function WebDivisionPage() {
         {/* c) Process Timeline */}
         <ProcessTimeline steps={webSteps} title="Web Launch Process" />
 
-        {/* d) Portfolio Showcase */}
+        {/* d) Portfolio Showcase (High Quality Verified Unsplash Images) */}
         <section className="py-20 px-6 md:px-12 max-w-7xl mx-auto">
           <div className="text-center max-w-3xl mx-auto mb-14 space-y-3">
             <h2 className="headline-display text-3xl md:text-4xl text-[#2A2416]">Featured Web Projects</h2>
@@ -130,12 +140,12 @@ export default function WebDivisionPage() {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {[
-              { name: 'Fintech Portal', desc: 'Next.js banking portal with real-time dashboard analytics.', img: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=600&q=80' },
-              { name: 'E-commerce Brand', desc: 'Shopify & Headless Next.js storefront with 1.2s load speeds.', img: 'https://images.unsplash.com/photo-1472851294608-062f824d29cc?auto=format&fit=crop&w=600&q=80' },
-              { name: 'SaaS Platform Site', desc: 'High-converting product landing site with interactive pricing.', img: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=600&q=80' }
+              { name: 'Fintech Portal', desc: 'Next.js banking portal with real-time dashboard analytics.', img: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=80' },
+              { name: 'E-commerce Brand', desc: 'Shopify & Headless Next.js storefront with 1.2s load speeds.', img: 'https://images.unsplash.com/photo-1472851294608-062f824d29cc?auto=format&fit=crop&w=800&q=80' },
+              { name: 'SaaS Platform Site', desc: 'High-converting product landing site with interactive pricing.', img: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80' }
             ].map((proj, idx) => (
-              <div key={idx} className="paper-card p-4 bg-cream border border-tan space-y-3 group">
-                <div className="aspect-video rounded-xl overflow-hidden relative bg-beige">
+              <div key={idx} className="paper-card p-4 bg-cream border border-tan space-y-3 group tier-3">
+                <div className="aspect-video rounded-xl overflow-hidden relative bg-beige border border-tan/40">
                   <img src={proj.img} alt={proj.name} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
                 </div>
                 <h3 className="headline-display text-lg text-[#2A2416]">{proj.name}</h3>

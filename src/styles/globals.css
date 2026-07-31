@@ -3,8 +3,8 @@
 @tailwind utilities;
 
 /* ─────────────────────────────────────────────────────────
-   ORBITEX DESIGN SYSTEM — Enhanced Paper Diorama & Typography
-   Master Plan §1.1–§1.4, §2.11 Art Direction
+   ORBITEX DESIGN SYSTEM — Governing Paper Diorama Spec
+   Reference: paper-diorama-style-guide.md
    ───────────────────────────────────────────────────────── */
 
 /* ── Google Fonts ── */
@@ -36,12 +36,12 @@
   --font-display: 'Fraunces', serif;
   --font-body:    'Inter', sans-serif;
 
-  /* Shadows – paper directional depth */
-  --shadow-card:       0px 14px 36px -16px rgba(42, 36, 22, 0.08);
-  --shadow-card-hover: 0px 20px 44px -14px rgba(42, 36, 22, 0.14);
-  --shadow-paper:      3px 5px 12px -2px rgba(42, 36, 22, 0.09);
-  --shadow-paper-sm:   2px 3px 6px -1px rgba(42, 36, 22, 0.07);
-  --shadow-nav:        0px 4px 20px -4px rgba(42, 36, 22, 0.06);
+  /* 5-TIER DEPTH SHADOW SYSTEM (§6) - Upper-Left Soft Directional Light Source */
+  --shadow-tier-1: 0px 4px 8px -4px rgba(42, 36, 22, 0.10);
+  --shadow-tier-2: 0px 12px 24px -10px rgba(42, 36, 22, 0.14);
+  --shadow-tier-3: 0px 20px 40px -14px rgba(42, 36, 22, 0.16), 0px 4px 10px -4px rgba(42, 36, 22, 0.10);
+  --shadow-tier-4: 0px 32px 64px -20px rgba(42, 36, 22, 0.20), 0px 8px 16px -6px rgba(42, 36, 22, 0.12);
+  --shadow-nav:    0px 4px 20px -4px rgba(42, 36, 22, 0.08);
 
   /* Motion */
   --motion-fast: 200ms;
@@ -67,10 +67,11 @@ body {
   line-height: 1.6;
   color: var(--color-warm-black);
   background-color: var(--color-ivory);
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+  /* Procedural static SVG feTurbulence grain (Tier 0: 3% opacity) */
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='matrix' values='0 0 0 0 0.16 0 0 0 0 0.14 0 0 0 0 0.09 0 0 0 0.03 0'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 
-/* ── Typography & Colors (Enforce Main Colors for Text Across All Pages) ── */
+/* Enforce Main Colors for Text */
 h1, h2, h3, h4, h5, h6 {
   color: var(--color-warm-black) !important;
 }
@@ -101,12 +102,26 @@ h1, h2, h3, h4, h5, h6 {
   --accent-secondary: #D97706;
 }
 
-/* ── Paper Diorama Cards & Elements ── */
+/* ── 5-TIER DEPTH UTILITIES ── */
+.tier-1 {
+  box-shadow: var(--shadow-tier-1);
+}
+.tier-2 {
+  box-shadow: var(--shadow-tier-2);
+}
+.tier-3 {
+  box-shadow: var(--shadow-tier-3);
+}
+.tier-4 {
+  box-shadow: var(--shadow-tier-4);
+}
+
+/* ── Paper Diorama Card (Tier 3 Default) ── */
 .paper-card {
   background: var(--color-cream);
   border: 1px solid var(--color-tan);
   border-radius: 20px;
-  box-shadow: var(--shadow-paper);
+  box-shadow: var(--shadow-tier-3);
   transition: transform var(--motion-fast) ease-out,
               box-shadow var(--motion-fast) ease-out,
               border-color var(--motion-fast) ease-out;
@@ -114,8 +129,8 @@ h1, h2, h3, h4, h5, h6 {
 
 .paper-card:hover {
   transform: translateY(-3px);
-  box-shadow: var(--shadow-card-hover);
-  border-color: color-mix(in srgb, var(--accent) 35%, var(--color-tan));
+  box-shadow: var(--shadow-tier-4);
+  border-color: color-mix(in srgb, var(--accent) 40%, var(--color-tan));
 }
 
 .paper-badge {
@@ -129,25 +144,38 @@ h1, h2, h3, h4, h5, h6 {
   color: var(--color-warm-black);
   font-weight: 600;
   font-size: 0.8125rem;
-  box-shadow: var(--shadow-paper-sm);
+  box-shadow: var(--shadow-tier-1);
 }
 
-/* Hole punch effect for paper cards */
+/* Realistic Die-Cut Hole Punch in Paper */
 .paper-hole-punch {
-  width: 14px;
-  height: 14px;
+  width: 18px;
+  height: 18px;
   border-radius: 9999px;
-  background: var(--color-ivory);
-  border: 1px solid var(--color-tan);
-  box-shadow: inset 0px 1px 3px rgba(42, 36, 22, 0.25);
+  background: #EDE3D0;
+  border: 2px solid #D9C8A9;
+  box-shadow: inset 0px 2px 4px rgba(42, 36, 22, 0.35);
   position: absolute;
-  z-index: 20;
+  z-index: 25;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Center inner hole shadow */
+.paper-hole-punch::after {
+  content: '';
+  width: 8px;
+  height: 8px;
+  border-radius: 9999px;
+  background: #2A2416;
+  opacity: 0.25;
 }
 
 /* Section styling */
 .section-muted {
   background-color: var(--color-beige);
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='0.025'/%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='matrix' values='0 0 0 0 0.16 0 0 0 0 0.14 0 0 0 0 0.025 0'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 
 /* Buttons */
@@ -168,11 +196,11 @@ h1, h2, h3, h4, h5, h6 {
   cursor: pointer;
   transition: transform var(--motion-fast) ease-out,
               box-shadow var(--motion-fast) ease-out;
-  box-shadow: 0 3px 10px -2px rgba(42, 36, 22, 0.18);
+  box-shadow: 0 4px 12px -2px rgba(42, 36, 22, 0.2);
 }
 .btn-primary:hover {
   transform: translateY(-2px);
-  box-shadow: 0 6px 18px -3px rgba(42, 36, 22, 0.22);
+  box-shadow: 0 8px 20px -3px rgba(42, 36, 22, 0.25);
 }
 
 .btn-outline {
@@ -235,7 +263,8 @@ textarea.form-input {
   color: #2A2416 !important;
 }
 
-/* Marquee track */
-.marquee-container:hover .marquee-track {
-  animation-play-state: paused;
+/* Torn Edge Inner Rim (§4) */
+.torn-paper-edge {
+  border-bottom: 2px solid #FAF4EB;
+  box-shadow: 0 4px 12px rgba(42, 36, 22, 0.12);
 }

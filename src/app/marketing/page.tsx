@@ -28,9 +28,19 @@ export default function MarketingDivisionPage() {
       <Nav />
 
       <main className="pt-24">
-        {/* a) Hero */}
-        <section className="py-20 px-6 md:px-12 max-w-7xl mx-auto flex flex-col md:flex-row items-center gap-12">
-          <div className="flex-1 space-y-6">
+        {/* a) Hero with Background Image & Warm Paper Overlay */}
+        <section className="relative py-20 px-6 md:px-12 max-w-7xl mx-auto flex flex-col md:flex-row items-center gap-12 rounded-3xl overflow-hidden my-4 border border-tan/60 shadow-tier-3">
+          {/* Background Image Layer */}
+          <div className="absolute inset-0 z-0">
+            <img 
+              src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=1200&q=80" 
+              alt="Digital Marketing Strategy" 
+              className="w-full h-full object-cover opacity-15 filter contrast-125"
+            />
+            <div className="absolute inset-0 bg-gradient-to-r from-[#FBF7F0] via-[#FBF7F0]/95 to-[#FBF7F0]/80" />
+          </div>
+
+          <div className="relative z-10 flex-1 space-y-6">
             <h1 className="headline-display text-4xl md:text-6xl text-[#2A2416]">
               Measurable growth. Real results.
             </h1>
@@ -63,8 +73,8 @@ export default function MarketingDivisionPage() {
           </div>
 
           {/* Right Hero Image Card */}
-          <div className="flex-1 w-full flex justify-center">
-            <div className="paper-card p-3 bg-cream border border-tan shadow-card max-w-md w-full">
+          <div className="relative z-10 flex-1 w-full flex justify-center">
+            <div className="paper-card p-3.5 bg-cream border border-tan shadow-tier-4 max-w-md w-full">
               <div className="aspect-[4/3] rounded-xl overflow-hidden relative bg-beige">
                 <img
                   src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=1000&q=80"
@@ -101,7 +111,7 @@ export default function MarketingDivisionPage() {
                 { title: 'Content Marketing', desc: 'Thought leadership articles, whitepapers, and copy that converts visitors.', icon: 'copy' },
                 { title: 'AI Growth Automation', desc: 'Automating lead scoring, email nurturing, and reporting dashboards.', icon: 'clock' }
               ].map((s, i) => (
-                <div key={i} className="paper-card p-6 bg-cream border border-tan space-y-3">
+                <div key={i} className="paper-card p-6 bg-cream border border-tan space-y-3 tier-3">
                   <div className="w-10 h-10 rounded-xl bg-ivory border border-tan flex items-center justify-center shadow-sm">
                     <img src={`/icons/${s.icon}.svg`} alt="" className="w-5 h-5 opacity-75" />
                   </div>
@@ -124,17 +134,17 @@ export default function MarketingDivisionPage() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div className="paper-card p-8 text-center bg-cream border border-tan space-y-2">
+            <div className="paper-card p-8 text-center bg-cream border border-tan space-y-2 tier-3">
               <span className="headline-display text-4xl font-bold text-[var(--accent)]">+320%</span>
               <h3 className="font-bold text-base text-[#2A2416]">Organic Traffic Growth</h3>
               <p className="text-xs text-[#6B6152]">Within 6 months of technical SEO execution</p>
             </div>
-            <div className="paper-card p-8 text-center bg-cream border border-tan space-y-2">
+            <div className="paper-card p-8 text-center bg-cream border border-tan space-y-2 tier-3">
               <span className="headline-display text-4xl font-bold text-[var(--accent)]">+180%</span>
               <h3 className="font-bold text-base text-[#2A2416]">Qualified Leads</h3>
               <p className="text-xs text-[#6B6152]">Combined search and paid social funnels</p>
             </div>
-            <div className="paper-card p-8 text-center bg-cream border border-tan space-y-2">
+            <div className="paper-card p-8 text-center bg-cream border border-tan space-y-2 tier-3">
               <span className="headline-display text-4xl font-bold text-[var(--accent)]">4.8x</span>
               <h3 className="font-bold text-base text-[#2A2416]">Return on Ad Spend</h3>
               <p className="text-xs text-[#6B6152]">Across Google Ads & Meta advertising</p>

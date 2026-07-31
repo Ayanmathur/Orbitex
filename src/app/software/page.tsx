@@ -36,9 +36,20 @@ export default function SoftwareDivisionPage() {
       <Nav />
 
       <main className="pt-24">
-        {/* a) Hero */}
-        <section className="py-20 px-6 md:px-12 max-w-7xl mx-auto flex flex-col md:flex-row items-center gap-12">
-          <div className="flex-1 space-y-6">
+        {/* a) Hero with Background Image & Warm Paper Overlay */}
+        <section className="relative py-20 px-6 md:px-12 max-w-7xl mx-auto flex flex-col md:flex-row items-center gap-12 rounded-3xl overflow-hidden my-4 border border-tan/60 shadow-tier-3">
+          {/* Background Image Layer */}
+          <div className="absolute inset-0 z-0">
+            <img 
+              src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=1200&q=80" 
+              alt="Software Architecture & Engineering" 
+              className="w-full h-full object-cover opacity-15 filter contrast-125"
+            />
+            <div className="absolute inset-0 bg-gradient-to-r from-[#FBF7F0] via-[#FBF7F0]/95 to-[#FBF7F0]/80" />
+          </div>
+
+          {/* Hero Left Column Content */}
+          <div className="relative z-10 flex-1 space-y-6">
             <h1 className="headline-display text-4xl md:text-6xl text-[#2A2416]">
               Custom software built to run your business
             </h1>
@@ -70,9 +81,9 @@ export default function SoftwareDivisionPage() {
             </div>
           </div>
 
-          {/* Right Hero Image Card */}
-          <div className="flex-1 w-full flex justify-center">
-            <div className="paper-card p-3 bg-cream border border-tan shadow-card max-w-md w-full">
+          {/* Hero Right Column Photo Card */}
+          <div className="relative z-10 flex-1 w-full flex justify-center">
+            <div className="paper-card p-3.5 bg-cream border border-tan shadow-tier-4 max-w-md w-full">
               <div className="aspect-[4/3] rounded-xl overflow-hidden relative bg-beige">
                 <img
                   src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=1000&q=80"
@@ -106,7 +117,7 @@ export default function SoftwareDivisionPage() {
                 { title: 'AI & Automation Integration', desc: 'Leveraging intelligence to streamline operations and save manual effort.', icon: 'star' },
                 { title: 'Maintenance & Support', desc: 'Ongoing SLA support to ensure your software never misses a beat.', icon: 'clock' }
               ].map((s, i) => (
-                <div key={i} className="paper-card p-6 bg-cream border border-tan space-y-3">
+                <div key={i} className="paper-card p-6 bg-cream border border-tan space-y-3 tier-3">
                   <div className="w-10 h-10 rounded-xl bg-ivory border border-tan flex items-center justify-center shadow-sm">
                     <img src={`/icons/${s.icon}.svg`} alt="" className="w-5 h-5 opacity-75" />
                   </div>
@@ -154,7 +165,7 @@ export default function SoftwareDivisionPage() {
           </div>
         </section>
 
-        {/* d) Process Timeline with Paper Hole Punches & Rope */}
+        {/* d) Process Timeline with Rope & Die-Cut Hole Punches */}
         <ProcessTimeline steps={softwareSteps} title="Software Engineering Process" />
 
         {/* e) Tech Stack Chips */}
@@ -177,7 +188,7 @@ export default function SoftwareDivisionPage() {
           </section>
         )}
 
-        {/* g) Contact Section with Side-by-Side Growth Overview Widget Card */}
+        {/* g) Contact Section */}
         <ContactSection division="software" headline="Ready to build something that lasts?" />
       </main>
 
