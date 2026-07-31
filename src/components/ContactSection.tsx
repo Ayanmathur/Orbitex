@@ -22,7 +22,7 @@ export default function ContactSection({
   ];
 
   return (
-    <section id="contact" className={`py-20 px-6 md:px-12 section-muted division-${division}`}>
+    <section id="contact" className={`py-20 px-6 md:px-12 division-${division}`}>
       <div className="max-w-7xl mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
           

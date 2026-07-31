@@ -105,7 +105,7 @@ export default function SoftwareDivisionPage() {
         </section>
 
         {/* b) Services Grid */}
-        <section className="section-muted py-20 px-6 md:px-12">
+        <section className="py-20 px-6 md:px-12">
           <div className="max-w-7xl mx-auto">
             <div className="text-center max-w-3xl mx-auto mb-14 space-y-3">
               <h2 className="headline-display text-3xl md:text-4xl text-[#2A2416]">Software Capabilities</h2>
@@ -133,7 +133,7 @@ export default function SoftwareDivisionPage() {
         </section>
 
         {/* c) Products Showcase */}
-        <section className="py-20 px-6 md:px-12 max-w-7xl mx-auto">
+        <section className="py-20 px-6 md:px-12 max-w-7xl mx-auto section-muted">
           <div className="text-center max-w-3xl mx-auto mb-14 space-y-3">
             <h2 className="headline-display text-3xl md:text-4xl text-[#2A2416]">6 Products Showcase</h2>
             <p className="text-[#6B6152] text-base">In-house software products developed and maintained by our software engineering division.</p>
@@ -172,7 +172,7 @@ export default function SoftwareDivisionPage() {
         <ProcessTimeline steps={softwareSteps} title="Software Engineering Process" />
 
         {/* e) Tech Stack Chips */}
-        <section className="py-20 section-muted">
+        <section className="py-20">
           <div className="max-w-7xl mx-auto px-6 text-center space-y-8">
             <h2 className="headline-display text-3xl md:text-4xl text-[#2A2416]">Technology Stack</h2>
             <p className="text-[#6B6152] text-base max-w-xl mx-auto">
@@ -186,7 +186,7 @@ export default function SoftwareDivisionPage() {
 
         {/* f) Testimonial */}
         {softwareTestimonials.length > 0 && (
-          <section className="py-16">
+          <section className="py-16 section-muted">
             <Testimonial testimonials={softwareTestimonials} />
           </section>
         )}

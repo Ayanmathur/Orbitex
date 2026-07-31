@@ -34,7 +34,7 @@ export default function AboutPage() {
         />
 
         {/* Founder Section */}
-        <section className="py-20 section-muted">
+        <section className="py-20">
           <div className="max-w-7xl mx-auto px-6">
             <div className="flex flex-col md:flex-row gap-12 items-center md:items-start">
               <div className="w-full md:w-1/3">
@@ -62,7 +62,7 @@ export default function AboutPage() {
         </section>
 
         {/* Bento Collage Section */}
-        <section className="py-20">
+        <section className="py-20 section-muted">
           <div className="max-w-7xl mx-auto px-6">
             <div className="text-center max-w-3xl mx-auto mb-14 space-y-3">
               <h2 className="headline-display text-3xl md:text-4xl text-[#2A2416]">The Orbitex Studio</h2>
@@ -73,7 +73,7 @@ export default function AboutPage() {
         </section>
 
         {/* Tech Stack */}
-        <section className="py-20 section-muted">
+        <section className="py-20">
           <div className="max-w-7xl mx-auto px-6 text-center space-y-8">
             <h2 className="headline-display text-3xl md:text-4xl text-[#2A2416]">Capabilities & Technologies</h2>
             <p className="text-[#6B6152] text-base max-w-xl mx-auto">
@@ -86,7 +86,7 @@ export default function AboutPage() {
         </section>
 
         {/* Principles */}
-        <section className="py-20">
+        <section className="py-20 section-muted">
           <div className="max-w-7xl mx-auto px-6">
             <div className="text-center mb-14">
               <h2 className="headline-display text-3xl md:text-4xl text-[#2A2416]">Our Operating Principles</h2>

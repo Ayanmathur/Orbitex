@@ -116,7 +116,7 @@ export default function HubHome() {
         </section>
 
         {/* e) Products Showcase */}
-        <section className="py-20 section-muted overflow-hidden">
+        <section className="py-20 overflow-hidden">
           <div className="max-w-7xl mx-auto px-6 mb-10">
             <h2 className="headline-display text-3xl md:text-4xl mb-3 text-[#2A2416]">Our Products</h2>
             <p className="text-[#6B6152] text-base">We build for clients, and we build for ourselves. Explore the Orbitex product ecosystem.</p>
@@ -157,7 +157,7 @@ export default function HubHome() {
         <ProcessTimeline steps={processSteps} />
 
         {/* g) Brand Story with Bento Collage */}
-        <section className="py-20 section-muted">
+        <section className="py-20">
           <div className="max-w-7xl mx-auto px-6">
             <div className="text-center max-w-3xl mx-auto mb-12 space-y-4">
               <h2 className="headline-display text-3xl md:text-4xl text-[#2A2416]">Our Origin Story</h2>
@@ -171,7 +171,7 @@ export default function HubHome() {
         </section>
 
         {/* h) Values Grid */}
-        <section className="py-20">
+        <section className="py-20 section-muted">
           <div className="max-w-7xl mx-auto px-6">
             <div className="text-center mb-14">
               <h2 className="headline-display text-3xl md:text-4xl text-[#2A2416]">Our Core Principles</h2>
@@ -190,7 +190,7 @@ export default function HubHome() {
         </section>
 
         {/* i) Testimonials */}
-        <section className="py-16 section-muted">
+        <section className="py-16">
           <Testimonial testimonials={hubTestimonials} />
         </section>
 

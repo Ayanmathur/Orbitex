@@ -75,21 +75,21 @@ export default function Hero({
       </div>
 
       {/* Vertical Social / Utility Rail on Right Edge */}
-      <div className="hidden xl:flex flex-col items-center space-y-4 absolute right-8 top-1/2 -translate-y-1/2 z-20">
-        <div className="w-px h-16 bg-tan/60" />
-        <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="p-2 rounded-full hover:bg-cream/80 border border-transparent hover:border-tan/40 transition-colors">
-          <img src="/icons/facebook.svg" alt="Facebook" className="w-4 h-4 opacity-70 hover:opacity-100" />
+      <div className="hidden xl:flex flex-col items-center space-y-3 absolute right-8 top-1/2 -translate-y-1/2 z-20 bg-cream/90 border border-tan/60 rounded-full py-4 px-1.5 shadow-tier-2">
+        <div className="w-px h-10 bg-[#2A2416]/20" />
+        <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="p-2 rounded-full hover:bg-ivory border border-tan/30 hover:border-tan/60 transition-colors">
+          <img src="/icons/facebook.svg" alt="Facebook" className="w-4 h-4 opacity-90 hover:opacity-100 transition-opacity" />
         </a>
-        <a href="https://whatsapp.com" target="_blank" rel="noopener noreferrer" className="p-2 rounded-full hover:bg-cream/80 border border-transparent hover:border-tan/40 transition-colors">
-          <img src="/icons/whatsapp.svg" alt="WhatsApp" className="w-4 h-4 opacity-70 hover:opacity-100" />
+        <a href="https://whatsapp.com" target="_blank" rel="noopener noreferrer" className="p-2 rounded-full hover:bg-ivory border border-tan/30 hover:border-tan/60 transition-colors">
+          <img src="/icons/whatsapp.svg" alt="WhatsApp" className="w-4 h-4 opacity-90 hover:opacity-100 transition-opacity" />
         </a>
-        <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="p-2 rounded-full hover:bg-cream/80 border border-transparent hover:border-tan/40 transition-colors">
-          <img src="/icons/instagram.svg" alt="Instagram" className="w-4 h-4 opacity-70 hover:opacity-100" />
+        <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="p-2 rounded-full hover:bg-ivory border border-tan/30 hover:border-tan/60 transition-colors">
+          <img src="/icons/instagram.svg" alt="Instagram" className="w-4 h-4 opacity-90 hover:opacity-100 transition-opacity" />
         </a>
-        <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="p-2 rounded-full hover:bg-cream/80 border border-transparent hover:border-tan/40 transition-colors">
-          <img src="/icons/linkedin.svg" alt="LinkedIn" className="w-4 h-4 opacity-70 hover:opacity-100" />
+        <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="p-2 rounded-full hover:bg-ivory border border-tan/30 hover:border-tan/60 transition-colors">
+          <img src="/icons/linkedin.svg" alt="LinkedIn" className="w-4 h-4 opacity-90 hover:opacity-100 transition-opacity" />
         </a>
-        <div className="w-px h-16 bg-tan/60" />
+        <div className="w-px h-10 bg-[#2A2416]/20" />
       </div>
 
       {/* === Tier 3-4: Foreground Content === */}
