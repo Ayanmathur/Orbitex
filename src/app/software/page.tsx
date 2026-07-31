@@ -72,10 +72,10 @@ export default function SoftwareDivisionPage() {
           {/* Tier 3-4: Foreground Content */}
           <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10 w-full py-20">
             <div className="max-w-3xl space-y-6">
-              <h1 className="headline-display text-4xl md:text-6xl text-[#2A2416] leading-tight">
+              <h1 className="headline-display text-4xl md:text-6xl text-[#2A2416] leading-tight torn-reveal">
                 Custom software built to run your business
               </h1>
-              <p className="text-base md:text-lg text-[#4A4236] max-w-2xl font-medium leading-relaxed">
+              <p className="text-base md:text-lg text-[#4A4236] max-w-2xl font-medium leading-relaxed torn-reveal torn-reveal-delay-1">
                 We build reliable, scalable software solutions that solve real business problems. From complex internal tools to customer-facing platforms.
               </p>
               

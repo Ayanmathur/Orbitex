@@ -71,10 +71,10 @@ export default function WebDivisionPage() {
           {/* Tier 3-4: Foreground Content */}
           <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10 w-full py-20">
             <div className="max-w-3xl space-y-6">
-              <h1 className="headline-display text-4xl md:text-6xl text-[#2A2416] leading-tight">
+              <h1 className="headline-display text-4xl md:text-6xl text-[#2A2416] leading-tight torn-reveal">
                 Fast, elegant, conversion-first websites
               </h1>
-              <p className="text-base md:text-lg text-[#4A4236] max-w-2xl font-medium leading-relaxed">
+              <p className="text-base md:text-lg text-[#4A4236] max-w-2xl font-medium leading-relaxed torn-reveal torn-reveal-delay-1">
                 We design and engineer bespoke websites and web applications that combine stunning design with lightning-fast performance.
               </p>
 
@@ -137,7 +137,7 @@ export default function WebDivisionPage() {
         <ProcessTimeline steps={webSteps} title="Web Launch Process" />
 
         {/* d) Portfolio Showcase (High Quality Verified Unsplash Images) */}
-        <section className="py-20 px-6 md:px-12 max-w-7xl mx-auto section-muted">
+        <section className="py-20 px-6 md:px-12 max-w-7xl mx-auto">
           <div className="text-center max-w-3xl mx-auto mb-14 space-y-3">
             <h2 className="headline-display text-3xl md:text-4xl text-[#2A2416]">Featured Web Projects</h2>
             <p className="text-[#6B6152] text-base">A selection of recent websites and web applications built by our team.</p>
@@ -149,7 +149,7 @@ export default function WebDivisionPage() {
               { name: 'E-commerce Brand', desc: 'Shopify & Headless Next.js storefront with 1.2s load speeds.', img: 'https://images.unsplash.com/photo-1472851294608-062f824d29cc?auto=format&fit=crop&w=800&q=80' },
               { name: 'SaaS Platform Site', desc: 'High-converting product landing site with interactive pricing.', img: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80' }
             ].map((proj, idx) => (
-              <div key={idx} className="paper-card p-4 bg-cream border border-tan space-y-3 group tier-3 fold-corner">
+              <div key={idx} className="paper-card p-4 bg-cream border border-tan space-y-3 group tier-3 fold-corner paper-grain-card">
                 <div className="aspect-video rounded-xl overflow-hidden relative bg-beige border border-tan/40">
                   <img src={proj.img} alt={proj.name} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
                 </div>

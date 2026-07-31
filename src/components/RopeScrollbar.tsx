@@ -93,7 +93,7 @@ export default function RopeScrollbar() {
   return (
     <div 
       ref={containerRef}
-      className="hidden md:block fixed right-6 lg:right-10 top-0 bottom-0 w-8 z-50 mix-blend-multiply opacity-80"
+      className="hidden md:block fixed right-6 lg:right-10 top-0 bottom-0 w-8 z-10 mix-blend-multiply opacity-80"
       style={{ cursor: 'pointer' }}
       onClick={handleTrackClick}
       aria-hidden="true"

@@ -119,7 +119,7 @@ export default function HubHome() {
         </section>
 
         {/* e) Products Showcase */}
-        <section className="py-20 overflow-hidden">
+        <section className="py-20 overflow-hidden torn-paper-edge">
           <div className="max-w-7xl mx-auto px-6 mb-10">
             <h2 className="headline-display text-3xl md:text-4xl mb-3 text-[#2A2416]">Our Products</h2>
             <p className="text-[#6B6152] text-base">We build for clients, and we build for ourselves. Explore the Orbitex product ecosystem.</p>

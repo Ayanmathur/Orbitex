@@ -64,10 +64,10 @@ export default function MarketingDivisionPage() {
           {/* Tier 3-4: Foreground Content */}
           <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10 w-full py-20">
             <div className="max-w-3xl space-y-6">
-              <h1 className="headline-display text-4xl md:text-6xl text-[#2A2416] leading-tight">
+              <h1 className="headline-display text-4xl md:text-6xl text-[#2A2416] leading-tight torn-reveal">
                 Measurable growth. Real results.
               </h1>
-              <p className="text-base md:text-lg text-[#4A4236] max-w-2xl font-medium leading-relaxed">
+              <p className="text-base md:text-lg text-[#4A4236] max-w-2xl font-medium leading-relaxed torn-reveal torn-reveal-delay-1">
                 We engineer performance marketing campaigns that compound — combining technical SEO, high-converting paid ads, and content strategy.
               </p>
 
@@ -132,24 +132,24 @@ export default function MarketingDivisionPage() {
         <ProcessTimeline steps={marketingSteps} title="6-Step Growth Framework" />
 
         {/* d) Illustrative Performance Metrics Band */}
-        <section className="py-20 px-6 md:px-12 max-w-7xl mx-auto section-muted">
+        <section className="py-20 px-6 md:px-12 max-w-7xl mx-auto">
           <div className="text-center max-w-3xl mx-auto mb-14 space-y-3">
             <h2 className="headline-display text-3xl md:text-4xl text-[#2A2416]">Illustrative Benchmarks</h2>
             <p className="text-[#6B6152] text-base">Average performance metrics achieved across multi-channel client engagements.</p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div className="paper-card p-8 text-center bg-cream border border-tan space-y-2 tier-3 fold-corner">
+            <div className="paper-card p-8 text-center bg-cream border border-tan space-y-2 tier-3 fold-corner paper-grain-card">
               <span className="headline-display text-4xl font-bold text-[var(--accent)]">+320%</span>
               <h3 className="font-bold text-base text-[#2A2416]">Organic Traffic Growth</h3>
               <p className="text-xs text-[#6B6152]">Within 6 months of technical SEO execution</p>
             </div>
-            <div className="paper-card p-8 text-center bg-cream border border-tan space-y-2 tier-3 fold-corner">
+            <div className="paper-card p-8 text-center bg-cream border border-tan space-y-2 tier-3 fold-corner paper-grain-card">
               <span className="headline-display text-4xl font-bold text-[var(--accent)]">+180%</span>
               <h3 className="font-bold text-base text-[#2A2416]">Qualified Leads</h3>
               <p className="text-xs text-[#6B6152]">Combined search and paid social funnels</p>
             </div>
-            <div className="paper-card p-8 text-center bg-cream border border-tan space-y-2 tier-3 fold-corner">
+            <div className="paper-card p-8 text-center bg-cream border border-tan space-y-2 tier-3 fold-corner paper-grain-card">
               <span className="headline-display text-4xl font-bold text-[var(--accent)]">4.8x</span>
               <h3 className="font-bold text-base text-[#2A2416]">Return on Ad Spend</h3>
               <p className="text-xs text-[#6B6152]">Across Google Ads & Meta advertising</p>
