@@ -8,7 +8,7 @@ interface ValueCardProps {
 
 export default function ValueCard({ title, description, icon }: ValueCardProps) {
   return (
-    <div className="paper-card p-8 flex flex-col h-full group transition-transform hover:-translate-y-1">
+    <div className="paper-card tier-3 p-8 flex flex-col h-full group transition-transform hover:-translate-y-1">
       <div className="paper-badge w-14 h-14 flex items-center justify-center rounded-2xl mb-6 bg-cream border border-tan transition-colors duration-300 group-hover:border-[var(--accent)] group-hover:bg-ivory">
         <img src={`/icons/${icon}.svg`} alt="" className="w-6 h-6" />
       </div>

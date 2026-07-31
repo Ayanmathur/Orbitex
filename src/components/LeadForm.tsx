@@ -103,7 +103,7 @@ export default function LeadForm({ division = 'hub' }: LeadFormProps) {
   }
 
   return (
-    <div className={`paper-card p-8 md:p-12 max-w-4xl mx-auto division-${division}`}>
+    <div className={`paper-card tier-4 p-8 md:p-12 max-w-4xl mx-auto division-${division}`}>
       <form onSubmit={handleSubmit} className="space-y-6">
         {errorMsg && (
           <div className="p-4 bg-red-50 border border-red-200 text-red-700 rounded-lg text-sm">

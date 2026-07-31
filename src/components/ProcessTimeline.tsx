@@ -35,7 +35,7 @@ export default function ProcessTimeline({
         <div className="relative">
           
           {/* DESKTOP ROPE: Continuous Serpentine Rope passing through hole punches */}
-          <div className="hidden lg:block absolute inset-0 pointer-events-none z-20">
+          <div className="hidden lg:block absolute inset-0 pointer-events-none z-0">
             <svg viewBox="0 0 1200 400" preserveAspectRatio="none" className="w-full h-full">
               <defs>
                 <filter id="ropeShadow" x="-10%" y="-10%" width="120%" height="120%">
@@ -65,8 +65,8 @@ export default function ProcessTimeline({
           </div>
 
           {/* MOBILE ROPE: Vertical Straight Ropes on Left & Right Sides */}
-          <div className="lg:hidden absolute left-2.5 top-8 bottom-8 w-1 pointer-events-none z-20 border-l-4 border-dashed border-[#8C7853]" />
-          <div className="lg:hidden absolute right-2.5 top-8 bottom-8 w-1 pointer-events-none z-20 border-r-4 border-dashed border-[#8C7853]" />
+          <div className="lg:hidden absolute left-2.5 top-8 bottom-8 w-1 pointer-events-none z-0 border-l-4 border-dashed border-[#8C7853]" />
+          <div className="lg:hidden absolute right-2.5 top-8 bottom-8 w-1 pointer-events-none z-0 border-r-4 border-dashed border-[#8C7853]" />
 
           {/* Step Cards Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6 relative z-10">

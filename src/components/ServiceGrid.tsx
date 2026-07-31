@@ -45,8 +45,13 @@ export default function ServiceGrid({
                   isFeatured ? 'tier-4 border-[var(--accent)]/50 torn-paper-edge' : 'tier-3'
                 }`}
               >
-                {/* Header Row: Icon Badge (Left) & Debossed Ghost Number (Right) */}
-                <div className="flex justify-between items-start mb-6">
+                {/* Oversized Debossed Ghost Number (Stamped into Paper) */}
+                <span className="absolute -top-4 -right-2 font-display text-8xl md:text-9xl font-bold text-tan/40 select-none pointer-events-none drop-shadow-sm group-hover:text-[var(--accent)]/10 transition-colors z-0">
+                  {numStr}
+                </span>
+
+                {/* Header Row: Icon Badge (Left) */}
+                <div className="flex justify-between items-start mb-6 relative z-10">
                   {/* Icon Badge Layer (Sits on top with contact shadow) */}
                   <div className="paper-badge bg-ivory p-3 rounded-2xl border border-tan/80 shadow-tier-1 flex items-center justify-center">
                     <img
@@ -58,11 +63,6 @@ export default function ServiceGrid({
                       }}
                     />
                   </div>
-
-                  {/* Oversized Debossed Ghost Number (Stamped into Paper) */}
-                  <span className="font-display text-5xl font-bold text-[#2A2416]/10 select-none group-hover:text-[var(--accent)]/20 transition-colors">
-                    {numStr}
-                  </span>
                 </div>
 
                 {/* Content */}

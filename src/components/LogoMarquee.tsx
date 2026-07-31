@@ -16,7 +16,7 @@ export default function LogoMarquee() {
               href={client.link || '#'}
               target={client.link ? "_blank" : "_self"}
               rel="noopener noreferrer"
-              className="flex items-center justify-center h-[80px] min-w-[180px] rounded-2xl bg-cream/60 border border-tan px-6 transition-all duration-300 grayscale opacity-65 hover:grayscale-0 hover:opacity-100 hover:scale-105 hover:shadow-card hover:bg-cream"
+              className="flex items-center justify-center h-[80px] min-w-[180px] rounded-2xl bg-cream border border-tan px-6 shadow-tier-2 transition-all duration-300 grayscale opacity-65 hover:grayscale-0 hover:opacity-100 hover:scale-105 hover:shadow-tier-3"
             >
               <img
                 src={client.logo}

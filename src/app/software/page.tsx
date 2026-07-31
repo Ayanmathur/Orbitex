@@ -37,65 +37,68 @@ export default function SoftwareDivisionPage() {
 
       <main className="pt-24">
         {/* a) Hero with Background Image & Warm Paper Overlay */}
-        <section className="relative py-20 px-6 md:px-12 max-w-7xl mx-auto flex flex-col md:flex-row items-center gap-12 rounded-3xl overflow-hidden my-4 border border-tan/60 shadow-tier-3">
-          {/* Background Image Layer */}
+        <section className="relative min-h-[85vh] flex items-center overflow-hidden">
+          {/* Background Image Layer (Tier 1-2) */}
           <div className="absolute inset-0 z-0">
             <img 
-              src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=1200&q=80" 
-              alt="Software Architecture & Engineering" 
-              className="w-full h-full object-cover opacity-15 filter contrast-125"
+              src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=1600&q=80" 
+              alt="" 
+              className="w-full h-full object-cover"
+              style={{ filter: 'contrast(1.05) saturate(0.7) brightness(0.85)' }}
             />
-            <div className="absolute inset-0 bg-gradient-to-r from-[#FBF7F0] via-[#FBF7F0]/95 to-[#FBF7F0]/80" />
+            <div 
+              className="absolute inset-0"
+              style={{ 
+                background: 'linear-gradient(135deg, rgba(251,247,240,0.82) 0%, rgba(245,239,227,0.65) 40%, rgba(237,227,208,0.55) 100%)' 
+              }}
+            />
+            {/* Matte grain overlay */}
+            <div className="absolute inset-0 opacity-[0.06]" style={{
+              backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)'/%3E%3C/svg%3E")`,
+            }} />
           </div>
 
-          {/* Hero Left Column Content */}
-          <div className="relative z-10 flex-1 space-y-6">
-            <h1 className="headline-display text-4xl md:text-6xl text-[#2A2416]">
-              Custom software built to run your business
-            </h1>
-            <p className="text-base md:text-lg text-[#6B6152] max-w-2xl">
-              We build reliable, scalable software solutions that solve real business problems. From complex internal tools to customer-facing platforms.
-            </p>
-            
-            {/* Sleek Rounded Rectangular Stat Chips */}
-            <div className="flex flex-wrap gap-3 pt-2">
-              <div className="bg-cream border border-tan px-4 py-2 rounded-xl flex items-center gap-2 shadow-sm font-semibold text-xs md:text-sm text-[#2A2416]">
-                <img src="/icons/check.svg" alt="" className="w-4 h-4 text-[var(--accent)]" />
-                <span>99.9% Uptime Benchmark</span>
-              </div>
-              <div className="bg-cream border border-tan px-4 py-2 rounded-xl flex items-center gap-2 shadow-sm font-semibold text-xs md:text-sm text-[#2A2416]">
-                <img src="/icons/check.svg" alt="" className="w-4 h-4 text-[var(--accent)]" />
-                <span>6 Internal Products Shipped</span>
-              </div>
-              <div className="bg-cream border border-tan px-4 py-2 rounded-xl flex items-center gap-2 shadow-sm font-semibold text-xs md:text-sm text-[#2A2416]">
-                <img src="/icons/check.svg" alt="" className="w-4 h-4 text-[var(--accent)]" />
-                <span>30+ Client Partnerships</span>
-              </div>
-            </div>
-
-            <div className="pt-4">
-              <Link href="#contact" className="btn-primary">
-                <span>Get a Custom Quote</span>
-                <img src="/icons/arrow-cta.svg" alt="" className="w-4 h-4" />
-              </Link>
-            </div>
+          {/* Torn bottom edge */}
+          <div className="absolute bottom-0 left-0 right-0 z-30 pointer-events-none">
+            <svg viewBox="0 0 1440 40" preserveAspectRatio="none" className="w-full h-[40px] block">
+              <path 
+                d="M0,20 Q30,8 60,18 T120,14 T180,22 T240,12 T300,20 T360,10 T420,18 T480,14 T540,22 T600,16 T660,20 T720,10 T780,18 T840,22 T900,14 T960,20 T1020,12 T1080,18 T1140,22 T1200,14 T1260,18 T1320,22 T1380,16 T1440,20 L1440,40 L0,40 Z" 
+                fill="var(--ivory, #FBF7F0)" 
+              />
+            </svg>
           </div>
 
-          {/* Hero Right Column Photo Card */}
-          <div className="relative z-10 flex-1 w-full flex justify-center">
-            <div className="paper-card p-3.5 bg-cream border border-tan shadow-tier-4 max-w-md w-full">
-              <div className="aspect-[4/3] rounded-xl overflow-hidden relative bg-beige">
-                <img
-                  src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=1000&q=80"
-                  alt="Software Architecture & Engineering"
-                  className="w-full h-full object-cover"
-                />
+          {/* Tier 3-4: Foreground Content */}
+          <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10 w-full py-20">
+            <div className="max-w-3xl space-y-6">
+              <h1 className="headline-display text-4xl md:text-6xl text-[#2A2416] leading-tight">
+                Custom software built to run your business
+              </h1>
+              <p className="text-base md:text-lg text-[#4A4236] max-w-2xl font-medium leading-relaxed">
+                We build reliable, scalable software solutions that solve real business problems. From complex internal tools to customer-facing platforms.
+              </p>
+              
+              {/* Sleek Rounded Rectangular Stat Chips */}
+              <div className="flex flex-wrap gap-3 pt-2">
+                <div className="bg-cream/80 border border-tan px-4 py-2 rounded-xl flex items-center gap-2 shadow-sm font-semibold text-xs md:text-sm text-[#2A2416]">
+                  <img src="/icons/check.svg" alt="" className="w-4 h-4" />
+                  <span>99.9% Uptime Benchmark</span>
+                </div>
+                <div className="bg-cream/80 border border-tan px-4 py-2 rounded-xl flex items-center gap-2 shadow-sm font-semibold text-xs md:text-sm text-[#2A2416]">
+                  <img src="/icons/check.svg" alt="" className="w-4 h-4" />
+                  <span>6 Internal Products Shipped</span>
+                </div>
+                <div className="bg-cream/80 border border-tan px-4 py-2 rounded-xl flex items-center gap-2 shadow-sm font-semibold text-xs md:text-sm text-[#2A2416]">
+                  <img src="/icons/check.svg" alt="" className="w-4 h-4" />
+                  <span>30+ Client Partnerships</span>
+                </div>
               </div>
-              <div className="p-4 flex justify-between items-center">
-                <span className="font-display font-bold text-sm text-[#2A2416]">Full-Stack Software Studio</span>
-                <span className="text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full bg-[var(--accent)]/15 text-[var(--accent)]">
-                  Software Division
-                </span>
+
+              <div className="pt-4">
+                <Link href="#contact" className="btn-primary">
+                  <span>Get a Custom Quote</span>
+                  <img src="/icons/arrow-cta.svg" alt="" className="w-4 h-4" />
+                </Link>
               </div>
             </div>
           </div>

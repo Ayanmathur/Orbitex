@@ -25,29 +25,29 @@ export default function Footer() {
   };
 
   return (
-    <footer className="bg-cream border-t border-tan pt-16 pb-8 text-[#2A2416]">
+    <footer className="bg-[#1A1814] border-t border-[#36322A] pt-16 pb-8 text-[#FBF7F0]">
       <div className="max-w-7xl mx-auto px-6">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-8 mb-16">
           
           {/* Column 1: Brand & Bio (3 cols) */}
           <div className="lg:col-span-3 space-y-4">
             <Link href="/" className="inline-block">
-              <img src="/branding/svg/primary-logo.svg" alt="Orbitex Logo" className="h-8 w-auto" />
+              <img src="/branding/svg/primary-logo.svg" alt="Orbitex Logo" className="h-8 w-auto brightness-0 invert" />
             </Link>
-            <p className="text-xs text-[#6B6152] leading-relaxed">
+            <p className="text-xs text-[#D9C8A9] leading-relaxed">
               Orbitex is a founder-led studio behind 6 products, 30+ client partnerships, and three specialist teams under one roof.
             </p>
             <div className="flex items-center space-x-3 pt-2">
-              <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="p-2 rounded-full bg-ivory border border-tan/60 hover:border-near-black transition-colors">
+              <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="p-2 rounded-full bg-[#2A2416] border border-[#36322A] hover:border-[#D9C8A9] transition-colors">
                 <Icon name="facebook" size={16} />
               </a>
-              <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="p-2 rounded-full bg-ivory border border-tan/60 hover:border-near-black transition-colors">
+              <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="p-2 rounded-full bg-[#2A2416] border border-[#36322A] hover:border-[#D9C8A9] transition-colors">
                 <Icon name="instagram" size={16} />
               </a>
-              <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="p-2 rounded-full bg-ivory border border-tan/60 hover:border-near-black transition-colors">
+              <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="p-2 rounded-full bg-[#2A2416] border border-[#36322A] hover:border-[#D9C8A9] transition-colors">
                 <Icon name="linkedin" size={16} />
               </a>
-              <a href="https://whatsapp.com" target="_blank" rel="noopener noreferrer" className="p-2 rounded-full bg-ivory border border-tan/60 hover:border-near-black transition-colors">
+              <a href="https://whatsapp.com" target="_blank" rel="noopener noreferrer" className="p-2 rounded-full bg-[#2A2416] border border-[#36322A] hover:border-[#D9C8A9] transition-colors">
                 <Icon name="whatsapp" size={16} />
               </a>
             </div>
@@ -55,20 +55,20 @@ export default function Footer() {
 
           {/* Column 2: Quick Links (2 cols) */}
           <div className="lg:col-span-2 space-y-3">
-            <h3 className="headline-display text-base text-[#2A2416] font-bold">Quick Links</h3>
-            <ul className="space-y-2 text-xs font-medium text-[#6B6152]">
-              <li><Link href="/" className="hover:text-[#2A2416] transition-colors">Home</Link></li>
-              <li><Link href="/about" className="hover:text-[#2A2416] transition-colors">About Us</Link></li>
-              <li><Link href="/#divisions" className="hover:text-[#2A2416] transition-colors">Our Services</Link></li>
-              <li><Link href="/blog" className="hover:text-[#2A2416] transition-colors">Blog</Link></li>
-              <li><Link href="/#contact" className="hover:text-[#2A2416] transition-colors">Get a Quote</Link></li>
+            <h3 className="headline-display text-base text-white font-bold">Quick Links</h3>
+            <ul className="space-y-2 text-xs font-medium text-[#D9C8A9]">
+              <li><Link href="/" className="hover:text-white transition-colors">Home</Link></li>
+              <li><Link href="/about" className="hover:text-white transition-colors">About Us</Link></li>
+              <li><Link href="/#divisions" className="hover:text-white transition-colors">Our Services</Link></li>
+              <li><Link href="/blog" className="hover:text-white transition-colors">Blog</Link></li>
+              <li><Link href="/#contact" className="hover:text-white transition-colors">Get a Quote</Link></li>
             </ul>
           </div>
 
           {/* Column 3: Our Services (2 cols) */}
           <div className="lg:col-span-2 space-y-3">
-            <h3 className="headline-display text-base text-[#2A2416] font-bold">Our Services</h3>
-            <ul className="space-y-2 text-xs font-medium text-[#6B6152]">
+            <h3 className="headline-display text-base text-white font-bold">Our Services</h3>
+            <ul className="space-y-2 text-xs font-medium text-[#D9C8A9]">
               <li><Link href="/software" className="hover:text-[var(--accent)] transition-colors">Web App Development</Link></li>
               <li><Link href="/software" className="hover:text-[var(--accent)] transition-colors">AI Automation</Link></li>
               <li><Link href="/software" className="hover:text-[var(--accent)] transition-colors">Mobile App Dev</Link></li>
@@ -80,17 +80,17 @@ export default function Footer() {
 
           {/* Column 4: Quick Contact (2 cols) */}
           <div className="lg:col-span-2 space-y-3 text-xs">
-            <h3 className="headline-display text-base text-[#2A2416] font-bold">Quick Contact</h3>
-            <p className="font-semibold text-[#2A2416]">Orbitex Studio</p>
-            <p className="text-[#6B6152]">India: +91-9923290693 / +91-9096300320</p>
-            <p className="text-[#6B6152]">Email: contact@orbitex.com</p>
+            <h3 className="headline-display text-base text-white font-bold">Quick Contact</h3>
+            <p className="font-semibold text-white">Orbitex Studio</p>
+            <p className="text-[#D9C8A9]">India: +91-9923290693 / +91-9096300320</p>
+            <p className="text-[#D9C8A9]">Email: contact@orbitex.com</p>
           </div>
 
           {/* Column 5: Inline Quick Form (3 cols) */}
           <div className="lg:col-span-3 space-y-3">
-            <h3 className="headline-display text-base text-[#2A2416] font-bold">Quick Inquiry</h3>
+            <h3 className="headline-display text-base text-white font-bold">Quick Inquiry</h3>
             {submitted ? (
-              <div className="p-4 bg-emerald-50 border border-emerald-200 text-emerald-800 rounded-xl text-xs font-semibold">
+              <div className="p-4 bg-emerald-900/40 border border-emerald-500/30 text-emerald-300 rounded-xl text-xs font-semibold">
                 Thank you! Message received.
               </div>
             ) : (
@@ -101,15 +101,7 @@ export default function Footer() {
                   placeholder="Full Name"
                   value={name}
                   onChange={(e) => setName(e.target.value)}
-                  className="form-input text-xs h-9 bg-ivory"
-                />
-                <input
-                  type="tel"
-                  required
-                  placeholder="Mobile Number"
-                  value={mobile}
-                  onChange={(e) => setMobile(e.target.value)}
-                  className="form-input text-xs h-9 bg-ivory"
+                  className="w-full px-3 py-2 text-xs rounded-xl border border-[#36322A] bg-[#2A2416] text-white focus:outline-none focus:border-[#D9C8A9]"
                 />
                 <input
                   type="email"
@@ -117,7 +109,7 @@ export default function Footer() {
                   placeholder="Email Address"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  className="form-input text-xs h-9 bg-ivory"
+                  className="w-full px-3 py-2 text-xs rounded-xl border border-[#36322A] bg-[#2A2416] text-white focus:outline-none focus:border-[#D9C8A9]"
                 />
                 <textarea
                   required
@@ -125,10 +117,10 @@ export default function Footer() {
                   value={message}
                   onChange={(e) => setMessage(e.target.value)}
                   rows={2}
-                  className="form-input text-xs py-2 bg-ivory resize-none"
+                  className="w-full px-3 py-2 text-xs rounded-xl border border-[#36322A] bg-[#2A2416] text-white focus:outline-none focus:border-[#D9C8A9] resize-none"
                 />
-                <button type="submit" className="btn-primary w-full text-xs py-2 justify-center">
-                  <span>Submit Inquiry</span>
+                <button type="submit" className="w-full bg-[#FBF7F0] text-[#1A1814] font-semibold text-xs py-2 rounded-full hover:bg-[#D9C8A9] transition-colors">
+                  Submit Inquiry
                 </button>
               </form>
             )}
@@ -137,12 +129,12 @@ export default function Footer() {
         </div>
 
         {/* Bottom Copyright & Legal Bar */}
-        <div className="pt-8 border-t border-tan/60 flex flex-col md:flex-row justify-between items-center text-xs text-[#6B6152] space-y-2 md:space-y-0">
+        <div className="pt-8 border-t border-[#36322A] flex flex-col md:flex-row justify-between items-center text-xs text-[#D9C8A9] space-y-2 md:space-y-0">
           <p>© 2026 Orbitex Studio. Founded by Ayan Mathur. All rights reserved.</p>
           <div className="flex space-x-4">
-            <Link href="/privacy" className="hover:underline">Privacy Policy</Link>
+            <Link href="/privacy" className="hover:text-white transition-colors">Privacy Policy</Link>
             <span>|</span>
-            <Link href="/terms" className="hover:underline">Terms of Use</Link>
+            <Link href="/terms" className="hover:text-white transition-colors">Terms of Use</Link>
           </div>
         </div>
       </div>

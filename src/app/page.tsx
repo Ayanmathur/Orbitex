@@ -46,25 +46,9 @@ export default function HubHome() {
           primaryCta={{ text: 'Get a Quote', href: '#contact' }}
           secondaryCta={{ text: 'Explore Divisions', href: '#divisions' }}
           stats={hubStats}
+          backgroundImage="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1600&q=80"
         />
 
-        {/* b) Stat Bar */}
-        <section className="py-10 section-muted">
-          <div className="max-w-7xl mx-auto px-6">
-            <div className="flex flex-wrap justify-center gap-6 md:gap-12">
-              {hubStats.map((stat, i) => (
-                <div key={i} className="flex items-center space-x-3 bg-cream px-6 py-3 rounded-full shadow-sm border border-tan/60">
-                  <span className="text-2xl md:text-3xl font-display font-bold text-[#2A2416]">
-                    {stat.value}{stat.suffix}
-                  </span>
-                  <span className="text-xs font-semibold uppercase tracking-wider text-[#6B6152]">
-                    {stat.label}
-                  </span>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
 
         {/* c) 4-Card Numbered Service Grid (Reference Translation Spec §1) */}
         <ServiceGrid

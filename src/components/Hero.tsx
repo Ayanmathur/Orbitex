@@ -20,6 +20,7 @@ interface HeroProps {
   secondaryCta?: CTA;
   stats?: Stat[];
   accentColor?: string;
+  backgroundImage?: string;
   children?: React.ReactNode;
 }
 
@@ -30,49 +31,78 @@ export default function Hero({
   secondaryCta,
   stats,
   accentColor = 'var(--accent)',
+  backgroundImage,
   children,
 }: HeroProps) {
   return (
-    <section className="relative w-full overflow-hidden flex items-center bg-ivory pt-24 pb-16">
-      {/* Vertical Social / Utility Rail on Right Edge (Reference Translation Spec §2) */}
+    <section className="relative w-full overflow-hidden flex items-center min-h-[85vh] pt-24 pb-20">
+      
+      {/* === Tier 1-2: Background Image Layer === */}
+      {backgroundImage ? (
+        <div className="absolute inset-0 z-0">
+          {/* The actual photo — printed on matte paper feel */}
+          <img 
+            src={backgroundImage} 
+            alt="" 
+            className="w-full h-full object-cover"
+            style={{ filter: 'contrast(1.05) saturate(0.7) brightness(0.85)' }}
+          />
+          {/* Warm-neutral color-grade overlay — NOT dark navy, just a warm cream wash */}
+          <div 
+            className="absolute inset-0"
+            style={{ 
+              background: `linear-gradient(135deg, rgba(251,247,240,0.82) 0%, rgba(245,239,227,0.65) 40%, rgba(237,227,208,0.55) 100%)` 
+            }}
+          />
+          {/* Matte grain overlay — like it's printed on uncoated paper */}
+          <div className="absolute inset-0 opacity-[0.06]" style={{
+            backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)'/%3E%3C/svg%3E")`,
+          }} />
+        </div>
+      ) : (
+        /* Fallback: solid ivory when no image is provided */
+        <div className="absolute inset-0 z-0 bg-ivory" />
+      )}
+
+      {/* Torn/deckled bottom edge transition — one roughness moment per §2 */}
+      <div className="absolute bottom-0 left-0 right-0 z-30 pointer-events-none">
+        <svg viewBox="0 0 1440 40" preserveAspectRatio="none" className="w-full h-[40px] block">
+          <path 
+            d="M0,20 Q30,8 60,18 T120,14 T180,22 T240,12 T300,20 T360,10 T420,18 T480,14 T540,22 T600,16 T660,20 T720,10 T780,18 T840,22 T900,14 T960,20 T1020,12 T1080,18 T1140,22 T1200,14 T1260,18 T1320,22 T1380,16 T1440,20 L1440,40 L0,40 Z" 
+            fill="var(--ivory, #FBF7F0)" 
+          />
+        </svg>
+      </div>
+
+      {/* Vertical Social / Utility Rail on Right Edge */}
       <div className="hidden xl:flex flex-col items-center space-y-4 absolute right-8 top-1/2 -translate-y-1/2 z-20">
         <div className="w-px h-16 bg-tan/60" />
-        <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="p-2 rounded-full hover:bg-cream border border-transparent hover:border-tan/40 transition-colors">
+        <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="p-2 rounded-full hover:bg-cream/80 border border-transparent hover:border-tan/40 transition-colors">
           <img src="/icons/facebook.svg" alt="Facebook" className="w-4 h-4 opacity-70 hover:opacity-100" />
         </a>
-        <a href="https://whatsapp.com" target="_blank" rel="noopener noreferrer" className="p-2 rounded-full hover:bg-cream border border-transparent hover:border-tan/40 transition-colors">
+        <a href="https://whatsapp.com" target="_blank" rel="noopener noreferrer" className="p-2 rounded-full hover:bg-cream/80 border border-transparent hover:border-tan/40 transition-colors">
           <img src="/icons/whatsapp.svg" alt="WhatsApp" className="w-4 h-4 opacity-70 hover:opacity-100" />
         </a>
-        <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="p-2 rounded-full hover:bg-cream border border-transparent hover:border-tan/40 transition-colors">
+        <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="p-2 rounded-full hover:bg-cream/80 border border-transparent hover:border-tan/40 transition-colors">
           <img src="/icons/instagram.svg" alt="Instagram" className="w-4 h-4 opacity-70 hover:opacity-100" />
         </a>
-        <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="p-2 rounded-full hover:bg-cream border border-transparent hover:border-tan/40 transition-colors">
+        <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="p-2 rounded-full hover:bg-cream/80 border border-transparent hover:border-tan/40 transition-colors">
           <img src="/icons/linkedin.svg" alt="LinkedIn" className="w-4 h-4 opacity-70 hover:opacity-100" />
         </a>
         <div className="w-px h-16 bg-tan/60" />
       </div>
 
-      {/* Background Tier 1 Cutout Blobs */}
-      <div className="absolute inset-0 pointer-events-none z-0 overflow-hidden">
-        <div 
-          className="absolute top-[-10%] right-[-5%] w-[500px] h-[500px] rounded-[80px] rotate-12 blur-[70px]"
-          style={{ backgroundColor: `color-mix(in srgb, ${accentColor} 12%, transparent)` }}
-        />
-        <div 
-          className="absolute bottom-[-10%] left-[-10%] w-[450px] h-[450px] rounded-full blur-[60px]"
-          style={{ backgroundColor: `color-mix(in srgb, ${accentColor} 8%, transparent)` }}
-        />
-      </div>
-
+      {/* === Tier 3-4: Foreground Content === */}
       <div className="max-w-7xl mx-auto px-6 relative z-10 w-full">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
           
           {/* Left Column: Headline, Subheadline, Dual CTAs, Trust Chips */}
           <div className="lg:col-span-7 space-y-6">
-            <h1 className="headline-display text-4xl md:text-5xl lg:text-6xl text-[#2A2416] leading-tight">
+            {/* Subtle matte scrim behind text for contrast on darker image areas */}
+            <h1 className="headline-display text-4xl md:text-5xl lg:text-6xl text-[#2A2416] leading-tight drop-shadow-[0_1px_2px_rgba(251,247,240,0.5)]">
               {headline}
             </h1>
-            <p className="text-base md:text-lg text-[#6B6152] font-medium max-w-2xl leading-relaxed">
+            <p className="text-base md:text-lg text-[#4A4236] font-medium max-w-2xl leading-relaxed">
               {subheadline}
             </p>
             
@@ -85,7 +115,7 @@ export default function Hero({
                   </span>
                 </Link>
                 {secondaryCta && (
-                  <Link href={secondaryCta.href} className="btn-outline rounded-full px-7 py-3 text-base font-semibold inline-flex items-center">
+                  <Link href={secondaryCta.href} className="btn-outline rounded-full px-7 py-3 text-base font-semibold inline-flex items-center bg-cream/70 backdrop-blur-none">
                     <span>{secondaryCta.text}</span>
                   </Link>
                 )}
@@ -95,7 +125,7 @@ export default function Hero({
             {stats && stats.length > 0 && (
               <div className="flex flex-wrap gap-3 items-center pt-6 border-t border-tan/40">
                 {stats.map((stat, idx) => (
-                  <div key={idx} className="bg-cream border border-tan rounded-xl px-4 py-2 flex items-center space-x-2 shadow-tier-1">
+                  <div key={idx} className="bg-cream/80 border border-tan rounded-xl px-4 py-2 flex items-center space-x-2 shadow-tier-1">
                     <span className="font-display font-bold text-[#2A2416] text-base">
                       {stat.value}{stat.suffix}
                     </span>
