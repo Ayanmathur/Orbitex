@@ -2,6 +2,7 @@ import { Metadata } from 'next';
 import Link from 'next/link';
 import Nav from '@/components/Nav';
 import Hero from '@/components/Hero';
+import ServiceGrid from '@/components/ServiceGrid';
 import BentoCollage from '@/components/BentoCollage';
 import ProcessTimeline from '@/components/ProcessTimeline';
 import ValueCard from '@/components/ValueCard';
@@ -23,6 +24,13 @@ const processSteps = [
   { title: 'Launch & Continuous Scale', description: 'Seamless deployment, monitoring, and ongoing support to ensure compounding growth.', icon: 'external-link' },
 ];
 
+const hubServices = [
+  { title: 'Web Application Development', description: 'We design and develop secure, scalable, and high-performance web applications blending modern design with powerful functionality.', icon: 'settings', isFeatured: true },
+  { title: 'AI Automation & Systems', description: 'We create intelligent automation solutions that streamline workflows, reduce manual effort, and boost operational accuracy.', icon: 'star' },
+  { title: 'Mobile App Engineering', description: 'Custom iOS & Android applications tailored to your business needs, built with Flutter and React Native.', icon: 'check' },
+  { title: 'Responsive UI/UX & Craft', description: 'Intuitive, paper-diorama inspired interfaces delivering seamless, accessible user experiences across every device.', icon: 'external-link' },
+];
+
 export default function HubHome() {
   const hubTestimonials = testimonials.filter(t => t.divisions.includes('hub'));
 
@@ -30,7 +38,7 @@ export default function HubHome() {
     <div className="division-hub min-h-screen bg-ivory">
       <Nav />
       
-      <main className="pt-8">
+      <main className="pt-24">
         {/* a) Hero */}
         <Hero
           headline="Software, web, and growth — engineered by one team."
@@ -58,7 +66,14 @@ export default function HubHome() {
           </div>
         </section>
 
-        {/* c) Division Routing Cards */}
+        {/* c) 4-Card Numbered Service Grid (Reference Translation Spec §1) */}
+        <ServiceGrid
+          services={hubServices}
+          title="Engineered Capabilities"
+          subtitle="Four core disciplines driving our product development and client engagements."
+        />
+
+        {/* d) Division Routing Cards */}
         <section id="divisions" className="py-20">
           <div className="max-w-7xl mx-auto px-6">
             <div className="text-center mb-16 space-y-3">
@@ -72,10 +87,10 @@ export default function HubHome() {
               {divisions.map((div) => (
                 <div 
                   key={div.id} 
-                  className="paper-card p-8 flex flex-col group bg-cream border border-tan"
+                  className="paper-card p-8 flex flex-col group bg-cream border border-tan tier-3"
                 >
                   <div className="mb-6 flex items-center justify-between">
-                    <div className="paper-badge bg-ivory text-[#2A2416]">
+                    <div className="paper-badge bg-ivory text-[#2A2416] shadow-sm">
                       <img 
                         src={`/icons/${div.icon}.svg`} 
                         alt={div.name} 
@@ -116,7 +131,7 @@ export default function HubHome() {
           </div>
         </section>
 
-        {/* d) Products Showcase */}
+        {/* e) Products Showcase */}
         <section className="py-20 section-muted overflow-hidden">
           <div className="max-w-7xl mx-auto px-6 mb-10">
             <h2 className="headline-display text-3xl md:text-4xl mb-3 text-[#2A2416]">Our Products</h2>
@@ -128,7 +143,7 @@ export default function HubHome() {
               <div 
                 key={product.id}
                 className={`paper-card p-6 min-w-[280px] md:min-w-[360px] snap-center flex flex-col justify-between ${
-                  product.comingSoon ? 'opacity-70 border-dashed bg-transparent' : 'bg-cream'
+                  product.comingSoon ? 'opacity-70 border-dashed bg-transparent' : 'bg-cream tier-3'
                 }`}
               >
                 <div>
@@ -154,10 +169,10 @@ export default function HubHome() {
           </div>
         </section>
 
-        {/* e) Process Timeline with Paper Hole Punch & Rope */}
+        {/* f) Process Timeline with Paper Hole Punch & 3D Rope */}
         <ProcessTimeline steps={processSteps} />
 
-        {/* f) Brand Story with Bento Collage */}
+        {/* g) Brand Story with Bento Collage */}
         <section className="py-20 section-muted">
           <div className="max-w-7xl mx-auto px-6">
             <div className="text-center max-w-3xl mx-auto mb-12 space-y-4">
@@ -171,7 +186,7 @@ export default function HubHome() {
           </div>
         </section>
 
-        {/* g) Values Grid */}
+        {/* h) Values Grid */}
         <section className="py-20">
           <div className="max-w-7xl mx-auto px-6">
             <div className="text-center mb-14">
@@ -190,12 +205,12 @@ export default function HubHome() {
           </div>
         </section>
 
-        {/* h) Testimonials */}
+        {/* i) Testimonials */}
         <section className="py-16 section-muted">
           <Testimonial testimonials={hubTestimonials} />
         </section>
 
-        {/* i) Contact Section with Side-by-Side Growth Overview Card */}
+        {/* j) Contact Section with Side-by-Side Growth Overview Card */}
         <ContactSection division="hub" />
       </main>
 
