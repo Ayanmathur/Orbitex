@@ -60,11 +60,16 @@ export default function Nav() {
                   <Link
                     key={link.href}
                     href={link.href}
-                    className={`px-4 py-1.5 rounded-full text-sm font-medium transition-colors duration-200 ${
-                      isActive ? 'font-bold' : 'text-[#2A2416] hover:bg-black/5'
+                    className={`relative px-4 text-sm font-medium transition-all duration-[250ms] ease-out ${
+                      isActive 
+                        ? 'font-bold rounded-t-lg rounded-b-full -mt-1 pt-2.5 pb-1.5 shadow-sm' 
+                        : 'rounded-full text-[#2A2416] hover:bg-black/5 py-1.5'
                     }`}
                     style={isActive ? { backgroundColor: 'color-mix(in srgb, var(--accent) 15%, transparent)', color: 'var(--accent)' } : {}}
                   >
+                    {isActive && (
+                      <div className="absolute -top-1 left-1/2 -translate-x-1/2 w-6 h-1 bg-cream rounded-t-sm" />
+                    )}
                     {link.label}
                   </Link>
                 );

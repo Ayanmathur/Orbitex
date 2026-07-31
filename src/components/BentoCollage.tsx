@@ -39,6 +39,14 @@ export default function BentoCollage() {
                   alt="Product Design & Strategy"
                   className="w-full h-full object-cover"
                 />
+                {/* Washi-tape accent */}
+                <div
+                  className="absolute top-0 right-0 w-[40px] h-[14px] rotate-[35deg] bg-[var(--accent)] opacity-[0.55] rounded-sm pointer-events-none z-10"
+                  style={{
+                    backgroundImage:
+                      'repeating-linear-gradient(0deg, transparent, transparent 1px, rgba(255, 255, 255, 0.2) 1px, rgba(255, 255, 255, 0.2) 2px)',
+                  }}
+                />
               </div>
             </div>
             <div className="pt-3 flex justify-between items-center px-1">

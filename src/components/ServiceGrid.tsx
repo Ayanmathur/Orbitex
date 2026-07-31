@@ -41,7 +41,7 @@ export default function ServiceGrid({
             return (
               <div
                 key={idx}
-                className={`paper-card p-8 relative flex flex-col justify-between min-h-[220px] bg-cream border border-tan group transition-all duration-300 hover:-translate-y-1.5 ${
+                className={`paper-card p-8 relative flex flex-col justify-between min-h-[220px] bg-cream border border-tan group transition-all duration-300 hover:-translate-y-1.5 fold-corner ${
                   isFeatured ? 'tier-4 border-[var(--accent)]/50 torn-paper-edge' : 'tier-3'
                 }`}
               >

@@ -7,6 +7,7 @@ import ContactSection from '@/components/ContactSection';
 import Testimonial from '@/components/Testimonial';
 import TechStackChips from '@/components/TechStackChips';
 import { products, testimonials } from '@/lib/data';
+import TornStrip from '@/components/TornStrip';
 
 export const metadata = {
   title: 'Software Development — Orbitex',
@@ -120,7 +121,7 @@ export default function SoftwareDivisionPage() {
                 { title: 'AI & Automation Integration', desc: 'Leveraging intelligence to streamline operations and save manual effort.', icon: 'star' },
                 { title: 'Maintenance & Support', desc: 'Ongoing SLA support to ensure your software never misses a beat.', icon: 'clock' }
               ].map((s, i) => (
-                <div key={i} className="paper-card p-6 bg-cream border border-tan space-y-3 tier-3">
+                <div key={i} className="paper-card p-6 bg-cream border border-tan space-y-3 tier-3 fold-corner">
                   <div className="w-10 h-10 rounded-xl bg-ivory border border-tan flex items-center justify-center shadow-sm">
                     <img src={`/icons/${s.icon}.svg`} alt="" className="w-5 h-5 opacity-75" />
                   </div>
@@ -141,7 +142,7 @@ export default function SoftwareDivisionPage() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {softwareProducts.map((p, i) => (
-              <div key={i} className={`paper-card p-8 flex flex-col justify-between bg-cream border border-tan ${p.comingSoon ? 'border-dashed opacity-85' : ''}`}>
+              <div key={i} className={`paper-card p-8 flex flex-col justify-between bg-cream border border-tan fold-corner ${p.comingSoon ? 'border-dashed opacity-85' : ''}`}>
                 <div className="space-y-3">
                   <div className="flex justify-between items-center">
                     <h3 className="headline-display text-2xl text-[#2A2416]">{p.name}</h3>
@@ -193,6 +194,7 @@ export default function SoftwareDivisionPage() {
 
         {/* g) Contact Section */}
         <ContactSection division="software" headline="Ready to build something that lasts?" />
+        <TornStrip />
       </main>
 
       <Footer />

@@ -7,6 +7,7 @@ import ContactSection from '@/components/ContactSection';
 import Testimonial from '@/components/Testimonial';
 import TechStackChips from '@/components/TechStackChips';
 import { testimonials } from '@/lib/data';
+import TornStrip from '@/components/TornStrip';
 
 export const metadata = {
   title: 'Web Development — Orbitex',
@@ -120,7 +121,7 @@ export default function WebDivisionPage() {
                 { title: 'Performance & CRO', desc: 'Core Web Vitals auditing, load speed optimization, and conversion rate testing.', icon: 'star' },
                 { title: 'Ongoing Maintenance', desc: 'Proactive security updates, uptime monitoring, and continuous site enhancements.', icon: 'clock' }
               ].map((s, i) => (
-                <div key={i} className="paper-card p-6 bg-cream border border-tan space-y-3 tier-3">
+                <div key={i} className="paper-card p-6 bg-cream border border-tan space-y-3 tier-3 fold-corner">
                   <div className="w-10 h-10 rounded-xl bg-ivory border border-tan flex items-center justify-center shadow-sm">
                     <img src={`/icons/${s.icon}.svg`} alt="" className="w-5 h-5 opacity-75" />
                   </div>
@@ -148,7 +149,7 @@ export default function WebDivisionPage() {
               { name: 'E-commerce Brand', desc: 'Shopify & Headless Next.js storefront with 1.2s load speeds.', img: 'https://images.unsplash.com/photo-1472851294608-062f824d29cc?auto=format&fit=crop&w=800&q=80' },
               { name: 'SaaS Platform Site', desc: 'High-converting product landing site with interactive pricing.', img: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80' }
             ].map((proj, idx) => (
-              <div key={idx} className="paper-card p-4 bg-cream border border-tan space-y-3 group tier-3">
+              <div key={idx} className="paper-card p-4 bg-cream border border-tan space-y-3 group tier-3 fold-corner">
                 <div className="aspect-video rounded-xl overflow-hidden relative bg-beige border border-tan/40">
                   <img src={proj.img} alt={proj.name} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
                 </div>
@@ -178,6 +179,7 @@ export default function WebDivisionPage() {
 
         {/* g) Contact Section */}
         <ContactSection division="web" headline="Let's build a website that works as hard as you do." />
+        <TornStrip />
       </main>
 
       <Footer />

@@ -9,6 +9,9 @@ import ValueCard from '@/components/ValueCard';
 import Testimonial from '@/components/Testimonial';
 import ContactSection from '@/components/ContactSection';
 import Footer from '@/components/Footer';
+import StampBadge from '@/components/StampBadge';
+import TornStrip from '@/components/TornStrip';
+import StickyNote from '@/components/StickyNote';
 import { hubStats, divisions, products, values, testimonials } from '@/lib/data';
 
 export const metadata: Metadata = {
@@ -71,7 +74,7 @@ export default function HubHome() {
               {divisions.map((div) => (
                 <div 
                   key={div.id} 
-                  className="paper-card p-8 flex flex-col group bg-cream border border-tan tier-3"
+                  className="paper-card p-8 flex flex-col group bg-cream border border-tan tier-3 fold-corner"
                 >
                   <div className="mb-6 flex items-center justify-between">
                     <div className="paper-badge bg-ivory text-[#2A2416] shadow-sm">
@@ -166,7 +169,24 @@ export default function HubHome() {
               </p>
             </div>
 
-            <BentoCollage />
+            {/* Stamp Badges — Trust Markers */}
+            <div className="flex flex-wrap justify-center gap-6 mb-12">
+              <StampBadge value="30+" label="Clients" rotation={-5} />
+              <StampBadge value="6" label="Products" rotation={3} />
+              <StampBadge value="3" label="Divisions" rotation={-3} />
+            </div>
+
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+              <div className="lg:col-span-9">
+                <BentoCollage />
+              </div>
+              <div className="lg:col-span-3 flex justify-center lg:justify-start">
+                <StickyNote rotation={2}>
+                  <p className="text-xs italic">"One team, one standard. We stopped outsourcing disconnected parts and built the whole engine under one roof."</p>
+                  <p className="text-[10px] mt-2 font-bold uppercase tracking-wider text-[var(--accent)] opacity-70">— Ayan Mathur, Founder</p>
+                </StickyNote>
+              </div>
+            </div>
           </div>
         </section>
 
@@ -196,6 +216,9 @@ export default function HubHome() {
 
         {/* j) Contact Section with Side-by-Side Growth Overview Card */}
         <ContactSection division="hub" />
+
+        {/* Torn Strip before Footer */}
+        <TornStrip />
       </main>
 
       <Footer />

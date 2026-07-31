@@ -8,7 +8,7 @@ export default function LogoMarquee() {
 
   return (
     <div className="w-full overflow-hidden py-12">
-      <div className="marquee-container flex overflow-hidden group">
+      <div className="relative marquee-container flex overflow-hidden group">
         <div className="marquee-track flex animate-[marquee_42s_linear_infinite] group-hover:[animation-play-state:paused] hover:motion-reduce:animate-none space-x-6 pr-6">
           {duplicatedClients.map((client, index) => (
             <a
@@ -26,6 +26,12 @@ export default function LogoMarquee() {
             </a>
           ))}
         </div>
+        <div
+          className="absolute bottom-0 left-0 right-0 h-4 pointer-events-none z-10"
+          style={{
+            background: 'linear-gradient(to bottom, rgba(42,36,22,0.08), transparent)',
+          }}
+        />
       </div>
     </div>
   );

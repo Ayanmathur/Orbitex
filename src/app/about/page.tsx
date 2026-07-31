@@ -6,6 +6,8 @@ import BentoCollage from '@/components/BentoCollage';
 import TechStackChips from '@/components/TechStackChips';
 import ValueCard from '@/components/ValueCard';
 import ContactSection from '@/components/ContactSection';
+import TornStrip from '@/components/TornStrip';
+import StampBadge from '@/components/StampBadge';
 import { founder, values } from '@/lib/data';
 
 export const metadata = {
@@ -38,7 +40,7 @@ export default function AboutPage() {
           <div className="max-w-7xl mx-auto px-6">
             <div className="flex flex-col md:flex-row gap-12 items-center md:items-start">
               <div className="w-full md:w-1/3">
-                <div className="paper-card p-3 bg-cream border border-tan shadow-paper">
+                <div className="paper-card p-3 bg-cream border border-tan shadow-paper pin-accent">
                   <div className="aspect-[4/5] rounded-xl overflow-hidden relative bg-beige">
                     <img 
                       src={founder.photo} 
@@ -55,6 +57,10 @@ export default function AboutPage() {
                 </p>
                 <div className="text-base md:text-lg leading-relaxed text-[#2A2416] italic relative pt-4">
                   <p className="relative z-10">"{founder.bio}"</p>
+                </div>
+                <div className="flex flex-wrap gap-4 mt-6">
+                  <StampBadge value="30+" label="Clients" rotation={-4} size={90} />
+                  <StampBadge value="6" label="Products" rotation={3} size={90} />
                 </div>
               </div>
             </div>
@@ -106,6 +112,7 @@ export default function AboutPage() {
 
         {/* Contact Section */}
         <ContactSection division="hub" />
+        <TornStrip />
       </main>
 
       <Footer />

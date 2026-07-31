@@ -6,6 +6,7 @@ import ProcessTimeline from '@/components/ProcessTimeline';
 import ContactSection from '@/components/ContactSection';
 import Testimonial from '@/components/Testimonial';
 import { testimonials } from '@/lib/data';
+import TornStrip from '@/components/TornStrip';
 
 export const metadata = {
   title: 'Digital Marketing — Orbitex',
@@ -115,7 +116,7 @@ export default function MarketingDivisionPage() {
                 { title: 'Content Marketing', desc: 'Thought leadership articles, whitepapers, and copy that converts visitors.', icon: 'copy' },
                 { title: 'AI Growth Automation', desc: 'Automating lead scoring, email nurturing, and reporting dashboards.', icon: 'clock' }
               ].map((s, i) => (
-                <div key={i} className="paper-card p-6 bg-cream border border-tan space-y-3 tier-3">
+                <div key={i} className="paper-card p-6 bg-cream border border-tan space-y-3 tier-3 fold-corner">
                   <div className="w-10 h-10 rounded-xl bg-ivory border border-tan flex items-center justify-center shadow-sm">
                     <img src={`/icons/${s.icon}.svg`} alt="" className="w-5 h-5 opacity-75" />
                   </div>
@@ -138,17 +139,17 @@ export default function MarketingDivisionPage() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div className="paper-card p-8 text-center bg-cream border border-tan space-y-2 tier-3">
+            <div className="paper-card p-8 text-center bg-cream border border-tan space-y-2 tier-3 fold-corner">
               <span className="headline-display text-4xl font-bold text-[var(--accent)]">+320%</span>
               <h3 className="font-bold text-base text-[#2A2416]">Organic Traffic Growth</h3>
               <p className="text-xs text-[#6B6152]">Within 6 months of technical SEO execution</p>
             </div>
-            <div className="paper-card p-8 text-center bg-cream border border-tan space-y-2 tier-3">
+            <div className="paper-card p-8 text-center bg-cream border border-tan space-y-2 tier-3 fold-corner">
               <span className="headline-display text-4xl font-bold text-[var(--accent)]">+180%</span>
               <h3 className="font-bold text-base text-[#2A2416]">Qualified Leads</h3>
               <p className="text-xs text-[#6B6152]">Combined search and paid social funnels</p>
             </div>
-            <div className="paper-card p-8 text-center bg-cream border border-tan space-y-2 tier-3">
+            <div className="paper-card p-8 text-center bg-cream border border-tan space-y-2 tier-3 fold-corner">
               <span className="headline-display text-4xl font-bold text-[var(--accent)]">4.8x</span>
               <h3 className="font-bold text-base text-[#2A2416]">Return on Ad Spend</h3>
               <p className="text-xs text-[#6B6152]">Across Google Ads & Meta advertising</p>
@@ -165,6 +166,7 @@ export default function MarketingDivisionPage() {
 
         {/* f) Contact Section */}
         <ContactSection division="marketing" headline="Ready to grow? Let's build your growth engine." />
+        <TornStrip />
       </main>
 
       <Footer />

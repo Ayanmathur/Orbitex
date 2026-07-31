@@ -34,39 +34,50 @@ export default function ProcessTimeline({
         {/* Process Timeline Wrapper */}
         <div className="relative">
           
-          {/* DESKTOP ROPE: Continuous Serpentine Rope passing through hole punches */}
-          <div className="hidden lg:block absolute inset-0 pointer-events-none z-0">
+          {/* DESKTOP STRING: Sagging twine connecting through step cards */}
+          <div className="hidden lg:block absolute inset-0 pointer-events-none z-20">
             <svg viewBox="0 0 1200 400" preserveAspectRatio="none" className="w-full h-full">
               <defs>
-                <filter id="ropeShadow" x="-10%" y="-10%" width="120%" height="120%">
-                  <feDropShadow dx="1" dy="2" stdDeviation="2" floodColor="#2A2416" floodOpacity="0.3" />
+                <filter id="stringShadow" x="-10%" y="-10%" width="120%" height="120%">
+                  <feDropShadow dx="0" dy="2" stdDeviation="1" floodColor="#2A2416" floodOpacity="0.2" />
                 </filter>
               </defs>
 
-              {/* Base Rope Fiber Line */}
+              {/* Base Twine String */}
               <path
-                d="M 100 50 Q 240 10, 340 50 T 580 50 T 820 50 T 1060 50"
+                d="M 120 32 Q 240 38, 360 32 Q 480 38, 600 32 Q 720 38, 840 32 Q 960 38, 1080 32"
+                fill="none"
+                stroke="#D9C8A9"
+                strokeWidth="3"
+                strokeLinecap="round"
+                filter="url(#stringShadow)"
+              />
+              {/* Twisted Twine Texture */}
+              <path
+                d="M 120 32 Q 240 38, 360 32 Q 480 38, 600 32 Q 720 38, 840 32 Q 960 38, 1080 32"
                 fill="none"
                 stroke="#C4B18E"
-                strokeWidth="6"
-                strokeLinecap="round"
-                filter="url(#ropeShadow)"
-              />
-              {/* Twisted Fiber Pattern */}
-              <path
-                d="M 100 50 Q 240 10, 340 50 T 580 50 T 820 50 T 1060 50"
-                fill="none"
-                stroke="#8C7853"
-                strokeWidth="4"
-                strokeDasharray="8 6"
+                strokeWidth="3"
+                strokeDasharray="4 4"
                 strokeLinecap="round"
               />
+
+              {/* Pin-heads at each step position */}
+              <g fill="var(--accent)">
+                <circle cx="120" cy="32" r="4" filter="url(#stringShadow)" />
+                <circle cx="360" cy="32" r="4" filter="url(#stringShadow)" />
+                <circle cx="600" cy="32" r="4" filter="url(#stringShadow)" />
+                <circle cx="840" cy="32" r="4" filter="url(#stringShadow)" />
+                <circle cx="1080" cy="32" r="4" filter="url(#stringShadow)" />
+              </g>
             </svg>
           </div>
 
-          {/* MOBILE ROPE: Vertical Straight Ropes on Left & Right Sides */}
-          <div className="lg:hidden absolute left-2.5 top-8 bottom-8 w-1 pointer-events-none z-0 border-l-4 border-dashed border-[#8C7853]" />
-          <div className="lg:hidden absolute right-2.5 top-8 bottom-8 w-1 pointer-events-none z-0 border-r-4 border-dashed border-[#8C7853]" />
+          {/* MOBILE ROPE: Vertical Straight Twine on Left & Right Sides */}
+          <div className="lg:hidden absolute left-2.5 top-8 bottom-8 w-1 pointer-events-none z-0 border-l-4 border-solid border-[#D9C8A9]" />
+          <div className="lg:hidden absolute left-2.5 top-8 bottom-8 w-1 pointer-events-none z-0 border-l-4 border-dashed border-[#C4B18E]" />
+          <div className="lg:hidden absolute right-2.5 top-8 bottom-8 w-1 pointer-events-none z-0 border-r-4 border-solid border-[#D9C8A9]" />
+          <div className="lg:hidden absolute right-2.5 top-8 bottom-8 w-1 pointer-events-none z-0 border-r-4 border-dashed border-[#C4B18E]" />
 
           {/* Step Cards Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6 relative z-10">

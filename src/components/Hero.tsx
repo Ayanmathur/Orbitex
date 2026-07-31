@@ -99,15 +99,15 @@ export default function Hero({
           {/* Left Column: Headline, Subheadline, Dual CTAs, Trust Chips */}
           <div className="lg:col-span-7 space-y-6">
             {/* Subtle matte scrim behind text for contrast on darker image areas */}
-            <h1 className="headline-display text-4xl md:text-5xl lg:text-6xl text-[#2A2416] leading-tight drop-shadow-[0_1px_2px_rgba(251,247,240,0.5)]">
+            <h1 className="headline-display text-4xl md:text-5xl lg:text-6xl text-[#2A2416] leading-tight drop-shadow-[0_1px_2px_rgba(251,247,240,0.5)] torn-reveal">
               {headline}
             </h1>
-            <p className="text-base md:text-lg text-[#4A4236] font-medium max-w-2xl leading-relaxed">
+            <p className="text-base md:text-lg text-[#4A4236] font-medium max-w-2xl leading-relaxed torn-reveal torn-reveal-delay-1">
               {subheadline}
             </p>
             
             {primaryCta && (
-              <div className="flex flex-wrap items-center gap-4 pt-2">
+              <div className="flex flex-wrap items-center gap-4 pt-2 torn-reveal torn-reveal-delay-2">
                 <Link href={primaryCta.href} className="btn-primary rounded-full px-7 py-3 text-base font-semibold inline-flex items-center group">
                   <span>{primaryCta.text}</span>
                   <span className="ml-2 group-hover:rotate-45 transition-transform duration-250 ease-out">
@@ -123,7 +123,7 @@ export default function Hero({
             )}
 
             {stats && stats.length > 0 && (
-              <div className="flex flex-wrap gap-3 items-center pt-6 border-t border-tan/40">
+              <div className="flex flex-wrap gap-3 items-center pt-6 border-t border-tan/40 torn-reveal torn-reveal-delay-3">
                 {stats.map((stat, idx) => (
                   <div key={idx} className="bg-cream/80 border border-tan rounded-xl px-4 py-2 flex items-center space-x-2 shadow-tier-1">
                     <span className="font-display font-bold text-[#2A2416] text-base">

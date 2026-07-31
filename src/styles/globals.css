@@ -279,3 +279,92 @@ textarea.form-input {
   border-bottom: 2px solid #FAF4EB;
   box-shadow: 0 4px 12px rgba(42, 36, 22, 0.12);
 }
+
+/* ── Fold-Corner Hover Reveal (§8) ── */
+.fold-corner {
+  position: relative;
+  overflow: hidden;
+}
+.fold-corner::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 0 28px 28px 0;
+  border-color: transparent transparent transparent transparent;
+  transition: border-color 180ms ease-out, filter 180ms ease-out;
+  pointer-events: none;
+  z-index: 20;
+}
+.fold-corner:hover::after {
+  border-color: transparent var(--accent) transparent transparent;
+  opacity: 0.35;
+  filter: drop-shadow(-2px 2px 3px rgba(42, 36, 22, 0.15));
+}
+/* Lift shadow overlay on the fold corner */
+.fold-corner::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  right: -2px;
+  width: 32px;
+  height: 32px;
+  background: linear-gradient(225deg, rgba(42,36,22,0.08) 0%, transparent 60%);
+  opacity: 0;
+  transition: opacity 180ms ease-out;
+  pointer-events: none;
+  z-index: 19;
+  border-radius: 0 12px 0 0;
+}
+.fold-corner:hover::before {
+  opacity: 1;
+}
+
+/* ── Paperclip / Pin Accent (§5) ── */
+.pin-accent {
+  position: relative;
+}
+.pin-accent::after {
+  content: '';
+  position: absolute;
+  top: -5px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--accent);
+  opacity: 0.75;
+  box-shadow: 0 2px 4px rgba(42, 36, 22, 0.15);
+  z-index: 15;
+  pointer-events: none;
+}
+
+/* ── Hero Torn-Edge Reveal Animation (§9) ── */
+@keyframes tornReveal {
+  0% {
+    clip-path: inset(0 100% 0 0);
+    opacity: 0.5;
+  }
+  100% {
+    clip-path: inset(0 0 0 0);
+    opacity: 1;
+  }
+}
+.torn-reveal {
+  animation: tornReveal 600ms cubic-bezier(0.25, 0.1, 0.25, 1) both;
+}
+.torn-reveal-delay-1 { animation-delay: 100ms; }
+.torn-reveal-delay-2 { animation-delay: 200ms; }
+.torn-reveal-delay-3 { animation-delay: 350ms; }
+
+@media (prefers-reduced-motion: reduce) {
+  .torn-reveal {
+    animation: none;
+    clip-path: none;
+    opacity: 1;
+  }
+}
