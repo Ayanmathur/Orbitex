@@ -61,15 +61,6 @@ export default function ProcessTimeline({
                 strokeDasharray="4 4"
                 strokeLinecap="round"
               />
-
-              {/* Pin-heads at each step card center */}
-              <g fill="var(--accent)">
-                <circle cx="120" cy="32" r="4" filter="url(#stringShadow)" />
-                <circle cx="360" cy="32" r="4" filter="url(#stringShadow)" />
-                <circle cx="600" cy="32" r="4" filter="url(#stringShadow)" />
-                <circle cx="840" cy="32" r="4" filter="url(#stringShadow)" />
-                <circle cx="1080" cy="32" r="4" filter="url(#stringShadow)" />
-              </g>
             </svg>
           </div>
 
@@ -86,7 +77,7 @@ export default function ProcessTimeline({
               return (
                 <div
                   key={idx}
-                  className="paper-card p-6 relative flex flex-col justify-between min-h-[260px] bg-cream border border-tan tier-3 group hover:-translate-y-2 transition-all duration-300 pin-accent"
+                  className="paper-card p-6 relative flex flex-col justify-between min-h-[260px] bg-cream border border-tan tier-3 group hover:-translate-y-2 transition-all duration-300"
                 >
                   {/* Left Paper Hole Punch — Aligned with mobile left rope */}
                   <div className="paper-hole-punch left-3 top-8" />

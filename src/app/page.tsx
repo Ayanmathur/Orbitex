@@ -129,7 +129,7 @@ export default function HubHome() {
             {products.map((product) => (
               <div 
                 key={product.id}
-                className={`paper-card p-6 min-w-[280px] md:min-w-[360px] snap-center flex flex-col justify-between pin-accent ${
+                className={`paper-card p-6 min-w-[280px] md:min-w-[360px] snap-center flex flex-col justify-between ${
                   product.comingSoon ? 'opacity-70 border-dashed bg-transparent' : 'bg-cream tier-3'
                 }`}
               >

@@ -40,7 +40,7 @@ export default function AboutPage() {
           <div className="max-w-7xl mx-auto px-6">
             <div className="flex flex-col md:flex-row gap-12 items-center md:items-start">
               <div className="w-full md:w-1/3">
-                <div className="paper-card p-3 bg-cream border border-tan shadow-paper pin-accent">
+                <div className="paper-card p-3 bg-cream border border-tan shadow-paper">
                   <div className="aspect-[4/5] rounded-xl overflow-hidden relative bg-beige">
                     <img 
                       src={founder.photo} 
