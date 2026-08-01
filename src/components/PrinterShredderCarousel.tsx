@@ -204,7 +204,7 @@ export default function PrinterShredderCarousel({ products, onProductClick }: Pr
       rerender(n => n + 1);
     }
 
-    /* Per-frame animation tick (Left to Right) */
+    /* Per-frame animation tick (Left to Right — Uniform Velocity) */
     function tick(ts: number) {
       if (!lastT) { lastT = ts; init(ts); }
       const dt = Math.min((ts - lastT) / 1000, 0.05);
@@ -223,20 +223,22 @@ export default function PrinterShredderCarousel({ products, onProductClick }: Pr
       let dirty       = false;
 
       for (const s of slots.current) {
+        /* ALL cards move at uniform reading speed (constant velocity) */
+        s.x += SPEED * dt;
+
         switch (s.phase) {
 
-          /* ── EMERGENCE: slide out from printer on LEFT to RIGHT ─ */
+          /* ── EMERGENCE: glides out of printer at uniform speed ── */
           case 'emerge': {
-            const p = Math.min((ts - s.t0) / EMERGE_MS, 1);
-            const e = easeOutCubic(p);
-            s.x = (printerX - CARD_W) + CARD_W * e;
-            if (p >= 1) { s.phase = 'drift'; s.t0 = ts; }
+            if (s.x >= printerX) {
+              s.phase = 'drift';
+              dirty = true;
+            }
             break;
           }
 
           /* ── DRIFT: steady left-to-right scroll ────────── */
           case 'drift': {
-            s.x += SPEED * dt;
             const shredTrigger = mobile ? w : shredderX - CARD_W - 10;
             if (s.x >= shredTrigger) {
               if (mobile) {
@@ -250,13 +252,15 @@ export default function PrinterShredderCarousel({ products, onProductClick }: Pr
             break;
           }
 
-          /* ── SHRED: split into strips at shredder mouth on RIGHT ─ */
+          /* ── SHRED: split into strips at shredder mouth ── */
           case 'shred': {
             const p = Math.min((ts - s.t0) / SHRED_MS, 1);
-            s.x += SPEED * dt * 0.2; // slow decelerate into shredder
-            if (p >= 1) { s.phase = 'done'; dirty = true; }
+            if (p >= 1 || s.x >= shredderX) {
+              s.phase = 'done';
+              dirty = true;
+            }
 
-            // Animate individual strips via direct DOM
+            // Animate individual strips moving rightward into shredder mouth
             const el = els.current.get(s.key);
             if (el) {
               const strips = el.querySelectorAll<HTMLElement>('.shred-strip');
@@ -264,11 +268,11 @@ export default function PrinterShredderCarousel({ products, onProductClick }: Pr
                 const delay  = i * STRIP_LAG;
                 const sp     = Math.max(0, ts - s.t0 - delay) / Math.max(1, SHRED_MS - delay);
                 const se     = easeOutCubic(Math.min(sp, 1));
-                const dy     = se * (14 + i * 5);
-                const dx     = se * (8 + i * 3);
-                const rot    = se * (i % 2 ? 3 : -2.5);
+                const dy     = se * (16 + i * 6);
+                const dx     = se * (10 + i * 4);
+                const rot    = se * (i % 2 ? 3.5 : -3);
                 strip.style.transform = `translate(${dx}px, ${dy}px) rotate(${rot}deg)`;
-                strip.style.opacity   = `${Math.max(0, 1 - se * 1.4)}`;
+                strip.style.opacity   = `${Math.max(0, 1 - se * 1.5)}`;
               });
             }
             break;
@@ -279,12 +283,6 @@ export default function PrinterShredderCarousel({ products, onProductClick }: Pr
         const el = els.current.get(s.key);
         if (el) {
           el.style.transform = `translateX(${s.x}px)`;
-          if (s.phase === 'emerge') {
-            const p = (ts - s.t0) / EMERGE_MS;
-            el.style.filter = p < 0.35 ? 'contrast(1.06) brightness(1.03)' : '';
-          } else if (el.style.filter) {
-            el.style.filter = '';
-          }
         }
       }
 
@@ -293,14 +291,13 @@ export default function PrinterShredderCarousel({ products, onProductClick }: Pr
       slots.current = slots.current.filter(s => s.phase !== 'done');
       if (slots.current.length !== before) dirty = true;
 
-      /* Spawn new card at printer on LEFT only when room opens up and no card is currently emerging */
+      /* Spawn new card at printer on LEFT only when leftmost card has moved far enough */
       const leftmost = slots.current.reduce<Slot | null>(
         (m, s) => (!m || s.x < m.x ? s : m), null
       );
-      const isEmerging = slots.current.some(s => s.phase === 'emerge');
 
       const spawnThreshold = printerX + GAP;
-      if (!isEmerging && (!leftmost || leftmost.x >= spawnThreshold)) {
+      if (!leftmost || leftmost.x >= spawnThreshold) {
         spawn(ts);
         dirty = true;
       }
