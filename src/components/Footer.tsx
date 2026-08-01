@@ -25,7 +25,7 @@ export default function Footer() {
   };
 
   return (
-    <footer className="bg-[#1A1814] relative z-30 pt-16 pb-8 text-[#FBF7F0]">
+    <footer className="bg-[#1A1814] relative z-30 pt-16 pb-8" style={{ color: '#FBF7F0' }}>
       <div className="max-w-7xl mx-auto px-6">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-8 mb-16">
           
@@ -34,7 +34,7 @@ export default function Footer() {
             <Link href="/" className="inline-block">
               <img src="/branding/svg/primary-logo.svg" alt="Orbitex Logo" className="h-8 w-auto brightness-0 invert" />
             </Link>
-            <p className="text-xs text-[#D9C8A9] leading-relaxed">
+            <p className="text-xs leading-relaxed" style={{ color: '#EFE6D5' }}>
               Orbitex is a founder-led studio behind 6 products, 30+ client partnerships, and three specialist teams under one roof.
             </p>
             <div className="flex items-center space-x-3 pt-2">
@@ -55,40 +55,40 @@ export default function Footer() {
 
           {/* Column 2: Quick Links (2 cols) */}
           <div className="lg:col-span-2 space-y-3">
-            <h3 className="headline-display text-base text-[#FBF7F0] font-bold">Quick Links</h3>
-            <ul className="space-y-2 text-xs font-medium text-[#EDE3D0]">
-              <li><Link href="/" className="hover:text-[#FBF7F0] transition-colors">Home</Link></li>
-              <li><Link href="/about" className="hover:text-[#FBF7F0] transition-colors">About Us</Link></li>
-              <li><Link href="/#divisions" className="hover:text-[#FBF7F0] transition-colors">Our Services</Link></li>
-              <li><Link href="/blog" className="hover:text-[#FBF7F0] transition-colors">Blog</Link></li>
-              <li><Link href="/#contact" className="hover:text-[#FBF7F0] transition-colors">Get a Quote</Link></li>
+            <h3 className="headline-display text-base font-bold" style={{ color: '#FBF7F0' }}>Quick Links</h3>
+            <ul className="space-y-2 text-xs font-medium" style={{ color: '#EFE6D5' }}>
+              <li><Link href="/" className="hover:text-white transition-colors" style={{ color: '#EFE6D5' }}>Home</Link></li>
+              <li><Link href="/about" className="hover:text-white transition-colors" style={{ color: '#EFE6D5' }}>About Us</Link></li>
+              <li><Link href="/#divisions" className="hover:text-white transition-colors" style={{ color: '#EFE6D5' }}>Our Services</Link></li>
+              <li><Link href="/blog" className="hover:text-white transition-colors" style={{ color: '#EFE6D5' }}>Blog</Link></li>
+              <li><Link href="/#contact" className="hover:text-white transition-colors" style={{ color: '#EFE6D5' }}>Get a Quote</Link></li>
             </ul>
           </div>
 
           {/* Column 3: Our Services (2 cols) */}
           <div className="lg:col-span-2 space-y-3">
-            <h3 className="headline-display text-base text-[#FBF7F0] font-bold">Our Services</h3>
-            <ul className="space-y-2 text-xs font-medium text-[#EDE3D0]">
-              <li><Link href="/software" className="hover:text-[var(--accent)] transition-colors">Web App Development</Link></li>
-              <li><Link href="/software" className="hover:text-[var(--accent)] transition-colors">AI Automation</Link></li>
-              <li><Link href="/software" className="hover:text-[var(--accent)] transition-colors">Mobile App Dev</Link></li>
-              <li><Link href="/web" className="hover:text-[var(--accent)] transition-colors">Responsive UI/UX</Link></li>
-              <li><Link href="/marketing" className="hover:text-[var(--accent)] transition-colors">Digital Marketing</Link></li>
-              <li><Link href="/software" className="hover:text-[var(--accent)] transition-colors">Software Development</Link></li>
+            <h3 className="headline-display text-base font-bold" style={{ color: '#FBF7F0' }}>Our Services</h3>
+            <ul className="space-y-2 text-xs font-medium" style={{ color: '#EFE6D5' }}>
+              <li><Link href="/software" className="hover:text-[var(--accent)] transition-colors" style={{ color: '#EFE6D5' }}>Web App Development</Link></li>
+              <li><Link href="/software" className="hover:text-[var(--accent)] transition-colors" style={{ color: '#EFE6D5' }}>AI Automation</Link></li>
+              <li><Link href="/software" className="hover:text-[var(--accent)] transition-colors" style={{ color: '#EFE6D5' }}>Mobile App Dev</Link></li>
+              <li><Link href="/web" className="hover:text-[var(--accent)] transition-colors" style={{ color: '#EFE6D5' }}>Responsive UI/UX</Link></li>
+              <li><Link href="/marketing" className="hover:text-[var(--accent)] transition-colors" style={{ color: '#EFE6D5' }}>Digital Marketing</Link></li>
+              <li><Link href="/software" className="hover:text-[var(--accent)] transition-colors" style={{ color: '#EFE6D5' }}>Software Development</Link></li>
             </ul>
           </div>
 
           {/* Column 4: Quick Contact (2 cols) */}
           <div className="lg:col-span-2 space-y-3 text-xs">
-            <h3 className="headline-display text-base text-[#FBF7F0] font-bold">Quick Contact</h3>
-            <p className="font-semibold text-[#FBF7F0]">Orbitex Studio</p>
-            <p className="text-[#EDE3D0]">India: +91-9923290693 / +91-9096300320</p>
-            <p className="text-[#EDE3D0]">Email: contact@orbitex.com</p>
+            <h3 className="headline-display text-base font-bold" style={{ color: '#FBF7F0' }}>Quick Contact</h3>
+            <p className="font-semibold" style={{ color: '#FBF7F0' }}>Orbitex Studio</p>
+            <p style={{ color: '#EFE6D5' }}>India: +91-9923290693 / +91-9096300320</p>
+            <p style={{ color: '#EFE6D5' }}>Email: contact@orbitex.com</p>
           </div>
 
           {/* Column 5: Inline Quick Form (3 cols) */}
           <div className="lg:col-span-3 space-y-3">
-            <h3 className="headline-display text-base text-[#FBF7F0] font-bold">Quick Inquiry</h3>
+            <h3 className="headline-display text-base font-bold" style={{ color: '#FBF7F0' }}>Quick Inquiry</h3>
             {submitted ? (
               <div className="p-4 bg-emerald-900/40 border border-emerald-500/30 text-emerald-300 rounded-xl text-xs font-semibold">
                 Thank you! Message received.
@@ -129,12 +129,12 @@ export default function Footer() {
         </div>
 
         {/* Bottom Copyright & Legal Bar */}
-        <div className="pt-8 border-t border-[#36322A] flex flex-col md:flex-row justify-between items-center text-xs text-[#EDE3D0] space-y-2 md:space-y-0">
-          <p>© 2026 Orbitex Studio. Founded by Ayan Mathur. All rights reserved.</p>
+        <div className="pt-8 border-t border-[#36322A] flex flex-col md:flex-row justify-between items-center text-xs space-y-2 md:space-y-0" style={{ color: '#EFE6D5' }}>
+          <p style={{ color: '#EFE6D5' }}>© 2026 Orbitex Studio. Founded by Ayan Mathur. All rights reserved.</p>
           <div className="flex space-x-4">
-            <Link href="/privacy" className="hover:text-[#FBF7F0] transition-colors">Privacy Policy</Link>
-            <span>|</span>
-            <Link href="/terms" className="hover:text-[#FBF7F0] transition-colors">Terms of Use</Link>
+            <Link href="/privacy" className="hover:text-white transition-colors" style={{ color: '#EFE6D5' }}>Privacy Policy</Link>
+            <span style={{ color: '#EFE6D5' }}>|</span>
+            <Link href="/terms" className="hover:text-white transition-colors" style={{ color: '#EFE6D5' }}>Terms of Use</Link>
           </div>
         </div>
       </div>
