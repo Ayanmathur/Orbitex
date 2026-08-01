@@ -43,34 +43,34 @@ function PrinterSVG() {
     <svg
       width="80" height="280" viewBox="0 0 80 280"
       fill="none" xmlns="http://www.w3.org/2000/svg"
-      className="drop-shadow-lg"
+      className="drop-shadow-lg printer-machine"
     >
       {/* Base shadow */}
-      <ellipse cx="40" cy="272" rx="34" ry="6" fill="rgba(42,36,22,0.1)" />
+      <ellipse cx="40" cy="272" rx="34" ry="6" fill="rgba(42,36,22,0.12)" />
 
       {/* Paper tray (top) */}
-      <rect x="14" y="12" width="52" height="24" rx="4" fill="#F5EFE3" stroke="#D9C8A9" strokeWidth="1" />
+      <rect x="14" y="12" width="52" height="24" rx="4" fill="var(--printer-tray, #F5EFE3)" stroke="var(--printer-stroke, #D9C8A9)" strokeWidth="1" />
       <rect x="20" y="18" width="40" height="2" rx="1" fill="#FBF7F0" opacity="0.8" />
       <rect x="18" y="24" width="44" height="2" rx="1" fill="#FBF7F0" opacity="0.6" />
 
       {/* Main body (taller vertical housing) */}
-      <rect x="4" y="32" width="72" height="232" rx="10" fill="#EDE3D0" stroke="#D9C8A9" strokeWidth="1.5" />
+      <rect x="4" y="32" width="72" height="232" rx="10" fill="var(--printer-body, #EDE3D0)" stroke="var(--printer-stroke, #D9C8A9)" strokeWidth="1.5" />
 
       {/* Front panel (output face) */}
-      <rect x="34" y="54" width="42" height="168" rx="6" fill="#E5D9C6" />
+      <rect x="34" y="54" width="42" height="168" rx="6" fill="var(--printer-panel, #E5D9C6)" />
 
       {/* Output slot — wide opening on right edge */}
-      <rect x="66" y="112" width="14" height="44" rx="2" fill="#2A2416" opacity="0.4" />
+      <rect x="66" y="112" width="14" height="44" rx="2" fill="var(--printer-slot, #2A2416)" opacity="0.5" />
 
       {/* Accent trim stripe */}
-      <rect x="4" y="254" width="72" height="4" rx="2" fill="var(--accent)" opacity="0.7" />
+      <rect x="4" y="254" width="72" height="4" rx="2" fill="var(--accent)" opacity="0.75" />
 
       {/* Active Producing Status Light (Bright pulsing accent) */}
       <circle cx="18" cy="50" r="4.5" fill="var(--accent)" className="animate-breathing-pulse" />
 
       {/* Control buttons */}
-      <circle cx="28" cy="50" r="2" fill="#D9C8A9" opacity="0.6" />
-      <circle cx="36" cy="50" r="2" fill="#D9C8A9" opacity="0.6" />
+      <circle cx="28" cy="50" r="2" fill="var(--printer-stroke, #D9C8A9)" opacity="0.6" />
+      <circle cx="36" cy="50" r="2" fill="var(--printer-stroke, #D9C8A9)" opacity="0.6" />
     </svg>
   );
 }
@@ -84,20 +84,20 @@ function ShredderSVG() {
     <svg
       width="80" height="280" viewBox="0 0 80 280"
       fill="none" xmlns="http://www.w3.org/2000/svg"
-      className="drop-shadow-lg"
+      className="drop-shadow-lg shredder-machine"
     >
       {/* Base shadow */}
       <ellipse cx="40" cy="272" rx="34" ry="6" fill="rgba(42,36,22,0.16)" />
 
       {/* Angular Utilitarian Shredder Body (Taller Dark Charcoal) */}
-      <rect x="4" y="18" width="72" height="248" rx="6" fill="#2A2416" stroke="#1C1914" strokeWidth="1.5" />
+      <rect x="4" y="18" width="72" height="248" rx="6" fill="var(--shredder-body, #2A2416)" stroke="var(--shredder-stroke, #5A4E38)" strokeWidth="1.5" />
 
       {/* Angular Heavy Top Cap (Shredder Head Unit) */}
-      <polygon points="2,14 78,14 74,68 6,68" fill="#383022" stroke="#4D4230" strokeWidth="1" />
-      <rect x="10" y="22" width="60" height="5" rx="1.5" fill="#1C1914" />
+      <polygon points="2,14 78,14 74,68 6,68" fill="var(--shredder-cap, #383022)" stroke="var(--shredder-stroke, #4D4230)" strokeWidth="1" />
+      <rect x="10" y="22" width="60" height="5" rx="1.5" fill="var(--shredder-window, #1C1914)" />
 
       {/* Flat Iconographic Cutter Mouth / Slot near top left edge */}
-      <rect x="0" y="104" width="14" height="48" rx="2" fill="#1C1914" stroke="#4A3F2C" strokeWidth="1" />
+      <rect x="0" y="104" width="14" height="48" rx="2" fill="var(--shredder-window, #1C1914)" stroke="var(--shredder-stroke, #4A3F2C)" strokeWidth="1" />
 
       {/* Small Triangular Teeth Shapes (Cutter Blades) */}
       <polygon points="0,108 6,113 12,108" fill="#D9C8A9" opacity="0.9" />
@@ -107,12 +107,12 @@ function ShredderSVG() {
       <polygon points="0,140 6,145 12,140" fill="#D9C8A9" opacity="0.9" />
 
       {/* Muted / Neutral "Consuming" Status Light */}
-      <circle cx="62" cy="40" r="4.5" fill="#B88A58" opacity="0.75" />
+      <circle cx="62" cy="40" r="4.5" fill="#B88A58" opacity="0.85" />
       <rect x="44" y="38" width="10" height="4" rx="1" fill="#D9C8A9" opacity="0.5" />
 
       {/* Clear Waste Window (Tall angular window) */}
-      <rect x="8" y="152" width="64" height="104" rx="4" fill="#1C1914" stroke="#4A3F2C" strokeWidth="1" />
-      <rect x="12" y="156" width="56" height="96" rx="3" fill="#24201A" opacity="0.92" />
+      <rect x="8" y="152" width="64" height="104" rx="4" fill="var(--shredder-window, #1C1914)" stroke="var(--shredder-stroke, #4A3F2C)" strokeWidth="1" />
+      <rect x="12" y="156" width="56" height="96" rx="3" fill="var(--shredder-inner-win, #24201A)" opacity="0.92" />
 
       {/* Shredded paper ribbons inside waste bin */}
       <rect x="16" y="174" width="4" height="66" rx="1" fill="#FBF7F0" opacity="0.85" transform="rotate(-10 18 207)" />
