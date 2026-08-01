@@ -293,13 +293,14 @@ export default function PrinterShredderCarousel({ products, onProductClick }: Pr
       slots.current = slots.current.filter(s => s.phase !== 'done');
       if (slots.current.length !== before) dirty = true;
 
-      /* Spawn new card at printer on LEFT only when room opens up */
+      /* Spawn new card at printer on LEFT only when room opens up and no card is currently emerging */
       const leftmost = slots.current.reduce<Slot | null>(
         (m, s) => (!m || s.x < m.x ? s : m), null
       );
+      const isEmerging = slots.current.some(s => s.phase === 'emerge');
 
       const spawnThreshold = printerX + GAP;
-      if (!leftmost || leftmost.x >= spawnThreshold) {
+      if (!isEmerging && (!leftmost || leftmost.x >= spawnThreshold)) {
         spawn(ts);
         dirty = true;
       }
