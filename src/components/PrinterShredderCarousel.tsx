@@ -4,15 +4,15 @@ import React, { useState, useEffect, useRef } from 'react';
 import type { Product } from '@/lib/data';
 
 /* ─── Configuration ──────────────────────────────────────── */
-const SPEED       = 55;     // px/s — comfortable reading pace
+const SPEED       = 22;     // px/s — very slow, smooth, peaceful reading pace
 const CARD_W      = 340;    // px — fixed card width
 const CARD_H      = 220;    // px — fixed card height
 const GAP         = 60;     // px — generous distance between cards
 const MACHINE_W   = 80;     // px — machine illustration width
-const EMERGE_MS   = 700;    // card emergence from printer
-const SHRED_MS    = 500;    // card consumption at shredder
+const EMERGE_MS   = 2000;   // card emergence from printer
+const SHRED_MS    = 1500;   // card consumption at shredder
 const STRIPS      = 5;      // vertical shred strips
-const STRIP_LAG   = 30;     // ms stagger per strip
+const STRIP_LAG   = 40;     // ms stagger per strip
 const RESUME_MS   = 3500;   // resume auto-scroll after interaction
 const LANE_PAD_Y  = 20;     // px vertical padding in lane
 
@@ -34,8 +34,8 @@ interface Props {
 const easeOutCubic = (t: number) => 1 - (1 - t) ** 3;
 
 /* ═══════════════════════════════════════════════════════════
-   PRINTER SVG — flat paper-cutout, right edge, source
-   Output slot faces LEFT (toward the card lane)
+   PRINTER SVG — flat paper-cutout, LEFT edge (source)
+   Output slot faces RIGHT (toward the card lane)
    ═══════════════════════════════════════════════════════════ */
 function PrinterSVG() {
   return (
@@ -158,7 +158,7 @@ export default function PrinterShredderCarousel({ products, onProductClick }: Pr
     return () => window.removeEventListener('resize', update);
   }, []);
 
-  /* ── Animation Loop ───────────────────────────────────── */
+  /* ── Animation Loop: Left to Right ────────────────────── */
   useEffect(() => {
     if (reducedMotion || products.length === 0) return;
 
@@ -172,10 +172,11 @@ export default function PrinterShredderCarousel({ products, onProductClick }: Pr
     const getW = () => cachedW.current;
     const isMobile = () => getW() < 768;
 
-    /* Spawn a new card at Printer (left) */
+    /* Spawn a new card at Printer on LEFT */
     function spawn(ts: number, preX?: number) {
       const mobile  = isMobile();
-      const startX  = mobile ? -CARD_W : 0;
+      const printerX = mobile ? 0 : MACHINE_W;
+      const startX  = printerX - CARD_W;
       const s: Slot = {
         key: keyCtr++,
         pIdx: nextP % products.length,
@@ -187,16 +188,16 @@ export default function PrinterShredderCarousel({ products, onProductClick }: Pr
       slots.current.push(s);
     }
 
-    /* Pre-fill the visible lane with drifting cards (left to right) */
+    /* Pre-fill the visible lane sequentially from left to right */
     function init(ts: number) {
       const w       = getW();
       const mobile  = isMobile();
-      const minX    = mobile ? -CARD_W : MACHINE_W - CARD_W + 10;
-      const maxX    = mobile ? w : w - MACHINE_W;
+      const printerX = mobile ? 0 : MACHINE_W;
+      const shredderX = mobile ? w : w - MACHINE_W;
       const spacing = CARD_W + GAP;
 
-      let cx = minX;
-      while (cx < maxX) {
+      let cx = printerX + 20;
+      while (cx < shredderX - 100) {
         spawn(ts, cx);
         cx += spacing;
       }
@@ -228,8 +229,6 @@ export default function PrinterShredderCarousel({ products, onProductClick }: Pr
           case 'emerge': {
             const p = Math.min((ts - s.t0) / EMERGE_MS, 1);
             const e = easeOutCubic(p);
-            // Start: x = printerX - CARD_W (behind printer on left)
-            // End:   x = printerX (fully emerged)
             s.x = (printerX - CARD_W) + CARD_W * e;
             if (p >= 1) { s.phase = 'drift'; s.t0 = ts; }
             break;
@@ -238,7 +237,7 @@ export default function PrinterShredderCarousel({ products, onProductClick }: Pr
           /* ── DRIFT: steady left-to-right scroll ────────── */
           case 'drift': {
             s.x += SPEED * dt;
-            const shredTrigger = mobile ? w : shredderX - CARD_W - 20;
+            const shredTrigger = mobile ? w : shredderX - CARD_W - 10;
             if (s.x >= shredTrigger) {
               if (mobile) {
                 s.phase = 'done';
@@ -254,7 +253,7 @@ export default function PrinterShredderCarousel({ products, onProductClick }: Pr
           /* ── SHRED: split into strips at shredder mouth on RIGHT ─ */
           case 'shred': {
             const p = Math.min((ts - s.t0) / SHRED_MS, 1);
-            s.x += SPEED * dt * 0.3; // decelerate into shredder
+            s.x += SPEED * dt * 0.2; // slow decelerate into shredder
             if (p >= 1) { s.phase = 'done'; dirty = true; }
 
             // Animate individual strips via direct DOM
@@ -266,7 +265,7 @@ export default function PrinterShredderCarousel({ products, onProductClick }: Pr
                 const sp     = Math.max(0, ts - s.t0 - delay) / Math.max(1, SHRED_MS - delay);
                 const se     = easeOutCubic(Math.min(sp, 1));
                 const dy     = se * (14 + i * 5);
-                const dx     = se * (8 + i * 3); // drift rightward into shredder
+                const dx     = se * (8 + i * 3);
                 const rot    = se * (i % 2 ? 3 : -2.5);
                 strip.style.transform = `translate(${dx}px, ${dy}px) rotate(${rot}deg)`;
                 strip.style.opacity   = `${Math.max(0, 1 - se * 1.4)}`;
@@ -294,12 +293,12 @@ export default function PrinterShredderCarousel({ products, onProductClick }: Pr
       slots.current = slots.current.filter(s => s.phase !== 'done');
       if (slots.current.length !== before) dirty = true;
 
-      /* Spawn new card at printer on LEFT when leftmost card has moved right enough */
+      /* Spawn new card at printer on LEFT only when room opens up */
       const leftmost = slots.current.reduce<Slot | null>(
         (m, s) => (!m || s.x < m.x ? s : m), null
       );
 
-      const spawnThreshold = (mobile ? -CARD_W : MACHINE_W - CARD_W) + GAP;
+      const spawnThreshold = printerX + GAP;
       if (!leftmost || leftmost.x >= spawnThreshold) {
         spawn(ts);
         dirty = true;
