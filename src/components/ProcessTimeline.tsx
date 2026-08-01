@@ -224,32 +224,9 @@ export default function ProcessTimeline({
     <section ref={sectionRef} className="py-24 px-6 md:px-12 relative overflow-hidden section-muted">
       <div className="max-w-7xl mx-auto">
 
-        {/* ── Board Assembly: Support Ropes → Board → Title ── */}
-        <div
-          className="relative mx-auto mb-2"
-          style={{
-            opacity: isInView ? 1 : 0,
-            transform: isInView && !reducedMotion ? 'translateY(0)' : isInView ? 'none' : 'translateY(-18px)',
-            transition: reducedMotion
-              ? 'opacity 400ms ease-out'
-              : 'opacity 350ms ease-out, transform 380ms cubic-bezier(0.34, 1.56, 0.64, 1)',
-          }}
-        >
-          <SupportRopes />
-          <div className="relative">
-            <WoodenBoard />
-            <h2
-              className="absolute inset-0 flex items-center justify-center headline-display text-sm sm:text-base md:text-lg lg:text-xl text-[#FBF7F0] pointer-events-none z-10 px-8 text-center"
-              style={{ textShadow: '0 1px 3px rgba(42,36,22,0.4)' }}
-            >
-              {title}
-            </h2>
-          </div>
-        </div>
-
-        {/* Subtitle (below board, above cards) */}
+        {/* ── Subtitle Lead-in ── */}
         <p
-          className="text-center text-[#6B6152] text-sm md:text-base max-w-2xl mx-auto mb-4"
+          className="text-center text-[#6B6152] text-sm md:text-base max-w-2xl mx-auto mb-6"
           style={{
             opacity: isInView ? 1 : 0,
             transition: 'opacity 300ms ease-out 250ms',
@@ -258,17 +235,39 @@ export default function ProcessTimeline({
           {subtitle}
         </p>
 
+        {/* ── Wooden Support Board ── */}
+        <div
+          className="relative mx-auto z-20"
+          style={{
+            opacity: isInView ? 1 : 0,
+            transform: isInView && !reducedMotion ? 'translateY(0)' : isInView ? 'none' : 'translateY(-18px)',
+            transition: reducedMotion
+              ? 'opacity 400ms ease-out'
+              : 'opacity 350ms ease-out, transform 380ms cubic-bezier(0.34, 1.56, 0.64, 1)',
+          }}
+        >
+          <div className="relative">
+            <WoodenBoard />
+            <h2
+              className="absolute inset-0 flex items-center justify-center headline-display text-base sm:text-lg md:text-xl lg:text-2xl text-[#FBF7F0] font-bold tracking-wide pointer-events-none z-10 px-8 text-center"
+              style={{ textShadow: '0 1.5px 3px rgba(42,36,22,0.5)' }}
+            >
+              {title}
+            </h2>
+          </div>
+        </div>
+
         {/* ══════════════════════════════════════════════════
-           DESKTOP (lg+) — Gallery wall, independent hangs
+           DESKTOP (lg+) — Gallery wall, ropes hang from board
            ══════════════════════════════════════════════════ */}
-        <div className="hidden lg:grid lg:grid-cols-5 gap-6">
+        <div className="hidden lg:grid lg:grid-cols-5 gap-6 relative -mt-1">
           {steps.map((step, i) => {
             const p = cardParams[i];
             const delay = 450 + i * 110;
 
             return (
               <div key={i} className="relative" style={{ paddingTop: p.ropeGap }}>
-                {/* Ropes from board to card top */}
+                {/* Ropes from bottom of board to top of card */}
                 <RopePairSVG height={p.ropeGap} variant="board" />
 
                 {/* Entrance wrapper (fade + drop settle) */}
@@ -301,14 +300,14 @@ export default function ProcessTimeline({
         </div>
 
         {/* ══════════════════════════════════════════════════
-           MOBILE (< lg) — Chained descent, damped sway
+           MOBILE (< lg) — Chained descent from board
            ══════════════════════════════════════════════════ */}
-        <div className="lg:hidden flex flex-col items-center">
+        <div className="lg:hidden flex flex-col items-center relative -mt-1">
           {steps.map((step, i) => {
             const gap = i === 0 ? ROPE_GAP_BASE : MOBILE_GAP;
             const delay = 450 + i * 180;
             const dampedAmp = SWAY_AMP * Math.pow(MOBILE_DAMP, i);
-            const swayLag = i * 0.4; // propagating delay in seconds
+            const swayLag = i * 0.4;
 
             return (
               <div key={i} className="relative w-full max-w-md" style={{ paddingTop: gap }}>

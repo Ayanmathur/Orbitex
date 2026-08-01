@@ -49,8 +49,9 @@ export default function Nav() {
             </svg>
           </div>
           <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
-            <Link href="/" className="flex-shrink-0">
-              <img src="/branding/svg/primary-logo.svg" alt="Orbitex Logo" className="h-8 w-auto" />
+            <Link href="/" className="flex-shrink-0 relative group">
+              <div className="absolute -inset-2 bg-gradient-to-r from-amber-500/0 via-amber-500/25 to-amber-500/0 rounded-full blur-md opacity-0 theme-night-logo-glow transition-opacity duration-300 pointer-events-none" />
+              <img src="/branding/svg/primary-logo.svg" alt="Orbitex Logo" className="h-10 md:h-12 w-auto nav-logo-img relative z-10 transition-transform duration-250 hover:scale-105" />
             </Link>
 
             <div className="hidden md:flex items-center space-x-1 bg-cream/90 px-3 py-1.5 rounded-full border border-tan/60 shadow-tier-1">
@@ -69,7 +70,7 @@ export default function Nav() {
                   >
                     {isActive && (
                       <>
-                        <div className="absolute -top-1 left-1/2 -translate-x-1/2 w-6 h-1 bg-cream rounded-t-sm" />
+                        <div className="absolute -top-1 left-1/2 -translate-x-1/2 w-6 h-1 bg-[var(--accent)] rounded-t-sm opacity-80" />
                         <div className="absolute -top-1.5 left-1/2 -translate-x-1/2 w-2 h-2 rounded-full bg-[var(--accent)] shadow-sm opacity-90" />
                       </>
                     )}
@@ -101,7 +102,7 @@ export default function Nav() {
         }`}
       >
         <div className="flex justify-between items-center px-6 py-5 border-b border-tan">
-          <img src="/branding/svg/primary-logo.svg" alt="Orbitex Logo" className="h-8 w-auto" />
+          <img src="/branding/svg/primary-logo.svg" alt="Orbitex Logo" className="h-10 w-auto" />
           <button onClick={() => setMobileOpen(false)} className="p-2 text-[#2A2416]">
             <Icon name="close" size={24} />
           </button>

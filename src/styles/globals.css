@@ -85,6 +85,14 @@
   background-color: #26211B !important;
 }
 
+/* Logo Studio Light Emission in Night Studio Mode */
+.theme-night .nav-logo-img {
+  filter: drop-shadow(0 0 8px rgba(245, 158, 11, 0.75)) drop-shadow(0 0 20px rgba(217, 119, 6, 0.5)) !important;
+}
+.theme-night .theme-night-logo-glow {
+  opacity: 1 !important;
+}
+
 /* Hero section light theme override under Night Studio mode */
 .theme-night .hero-light-theme {
   background-color: transparent !important;
