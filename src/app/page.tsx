@@ -80,22 +80,22 @@ export default function HubHome() {
         />
 
         {/* d) Division Routing Cards */}
-        <section id="divisions" className="py-20 section-muted">
-          <div className="max-w-7xl mx-auto px-6">
-            <div className="text-center mb-16 space-y-3">
-              <h2 className="headline-display text-3xl md:text-4xl text-[#2A2416]">Three specialist teams. One standard.</h2>
-              <p className="text-base text-[#6B6152] max-w-2xl mx-auto">
+        <section id="divisions" className="py-10 sm:py-14 section-muted">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6">
+            <div className="text-center mb-8 sm:mb-10 space-y-2.5">
+              <h2 className="headline-display text-2xl sm:text-3xl md:text-4xl text-[#2A2416]">Three specialist teams. One standard.</h2>
+              <p className="text-xs sm:text-sm md:text-base text-[#6B6152] max-w-2xl mx-auto">
                 Whether you need a custom application, a high-converting website, or a performance marketing engine, we have a dedicated division for it.
               </p>
             </div>
             
-            <div className="grid md:grid-cols-3 gap-8">
+            <div className="grid md:grid-cols-3 gap-5 sm:gap-6">
               {divisions.map((div) => (
                 <div 
                   key={div.id} 
-                  className="paper-card p-8 flex flex-col group bg-cream border border-tan tier-3 fold-corner"
+                  className="paper-card p-5 sm:p-6 flex flex-col group bg-cream border border-tan tier-3 fold-corner"
                 >
-                  <div className="mb-6 flex items-center justify-between">
+                  <div className="mb-4 flex items-center justify-between">
                     <div className="paper-badge bg-ivory text-[#2A2416] shadow-sm">
                       <img 
                         src={`/icons/${div.icon}.svg`} 
@@ -108,17 +108,17 @@ export default function HubHome() {
                     </span>
                   </div>
                   
-                  <h3 className="headline-display text-2xl mb-2 text-[#2A2416]">{div.name}</h3>
-                  <p className="text-[#6B6152] text-sm font-medium mb-4">{div.tagline}</p>
+                  <h3 className="headline-display text-xl sm:text-2xl mb-1.5 text-[#2A2416]">{div.name}</h3>
+                  <p className="text-[#6B6152] text-xs sm:text-sm font-medium mb-3">{div.tagline}</p>
                   
-                  <p className="text-xs md:text-sm text-[#2A2416]/80 mb-6 flex-grow leading-relaxed">
+                  <p className="text-xs text-[#2A2416]/80 mb-4 flex-grow leading-relaxed">
                     {div.description}
                   </p>
                   
-                  <ul className="space-y-2.5 mb-8">
+                  <ul className="space-y-2 mb-5">
                     {div.capabilities.map((cap, i) => (
                       <li key={i} className="flex items-center text-xs font-semibold text-[#2A2416]">
-                        <img src="/icons/check.svg" alt="Check" className="w-4 h-4 mr-2.5 opacity-70" />
+                        <img src="/icons/check.svg" alt="Check" className="w-3.5 h-3.5 mr-2 opacity-70" />
                         {cap}
                       </li>
                     ))}
@@ -126,7 +126,7 @@ export default function HubHome() {
                   
                   <Link 
                     href={div.href}
-                    className="btn-outline mt-auto text-xs py-2.5 w-full justify-between group-hover:border-[var(--accent)] group-hover:text-[var(--accent)]"
+                    className="btn-outline mt-auto text-xs py-2 w-full justify-between group-hover:border-[var(--accent)] group-hover:text-[var(--accent)]"
                   >
                     <span>Explore {div.name}</span>
                     <span className="transition-transform group-hover:translate-x-1">→</span>
@@ -147,17 +147,17 @@ export default function HubHome() {
         <ProcessTimeline steps={processSteps} />
 
         {/* g) Brand Story with Bento Collage */}
-        <section className="py-20">
-          <div className="max-w-7xl mx-auto px-6">
-            <div className="text-center max-w-3xl mx-auto mb-12 space-y-4">
-              <h2 className="headline-display text-3xl md:text-4xl text-[#2A2416]">Our Origin Story</h2>
-              <p className="text-[#6B6152] text-base md:text-lg">
+        <section className="py-10 sm:py-14">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6">
+            <div className="text-center max-w-3xl mx-auto mb-8 space-y-2.5">
+              <h2 className="headline-display text-2xl sm:text-3xl md:text-4xl text-[#2A2416]">Our Origin Story</h2>
+              <p className="text-xs sm:text-sm md:text-base text-[#6B6152]">
                 Orbitex began with a simple observation: founders were wasting too much time managing disconnected vendors. A software agency builds the app, a web design firm builds the marketing site, and an ad agency runs the growth campaigns.
               </p>
             </div>
 
             {/* Stamp Badges & Sticky Note — Trust Markers */}
-            <div className="flex flex-wrap justify-center items-center gap-6 mb-12">
+            <div className="flex flex-wrap justify-center items-center gap-4 sm:gap-6 mb-6 sm:mb-8">
               <StampBadge value="30+" label="Clients" rotation={-5} />
               <StampBadge value="6" label="Products" rotation={3} />
               <StampBadge value="3" label="Divisions" rotation={-3} />
@@ -172,12 +172,12 @@ export default function HubHome() {
         </section>
 
         {/* h) Values Grid */}
-        <section className="py-20 section-muted">
-          <div className="max-w-7xl mx-auto px-6">
-            <div className="text-center mb-14">
-              <h2 className="headline-display text-3xl md:text-4xl text-[#2A2416]">Our Core Principles</h2>
+        <section className="py-10 sm:py-14 section-muted">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6">
+            <div className="text-center mb-8">
+              <h2 className="headline-display text-2xl sm:text-3xl md:text-4xl text-[#2A2416]">Our Core Principles</h2>
             </div>
-            <div className="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+            <div className="grid md:grid-cols-2 gap-4 sm:gap-6 max-w-4xl mx-auto">
               {values.map((val, i) => (
                 <ValueCard 
                   key={i}
@@ -191,7 +191,7 @@ export default function HubHome() {
         </section>
 
         {/* i) Testimonials */}
-        <section className="py-16">
+        <section className="py-8 sm:py-12">
           <Testimonial testimonials={hubTestimonials} />
         </section>
 

@@ -22,17 +22,17 @@ export default function ContactSection({
   ];
 
   return (
-    <section id="contact" className={`py-20 px-6 md:px-12 division-${division}`}>
+    <section id="contact" className={`py-10 sm:py-14 px-4 sm:px-6 md:px-12 division-${division}`}>
       <div className="max-w-7xl mx-auto">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-6 items-center">
           
           {/* Left: Headline, Subheadline & Checklist */}
-          <div className="lg:col-span-5 space-y-8 pr-0 lg:pr-8">
-            <div className="space-y-4">
-              <h2 className="headline-display text-3xl md:text-5xl text-[#2A2416] leading-tight">
+          <div className="lg:col-span-5 space-y-5 pr-0 lg:pr-6">
+            <div className="space-y-3">
+              <h2 className="headline-display text-2xl sm:text-3xl md:text-4xl text-[#2A2416] leading-snug">
                 {headline}
               </h2>
-              <p className="text-[#6B6152] text-base md:text-lg">
+              <p className="text-[#6B6152] text-xs sm:text-sm md:text-base">
                 {subheadline}
               </p>
             </div>

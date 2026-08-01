@@ -25,7 +25,7 @@ export default function Footer() {
   };
 
   return (
-    <footer className="bg-[#1A1814] relative z-30 pt-16 pb-8" style={{ color: '#FBF7F0' }}>
+    <footer className="bg-[#1A1814] relative z-30 pt-10 sm:pt-12 pb-6" style={{ color: '#FBF7F0' }}>
       {/* Horizontal Rope Border — top of footer */}
       <div className="absolute top-0 left-0 right-0 h-[6px] pointer-events-none z-10 overflow-hidden">
         <svg className="w-full h-full" preserveAspectRatio="none" viewBox="0 0 1440 6">
@@ -34,8 +34,8 @@ export default function Footer() {
           <line x1="0" y1="4.5" x2="1440" y2="4.5" stroke="rgba(42,36,22,0.3)" strokeWidth="1" />
         </svg>
       </div>
-      <div className="max-w-7xl mx-auto px-6">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-8 mb-16">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-6 sm:gap-8 mb-8 sm:mb-10">
           
           {/* Column 1: Brand & Bio (3 cols) */}
           <div className="lg:col-span-3 space-y-4">

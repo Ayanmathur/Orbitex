@@ -95,15 +95,15 @@ export default function LeadForm({ division = 'hub' }: LeadFormProps) {
   }
 
   return (
-    <div className={`paper-card tier-4 p-8 md:p-12 max-w-4xl mx-auto division-${division}`}>
-      <form onSubmit={handleSubmit} className="space-y-6">
+    <div className={`paper-card tier-4 p-5 sm:p-8 max-w-4xl mx-auto division-${division}`}>
+      <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-5">
         {errorMsg && (
-          <div className="p-4 bg-red-50 border border-red-200 text-red-700 rounded-lg text-sm">
+          <div className="p-3 bg-red-50 border border-red-200 text-red-700 rounded-lg text-xs sm:text-sm">
             {errorMsg}
           </div>
         )}
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-5">
           <div className="flex flex-col space-y-2">
             <label htmlFor="fullName" className="text-sm font-semibold text-[#2A2416]">Full Name *</label>
             <input required type="text" id="fullName" name="fullName" value={formData.fullName} onChange={handleChange} className="form-input" />

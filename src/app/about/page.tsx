@@ -41,10 +41,10 @@ export default function AboutPage() {
         </div>
 
         {/* Founder Section */}
-        <section className="py-20 relative overflow-hidden">
+        <section className="py-10 sm:py-14 relative overflow-hidden">
           <div className="absolute inset-0 z-0 bg-ivory"></div>
-          <div className="max-w-7xl mx-auto px-6 relative z-10">
-            <div className="flex flex-col md:flex-row gap-12 items-center md:items-start">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 relative z-10">
+            <div className="flex flex-col md:flex-row gap-6 sm:gap-8 items-center md:items-start">
               <div className="w-full md:w-1/3">
                 <div className="paper-card p-3 bg-cream border border-tan shadow-paper">
                   <div className="aspect-[4/5] rounded-xl overflow-hidden relative bg-beige">
@@ -56,17 +56,17 @@ export default function AboutPage() {
                   </div>
                 </div>
               </div>
-              <div className="w-full md:w-2/3 md:pt-4 space-y-4">
-                <h2 className="headline-display text-3xl md:text-4xl text-[#2A2416]">{founder.name}</h2>
+              <div className="w-full md:w-2/3 md:pt-2 space-y-3">
+                <h2 className="headline-display text-2xl sm:text-3xl md:text-4xl text-[#2A2416]">{founder.name}</h2>
                 <p className="text-xs font-bold uppercase tracking-widest text-[#6B6152] px-3 py-1 bg-cream border border-tan/60 inline-block rounded-full">
                   {founder.title} & Lead Engineer
                 </p>
-                <div className="text-base md:text-lg leading-relaxed text-[#2A2416] italic relative pt-4">
+                <div className="text-sm sm:text-base md:text-lg leading-relaxed text-[#2A2416] italic relative pt-2">
                   <p className="relative z-10">"{founder.bio}"</p>
                 </div>
-                <div className="flex flex-wrap gap-4 mt-6">
-                  <StampBadge value="30+" label="Clients" rotation={-4} size={90} />
-                  <StampBadge value="6" label="Products" rotation={3} size={90} />
+                <div className="flex flex-wrap gap-4 mt-4">
+                  <StampBadge value="30+" label="Clients" rotation={-4} size={85} />
+                  <StampBadge value="6" label="Products" rotation={3} size={85} />
                 </div>
               </div>
             </div>
@@ -74,7 +74,7 @@ export default function AboutPage() {
         </section>
 
         {/* Bento Collage Section — Grainy Grey Paper Background */}
-        <section className="py-20 section-muted relative overflow-hidden bg-[#D5CDC0]">
+        <section className="py-10 sm:py-14 section-muted relative overflow-hidden bg-[#D5CDC0]">
           {/* Grainy Grey Paper SVG Noise Overlay */}
           <div 
             className="absolute inset-0 opacity-[0.18] pointer-events-none z-0" 
@@ -82,20 +82,20 @@ export default function AboutPage() {
               backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)'/%3E%3C/svg%3E")`,
             }} 
           />
-          <div className="max-w-7xl mx-auto px-6 relative z-10">
-            <div className="text-center max-w-3xl mx-auto mb-14 space-y-3">
-              <h2 className="headline-display text-3xl md:text-4xl text-[#2A2416]">The Orbitex Studio</h2>
-              <p className="text-[#6B6152] text-base">A look into our multi-disciplinary product engineering and design environment.</p>
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 relative z-10">
+            <div className="text-center max-w-3xl mx-auto mb-6 sm:mb-8 space-y-2">
+              <h2 className="headline-display text-2xl sm:text-3xl md:text-4xl text-[#2A2416]">The Orbitex Studio</h2>
+              <p className="text-[#6B6152] text-xs sm:text-sm md:text-base">A look into our multi-disciplinary product engineering and design environment.</p>
             </div>
             <BentoCollage />
           </div>
         </section>
 
         {/* Tech Stack */}
-        <section className="py-20">
-          <div className="max-w-7xl mx-auto px-6 text-center space-y-8">
-            <h2 className="headline-display text-3xl md:text-4xl text-[#2A2416]">Capabilities & Technologies</h2>
-            <p className="text-[#6B6152] text-base max-w-xl mx-auto">
+        <section className="py-10 sm:py-14">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 text-center space-y-6">
+            <h2 className="headline-display text-2xl sm:text-3xl md:text-4xl text-[#2A2416]">Capabilities & Technologies</h2>
+            <p className="text-[#6B6152] text-xs sm:text-sm md:text-base max-w-xl mx-auto">
               Battle-tested tools and frameworks used across our software, web, and growth operations.
             </p>
             <div className="max-w-4xl mx-auto flex justify-center">
@@ -105,9 +105,9 @@ export default function AboutPage() {
         </section>
 
         {/* Principles */}
-        <section className="py-20 section-muted">
-          <div className="max-w-7xl mx-auto px-6">
-            <div className="text-center mb-14">
+        <section className="py-10 sm:py-14 section-muted">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6">
+            <div className="text-center mb-6 sm:mb-8">
               <h2 className="headline-display text-3xl md:text-4xl text-[#2A2416]">Our Operating Principles</h2>
             </div>
             <div className="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">

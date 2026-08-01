@@ -55,7 +55,7 @@ export default function Hero({
   }, []);
 
   return (
-    <section className="hero-light-theme relative w-full overflow-hidden flex items-center min-h-[85vh] pt-24 pb-20">
+    <section className="hero-light-theme relative w-full overflow-hidden flex items-center min-h-[68vh] sm:min-h-[75vh] pt-16 sm:pt-20 pb-10 sm:pb-14">
       
       {/* === Tier 1-2: Background Image Layer === */}
       {backgroundImage ? (
