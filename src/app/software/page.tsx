@@ -167,7 +167,7 @@ export default function SoftwareDivisionPage() {
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               {softwareProducts.map((p, i) => (
-                <div key={i} className="wooden-picture-frame-4sided relative group">
+                <div key={i} className="grainy-grey-paper-frame relative group">
                   {/* Brass Corner Brackets */}
                   <div className="absolute top-2.5 left-2.5 w-3.5 h-3.5 rounded-full bg-[#B89B5E] border border-[#7A613D] shadow-sm opacity-90 z-20 pointer-events-none" />
                   <div className="absolute top-2.5 right-2.5 w-3.5 h-3.5 rounded-full bg-[#B89B5E] border border-[#7A613D] shadow-sm opacity-90 z-20 pointer-events-none" />
