@@ -90,10 +90,26 @@ export default function RopeScrollbar() {
     window.scrollTo({ top: progress * docHeight, behavior: 'smooth' });
   }, []);
 
+  const [inFooter, setInFooter] = useState(false);
+
+  useEffect(() => {
+    const footerEl = document.querySelector('footer');
+    if (!footerEl) return;
+
+    const obs = new IntersectionObserver(([entry]) => {
+      setInFooter(entry.isIntersecting);
+    }, { threshold: 0.05 });
+
+    obs.observe(footerEl);
+    return () => obs.disconnect();
+  }, []);
+
   return (
     <div 
       ref={containerRef}
-      className="hidden md:block fixed right-6 lg:right-10 top-0 bottom-0 w-8 z-10 mix-blend-multiply opacity-80"
+      className={`hidden md:block fixed right-6 lg:right-10 top-0 bottom-0 w-8 z-10 mix-blend-multiply transition-opacity duration-300 ${
+        inFooter ? 'opacity-0 pointer-events-none' : 'opacity-80'
+      }`}
       style={{ cursor: 'pointer' }}
       onClick={handleTrackClick}
       aria-hidden="true"

@@ -85,7 +85,7 @@ export default function WebDivisionPage() {
 
       <main className="pt-24">
         {/* a) Hero with Background Image & Warm Paper Overlay */}
-        <section className="relative min-h-[85vh] flex items-center overflow-hidden">
+        <section className="hero-light-theme relative min-h-[85vh] flex items-center overflow-hidden">
           {/* Background Image Layer (Tier 1-2) */}
           <div className="absolute inset-0 z-0">
             <img 

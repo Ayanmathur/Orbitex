@@ -23,7 +23,7 @@ export default function BlogPage() {
     <div className="division-hub min-h-screen bg-ivory text-[#2A2416]">
       <Nav />
 
-      <main className="pt-28 pb-20">
+      <main className="pt-36 md:pt-44 pb-20">
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center max-w-3xl mx-auto mb-14 space-y-3">
             <h1 className="headline-display text-4xl md:text-5xl text-[#2A2416]">Orbitex Engineering & Growth Blog</h1>

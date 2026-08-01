@@ -14,6 +14,7 @@ import Footer from '@/components/Footer';
 import StampBadge from '@/components/StampBadge';
 import TornStrip from '@/components/TornStrip';
 import StickyNote from '@/components/StickyNote';
+import PrinterShredderCarousel from '@/components/PrinterShredderCarousel';
 import ProductDrawer, { DrawerItem } from '@/components/ProductDrawer';
 import { hubStats, divisions, products, values, testimonials } from '@/lib/data';
 
@@ -136,43 +137,11 @@ export default function HubHome() {
           </div>
         </section>
 
-        {/* e) Products Showcase */}
-        <section className="py-20 overflow-hidden torn-paper-edge">
-          <div className="max-w-7xl mx-auto px-6 mb-10">
-            <h2 className="headline-display text-3xl md:text-4xl mb-3 text-[#2A2416]">Our Products</h2>
-            <p className="text-[#6B6152] text-base">We build for clients, and we build for ourselves. Explore the Orbitex product ecosystem.</p>
-          </div>
-          
-          <div className="flex overflow-x-auto pb-8 px-6 snap-x gap-6 max-w-7xl mx-auto">
-            {products.map((product) => (
-              <div 
-                key={product.id}
-                className={`paper-card p-6 min-w-[280px] md:min-w-[360px] snap-center flex flex-col justify-between ${
-                  product.comingSoon ? 'opacity-70 border-dashed bg-transparent' : 'bg-cream tier-3'
-                }`}
-              >
-                <div>
-                  <h3 className="headline-display text-xl mb-2 text-[#2A2416]">{product.name}</h3>
-                  <p className="text-[#6B6152] text-xs leading-relaxed mb-6">{product.description}</p>
-                </div>
-                
-                {product.comingSoon ? (
-                  <span className="inline-flex items-center text-[10px] font-bold uppercase tracking-widest text-[#6B6152] bg-tan/30 px-3 py-1 rounded-full self-start">
-                    Coming Soon
-                  </span>
-                ) : (
-                  <button 
-                    onClick={() => openDrawer(product)}
-                    className="btn-outline text-xs py-2 px-4 inline-flex items-center self-start cursor-pointer hover:border-[var(--accent)]"
-                  >
-                    <span>Explore Product</span>
-                    <span className="ml-1.5">→</span>
-                  </button>
-                )}
-              </div>
-            ))}
-          </div>
-        </section>
+        {/* e) Products Showcase — Printer-to-Shredder Carousel */}
+        <PrinterShredderCarousel
+          products={products}
+          onProductClick={openDrawer}
+        />
 
         {/* f) Process Timeline with Paper Hole Punch & 3D Rope */}
         <ProcessTimeline steps={processSteps} />
