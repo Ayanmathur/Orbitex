@@ -29,17 +29,21 @@ export default function AboutPage() {
       
       <main className="pt-24">
         {/* Hero */}
-        <div className="about-hero-preserve-light">
-          <Hero
-            headline="Built on the belief that great products need one unified team."
-            subheadline="We are builders, designers, and growth engineers committed to transparency, quality, and measurable results."
-            primaryCta={{ text: 'Get in Touch', href: '#contact' }}
-          />
+        <div className="about-hero-preserve-light relative overflow-hidden">
+          <div className="absolute inset-0 z-0 bg-ivory"></div>
+          <div className="relative z-10">
+            <Hero
+              headline="Built on the belief that great products need one unified team."
+              subheadline="We are builders, designers, and growth engineers committed to transparency, quality, and measurable results."
+              primaryCta={{ text: 'Get in Touch', href: '#contact' }}
+            />
+          </div>
         </div>
 
         {/* Founder Section */}
-        <section className="py-20">
-          <div className="max-w-7xl mx-auto px-6">
+        <section className="py-20 relative overflow-hidden">
+          <div className="absolute inset-0 z-0 bg-ivory"></div>
+          <div className="max-w-7xl mx-auto px-6 relative z-10">
             <div className="flex flex-col md:flex-row gap-12 items-center md:items-start">
               <div className="w-full md:w-1/3">
                 <div className="paper-card p-3 bg-cream border border-tan shadow-paper">
