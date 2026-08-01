@@ -176,7 +176,7 @@ export default function SoftwareDivisionPage() {
 
                   {/* Inner Matting Bevel */}
                   <div className="wooden-frame-inner-mat h-full">
-                    <div className={`paper-card p-8 flex flex-col justify-between bg-cream border border-tan fold-corner h-full ${p.comingSoon ? 'border-dashed opacity-85' : ''}`}>
+                    <div className={`paper-card p-8 flex flex-col justify-between bg-cream border border-tan fold-corner paper-grain-card tier-3 cursor-pointer hover:border-[var(--accent)] transition-all h-full ${p.comingSoon ? 'border-dashed opacity-85' : ''}`}>
                       <div className="space-y-3">
                         <div className="flex justify-between items-center">
                           <h3 className="headline-display text-2xl text-[#2A2416]">{p.name}</h3>
