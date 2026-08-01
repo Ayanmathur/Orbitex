@@ -20,7 +20,7 @@ export default function RopeScrollbar() {
     }
 
     const handleScroll = () => {
-      if (isDragging) return; // Don't fight the drag
+      if (isDragging) return;
 
       const scrollTop = window.scrollY;
       const docHeight = getDocHeight();
@@ -90,33 +90,19 @@ export default function RopeScrollbar() {
     window.scrollTo({ top: progress * docHeight, behavior: 'smooth' });
   }, []);
 
-  const [inFooter, setInFooter] = useState(false);
-
-  useEffect(() => {
-    const footerEl = document.querySelector('footer');
-    if (!footerEl) return;
-
-    const obs = new IntersectionObserver(([entry]) => {
-      setInFooter(entry.isIntersecting);
-    }, { threshold: 0.05 });
-
-    obs.observe(footerEl);
-    return () => obs.disconnect();
-  }, []);
-
   return (
     <div 
       ref={containerRef}
-      className={`hidden md:block fixed right-6 lg:right-10 top-0 bottom-0 w-8 z-10 mix-blend-multiply transition-opacity duration-300 ${
-        inFooter ? 'opacity-0 pointer-events-none' : 'opacity-80'
+      className={`hidden md:block fixed right-4 lg:right-8 top-0 bottom-0 w-12 z-50 group transition-opacity duration-300 ${
+        isDragging || isScrolling ? 'opacity-100' : 'opacity-0 hover:opacity-100'
       }`}
       style={{ cursor: 'pointer' }}
       onClick={handleTrackClick}
       aria-hidden="true"
     >
       {/* 
-        The Rope Track:
-        A vertical SVG rope line with a slight bezier sag inward.
+        The Vertical Rope Track:
+        A vertical SVG rope line with a slight bezier sag.
         Textured with a twist dash array. 
       */}
       <svg className="absolute inset-0 w-full h-full pointer-events-none" preserveAspectRatio="none" viewBox="0 0 32 1000">
@@ -129,13 +115,13 @@ export default function RopeScrollbar() {
         </defs>
         
         {/* Shadow */}
-        <path d="M 16 0 Q 12 500, 16 1000" fill="none" stroke="rgba(42,36,22,0.15)" strokeWidth="3" className="translate-x-0.5 translate-y-0.5" />
+        <path d="M 16 0 Q 12 500, 16 1000" fill="none" stroke="rgba(42,36,22,0.25)" strokeWidth="3.5" className="translate-x-0.5 translate-y-0.5" />
         
         {/* Base Rope Line */}
-        <path d="M 16 0 Q 12 500, 16 1000" fill="none" stroke="#D9C8A9" strokeWidth="2" filter="url(#ropeGrain)" />
+        <path d="M 16 0 Q 12 500, 16 1000" fill="none" stroke="#D9C8A9" strokeWidth="2.5" filter="url(#ropeGrain)" />
         
         {/* Twisted Twine Hatching */}
-        <path d="M 16 0 Q 12 500, 16 1000" fill="none" stroke="#C4B18E" strokeWidth="1.5" strokeDasharray="3 2" />
+        <path d="M 16 0 Q 12 500, 16 1000" fill="none" stroke="#A89572" strokeWidth="2" strokeDasharray="3 2" />
       </svg>
 
       {/* 
@@ -155,15 +141,15 @@ export default function RopeScrollbar() {
         onMouseDown={handleMouseDown}
       >
         {/* Paper tag body */}
-        <div className="absolute inset-0 bg-cream border border-tan/80 rounded-b-md rounded-t-sm shadow-tier-3 flex flex-col items-center pt-1.5 overflow-hidden">
+        <div className="absolute inset-0 bg-cream border border-tan/90 rounded-b-md rounded-t-sm shadow-tier-4 flex flex-col items-center pt-1.5 overflow-hidden">
           {/* Subtle Matte Grain for the tag */}
           <div className="absolute inset-0 pointer-events-none opacity-[0.04]" style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)'/%3E%3C/svg%3E")` }} />
           
           {/* Punched hole where the rope threads through */}
-          <div className="w-2 h-2 rounded-full bg-ivory shadow-inner border border-tan/40 z-10" />
+          <div className="w-2 h-2 rounded-full bg-ivory shadow-inner border border-tan/50 z-10" />
           
           {/* Subtle accent trim at the bottom edge */}
-          <div className="absolute bottom-0 left-0 right-0 h-1 bg-[var(--accent)] opacity-80" />
+          <div className="absolute bottom-0 left-0 right-0 h-1 bg-[var(--accent)] opacity-90" />
         </div>
       </div>
     </div>
