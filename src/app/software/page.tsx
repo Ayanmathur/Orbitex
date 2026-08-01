@@ -149,39 +149,50 @@ export default function SoftwareDivisionPage() {
           </div>
         </section>
 
-        {/* c) Products Showcase */}
+        {/* c) Products Showcase — 4-Sided Wooden Framed Gallery */}
         <section className="py-20 px-6 md:px-12 max-w-7xl mx-auto section-muted">
           <div className="text-center max-w-3xl mx-auto mb-14 space-y-3">
             <h2 className="headline-display text-3xl md:text-4xl text-[#2A2416]">6 Products Showcase</h2>
             <p className="text-[#6B6152] text-base">In-house software products developed and maintained by our software engineering division.</p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {softwareProducts.map((p, i) => (
-              <div key={i} className={`paper-card p-8 flex flex-col justify-between bg-cream border border-tan fold-corner ${p.comingSoon ? 'border-dashed opacity-85' : ''}`}>
-                <div className="space-y-3">
-                  <div className="flex justify-between items-center">
-                    <h3 className="headline-display text-2xl text-[#2A2416]">{p.name}</h3>
-                    {p.comingSoon && (
-                      <span className="text-[10px] font-bold uppercase tracking-wider px-3 py-1 rounded-full bg-tan/40 text-[#6B6152]">
-                        Coming Soon
-                      </span>
-                    )}
-                  </div>
-                  <p className="text-xs font-semibold text-[#6B6152] uppercase tracking-wide">Product Solution</p>
-                  <p className="text-sm text-[#2A2416] leading-relaxed">{p.description}</p>
-                </div>
+              <div key={i} className="wooden-picture-frame-4sided relative group">
+                {/* Brass Corner Brackets */}
+                <div className="absolute top-2.5 left-2.5 w-3.5 h-3.5 rounded-full bg-[#B89B5E] border border-[#7A613D] shadow-sm opacity-90 z-20 pointer-events-none" />
+                <div className="absolute top-2.5 right-2.5 w-3.5 h-3.5 rounded-full bg-[#B89B5E] border border-[#7A613D] shadow-sm opacity-90 z-20 pointer-events-none" />
+                <div className="absolute bottom-2.5 left-2.5 w-3.5 h-3.5 rounded-full bg-[#B89B5E] border border-[#7A613D] shadow-sm opacity-90 z-20 pointer-events-none" />
+                <div className="absolute bottom-2.5 right-2.5 w-3.5 h-3.5 rounded-full bg-[#B89B5E] border border-[#7A613D] shadow-sm opacity-90 z-20 pointer-events-none" />
 
-                <div className="pt-6">
-                  {!p.comingSoon && (
-                    <button 
-                      onClick={() => openDrawer(p)}
-                      className="btn-outline text-xs py-2 px-4 inline-flex items-center cursor-pointer hover:border-[var(--accent)]"
-                    >
-                      <span>Explore Product</span>
-                      <span className="ml-1.5">→</span>
-                    </button>
-                  )}
+                {/* Inner Matting Bevel */}
+                <div className="wooden-frame-inner-mat h-full">
+                  <div className={`paper-card p-8 flex flex-col justify-between bg-cream border border-tan fold-corner h-full ${p.comingSoon ? 'border-dashed opacity-85' : ''}`}>
+                    <div className="space-y-3">
+                      <div className="flex justify-between items-center">
+                        <h3 className="headline-display text-2xl text-[#2A2416]">{p.name}</h3>
+                        {p.comingSoon && (
+                          <span className="text-[10px] font-bold uppercase tracking-wider px-3 py-1 rounded-full bg-tan/40 text-[#6B6152]">
+                            Coming Soon
+                          </span>
+                        )}
+                      </div>
+                      <p className="text-xs font-semibold text-[#6B6152] uppercase tracking-wide">Product Solution</p>
+                      <p className="text-sm text-[#2A2416] leading-relaxed">{p.description}</p>
+                    </div>
+
+                    <div className="pt-6">
+                      {!p.comingSoon && (
+                        <button 
+                          onClick={() => openDrawer(p)}
+                          className="btn-outline text-xs py-2 px-4 inline-flex items-center cursor-pointer hover:border-[var(--accent)]"
+                        >
+                          <span>Explore Product</span>
+                          <span className="ml-1.5">→</span>
+                        </button>
+                      )}
+                    </div>
+                  </div>
                 </div>
               </div>
             ))}
