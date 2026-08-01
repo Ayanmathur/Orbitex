@@ -132,26 +132,26 @@ export default function MarketingDivisionPage() {
         <ProcessTimeline steps={marketingSteps} title="6-Step Growth Framework" />
 
         {/* d) Illustrative Performance Metrics Band */}
-        <section className="py-20 px-6 md:px-12 max-w-7xl mx-auto">
-          <div className="text-center max-w-3xl mx-auto mb-14 space-y-3">
-            <h2 className="headline-display text-3xl md:text-4xl text-[#2A2416]">Illustrative Benchmarks</h2>
-            <p className="text-[#6B6152] text-base">Average performance metrics achieved across multi-channel client engagements.</p>
+        <section className="py-12 sm:py-20 px-4 sm:px-6 md:px-12 max-w-7xl mx-auto">
+          <div className="text-center max-w-3xl mx-auto mb-10 sm:mb-14 space-y-2.5 sm:space-y-3">
+            <h2 className="headline-display text-2xl sm:text-3xl md:text-4xl text-[#2A2416]">Illustrative Benchmarks</h2>
+            <p className="text-[#6B6152] text-xs sm:text-sm md:text-base">Average performance metrics achieved across multi-channel client engagements.</p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div className="paper-card p-8 text-center bg-cream border border-tan space-y-2 tier-3 fold-corner paper-grain-card">
-              <span className="headline-display text-4xl font-bold text-[var(--accent)]">+320%</span>
-              <h3 className="font-bold text-base text-[#2A2416]">Organic Traffic Growth</h3>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-5 sm:gap-6">
+            <div className="paper-card p-5 sm:p-8 text-center bg-cream border border-tan space-y-2 tier-3 fold-corner paper-grain-card">
+              <span className="headline-display text-3xl sm:text-4xl font-bold text-[var(--accent)]">+320%</span>
+              <h3 className="font-bold text-sm sm:text-base text-[#2A2416]">Organic Traffic Growth</h3>
               <p className="text-xs text-[#6B6152]">Within 6 months of technical SEO execution</p>
             </div>
-            <div className="paper-card p-8 text-center bg-cream border border-tan space-y-2 tier-3 fold-corner paper-grain-card">
-              <span className="headline-display text-4xl font-bold text-[var(--accent)]">+180%</span>
-              <h3 className="font-bold text-base text-[#2A2416]">Qualified Leads</h3>
+            <div className="paper-card p-5 sm:p-8 text-center bg-cream border border-tan space-y-2 tier-3 fold-corner paper-grain-card">
+              <span className="headline-display text-3xl sm:text-4xl font-bold text-[var(--accent)]">+180%</span>
+              <h3 className="font-bold text-sm sm:text-base text-[#2A2416]">Qualified Leads</h3>
               <p className="text-xs text-[#6B6152]">Combined search and paid social funnels</p>
             </div>
-            <div className="paper-card p-8 text-center bg-cream border border-tan space-y-2 tier-3 fold-corner paper-grain-card">
-              <span className="headline-display text-4xl font-bold text-[var(--accent)]">4.8x</span>
-              <h3 className="font-bold text-base text-[#2A2416]">Return on Ad Spend</h3>
+            <div className="paper-card p-5 sm:p-8 text-center bg-cream border border-tan space-y-2 tier-3 fold-corner paper-grain-card">
+              <span className="headline-display text-3xl sm:text-4xl font-bold text-[var(--accent)]">4.8x</span>
+              <h3 className="font-bold text-sm sm:text-base text-[#2A2416]">Return on Ad Spend</h3>
               <p className="text-xs text-[#6B6152]">Across Google Ads & Meta advertising</p>
             </div>
           </div>

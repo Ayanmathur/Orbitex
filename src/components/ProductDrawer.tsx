@@ -60,16 +60,24 @@ export default function ProductDrawer({ isOpen, onClose, item }: ProductDrawerPr
         />
 
         {/* Drawer Header */}
-        <div className="p-6 border-b border-tan/60 flex items-center justify-between relative z-10 bg-ivory">
-          <div className="flex items-center space-x-3">
-            <span className="px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-[var(--accent)]/15 text-[var(--accent)] border border-[var(--accent)]/30">
+        <div className="p-4 sm:p-6 border-b border-tan/60 flex items-center justify-between relative z-10 bg-ivory">
+          <div className="flex items-center space-x-2.5">
+            <button 
+              onClick={onClose}
+              className="inline-flex items-center gap-1 px-3 py-1.5 rounded-full bg-cream border border-tan/60 text-xs font-bold text-[#2A2416] active:scale-95 transition-all cursor-pointer"
+              aria-label="Back to page"
+            >
+              <span className="text-sm font-bold leading-none">‹</span>
+              <span className="text-[11px] uppercase tracking-wider">Back</span>
+            </button>
+            <span className="px-2.5 py-0.5 rounded-full text-[10px] sm:text-xs font-bold uppercase tracking-wider bg-[var(--accent)]/15 text-[var(--accent)] border border-[var(--accent)]/30">
               {item.category}
             </span>
-            <h2 className="headline-display text-xl font-bold text-[#2A2416]">{item.name}</h2>
+            <h2 className="headline-display text-lg sm:text-xl font-bold text-[#2A2416] truncate max-w-[160px] sm:max-w-none">{item.name}</h2>
           </div>
           <button 
             onClick={onClose}
-            className="p-2 rounded-full hover:bg-cream border border-tan/60 text-[#2A2416] transition-colors cursor-pointer"
+            className="p-2 rounded-full hover:bg-cream border border-tan/60 text-[#2A2416] transition-colors cursor-pointer flex-shrink-0"
             aria-label="Close drawer"
           >
             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">

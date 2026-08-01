@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import Icon from './Icon';
 import TopUtilityBar from './TopUtilityBar';
+import IOSBackButton from './IOSBackButton';
 
 const links = [
   { href: '/', label: 'Home' },
@@ -48,11 +49,14 @@ export default function Nav() {
               <line x1="0" y1="3.5" x2="1440" y2="3.5" stroke="rgba(42,36,22,0.1)" strokeWidth="1" />
             </svg>
           </div>
-          <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
-            <Link href="/" className="flex-shrink-0 relative group">
-              <div className="absolute -inset-2 bg-gradient-to-r from-amber-500/0 via-amber-500/25 to-amber-500/0 rounded-full blur-md opacity-0 theme-night-logo-glow transition-opacity duration-300 pointer-events-none" />
-              <img src="/branding/svg/primary-logo.svg" alt="Orbitex Logo" className="h-10 md:h-12 w-auto nav-logo-img relative z-10 transition-transform duration-250 hover:scale-105" />
-            </Link>
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 flex items-center justify-between">
+            <div className="flex items-center space-x-2">
+              <IOSBackButton />
+              <Link href="/" className="flex-shrink-0 relative group">
+                <div className="absolute -inset-2 bg-gradient-to-r from-amber-500/0 via-amber-500/25 to-amber-500/0 rounded-full blur-md opacity-0 theme-night-logo-glow transition-opacity duration-300 pointer-events-none" />
+                <img src="/branding/svg/primary-logo.svg" alt="Orbitex Logo" className="h-9 sm:h-10 md:h-12 w-auto nav-logo-img relative z-10 transition-transform duration-250 hover:scale-105" />
+              </Link>
+            </div>
 
             <div className="hidden md:flex items-center space-x-1 bg-cream/90 px-3 py-1.5 rounded-full border border-tan/60 shadow-tier-1">
               {links.map((link) => {
@@ -86,8 +90,8 @@ export default function Nav() {
               </Link>
             </div>
 
-            <div className="md:hidden flex items-center">
-              <button onClick={() => setMobileOpen(true)} className="p-2 text-[#2A2416]">
+            <div className="md:hidden flex items-center space-x-2">
+              <button onClick={() => setMobileOpen(true)} className="p-2 text-[#2A2416]" aria-label="Open navigation menu">
                 <Icon name="hamburger-menu" size={24} />
               </button>
             </div>
@@ -101,9 +105,12 @@ export default function Nav() {
           mobileOpen ? 'translate-x-0' : 'translate-x-full'
         }`}
       >
-        <div className="flex justify-between items-center px-6 py-5 border-b border-tan">
-          <img src="/branding/svg/primary-logo.svg" alt="Orbitex Logo" className="h-10 w-auto" />
-          <button onClick={() => setMobileOpen(false)} className="p-2 text-[#2A2416]">
+        <div className="flex justify-between items-center px-4 sm:px-6 py-5 border-b border-tan">
+          <div className="flex items-center space-x-2">
+            <IOSBackButton />
+            <img src="/branding/svg/primary-logo.svg" alt="Orbitex Logo" className="h-9 sm:h-10 w-auto" />
+          </div>
+          <button onClick={() => setMobileOpen(false)} className="p-2 text-[#2A2416]" aria-label="Close navigation menu">
             <Icon name="close" size={24} />
           </button>
         </div>

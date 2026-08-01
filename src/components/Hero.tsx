@@ -121,26 +121,26 @@ export default function Hero({
           
           {/* Left Column: Headline, Subheadline, Dual CTAs, Trust Chips */}
           <div 
-            className="lg:col-span-7 space-y-6 transition-transform duration-200 ease-out"
+            className="lg:col-span-7 space-y-4 sm:space-y-6 transition-transform duration-200 ease-out"
             style={{ transform: `translate(${mouseOffset.x * -4}px, ${mouseOffset.y * -4}px)` }}
           >
-            <h1 className="headline-display text-4xl md:text-5xl lg:text-6xl text-[#2A2416] leading-tight drop-shadow-[0_1px_2px_rgba(251,247,240,0.5)] torn-reveal">
+            <h1 className="headline-display text-2xl sm:text-4xl md:text-5xl lg:text-6xl text-[#2A2416] leading-snug sm:leading-tight drop-shadow-[0_1px_2px_rgba(251,247,240,0.5)] torn-reveal">
               {headline}
             </h1>
-            <p className="text-base md:text-lg text-[#4A4236] font-medium max-w-2xl leading-relaxed torn-reveal torn-reveal-delay-1">
+            <p className="text-sm sm:text-base md:text-lg text-[#4A4236] font-medium max-w-2xl leading-relaxed torn-reveal torn-reveal-delay-1">
               {subheadline}
             </p>
             
             {primaryCta && (
-              <div className="flex flex-wrap items-center gap-4 pt-2 torn-reveal torn-reveal-delay-2">
-                <Link href={primaryCta.href} className="btn-primary rounded-full px-7 py-3 text-base font-semibold inline-flex items-center group">
+              <div className="flex flex-wrap items-center gap-3 sm:gap-4 pt-1 sm:pt-2 torn-reveal torn-reveal-delay-2">
+                <Link href={primaryCta.href} className="btn-primary rounded-full px-5 sm:px-7 py-2.5 sm:py-3 text-sm sm:text-base font-semibold inline-flex items-center group">
                   <span>{primaryCta.text}</span>
                   <span className="ml-2 group-hover:rotate-45 transition-transform duration-250 ease-out">
-                    <Icon name="arrow-cta" size={18} />
+                    <Icon name="arrow-cta" size={16} />
                   </span>
                 </Link>
                 {secondaryCta && (
-                  <Link href={secondaryCta.href} className="btn-outline rounded-full px-7 py-3 text-base font-semibold inline-flex items-center bg-cream/70 backdrop-blur-none">
+                  <Link href={secondaryCta.href} className="btn-outline rounded-full px-5 sm:px-7 py-2.5 sm:py-3 text-sm sm:text-base font-semibold inline-flex items-center bg-cream/70 backdrop-blur-none">
                     <span>{secondaryCta.text}</span>
                   </Link>
                 )}
@@ -148,13 +148,13 @@ export default function Hero({
             )}
 
             {stats && stats.length > 0 && (
-              <div className="flex flex-wrap gap-3 items-center pt-6 border-t border-tan/40 torn-reveal torn-reveal-delay-3">
+              <div className="flex flex-wrap gap-2.5 sm:gap-3 items-center pt-4 sm:pt-6 border-t border-tan/40 torn-reveal torn-reveal-delay-3">
                 {stats.map((stat, idx) => (
-                  <div key={idx} className="bg-cream/80 border border-tan rounded-xl px-4 py-2 flex items-center space-x-2 shadow-tier-1">
-                    <span className="font-display font-bold text-[#2A2416] text-base">
+                  <div key={idx} className="bg-cream/80 border border-tan rounded-xl px-3 sm:px-4 py-1.5 sm:py-2 flex items-center space-x-2 shadow-tier-1">
+                    <span className="font-display font-bold text-[#2A2416] text-sm sm:text-base">
                       <CountUp value={`${stat.value}${stat.suffix || ''}`} />
                     </span>
-                    <span className="text-xs font-semibold uppercase tracking-wider text-[#6B6152]">{stat.label}</span>
+                    <span className="text-[10px] sm:text-xs font-semibold uppercase tracking-wider text-[#6B6152]">{stat.label}</span>
                   </div>
                 ))}
               </div>

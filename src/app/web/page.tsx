@@ -153,20 +153,20 @@ export default function WebDivisionPage() {
         </section>
 
         {/* b) Services Grid */}
-        <section className="py-20 px-6 md:px-12">
+        <section className="py-12 sm:py-20 px-4 sm:px-6 md:px-12">
           <div className="max-w-7xl mx-auto">
-            <div className="text-center max-w-3xl mx-auto mb-14 space-y-3">
-              <h2 className="headline-display text-3xl md:text-4xl text-[#2A2416]">Web Services</h2>
-              <p className="text-[#6B6152] text-base">Comprehensive web engineering services designed for modern digital brands.</p>
+            <div className="text-center max-w-3xl mx-auto mb-10 sm:mb-14 space-y-2.5 sm:space-y-3">
+              <h2 className="headline-display text-2xl sm:text-3xl md:text-4xl text-[#2A2416]">Web Services</h2>
+              <p className="text-[#6B6152] text-xs sm:text-sm md:text-base">Comprehensive web engineering services designed for modern digital brands.</p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-5 sm:gap-6">
               {webServices.map((service, i) => (
-                <div key={i} className="paper-card p-6 bg-cream border border-tan space-y-3 tier-3 fold-corner">
+                <div key={i} className="paper-card p-5 sm:p-6 bg-cream border border-tan space-y-3 tier-3 fold-corner">
                   <div className="paper-badge bg-ivory text-[#2A2416]">
                     <img src={`/icons/${service.icon || 'settings'}.svg`} alt="" className="w-5 h-5 opacity-75" />
                   </div>
-                  <h3 className="headline-display text-xl text-[#2A2416]">{service.title}</h3>
+                  <h3 className="headline-display text-lg sm:text-xl text-[#2A2416]">{service.title}</h3>
                   <p className="text-xs text-[#6B6152] leading-relaxed">{service.description}</p>
                 </div>
               ))}
@@ -178,10 +178,10 @@ export default function WebDivisionPage() {
         <ProcessTimeline steps={webSteps} title="Web Launch Process" />
 
         {/* d) Portfolio Showcase */}
-        <section id="portfolio" className="py-20 px-6 md:px-12 max-w-7xl mx-auto">
-          <div className="text-center max-w-3xl mx-auto mb-14 space-y-3">
-            <h2 className="headline-display text-3xl md:text-4xl text-[#2A2416]">Featured Web Projects</h2>
-            <p className="text-[#6B6152] text-base">A selection of recent websites and web applications built by our team.</p>
+        <section id="portfolio" className="py-12 sm:py-20 px-4 sm:px-6 md:px-12 max-w-7xl mx-auto">
+          <div className="text-center max-w-3xl mx-auto mb-10 sm:mb-14 space-y-2.5 sm:space-y-3">
+            <h2 className="headline-display text-2xl sm:text-3xl md:text-4xl text-[#2A2416]">Featured Web Projects</h2>
+            <p className="text-[#6B6152] text-xs sm:text-sm md:text-base">A selection of recent websites and web applications built by our team.</p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">

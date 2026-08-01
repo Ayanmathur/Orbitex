@@ -221,7 +221,7 @@ export default function ProcessTimeline({
      RENDER
      ════════════════════════════════════════════════════════ */
   return (
-    <section ref={sectionRef} className="py-24 px-6 md:px-12 relative overflow-hidden section-muted">
+    <section ref={sectionRef} className="py-12 sm:py-24 px-4 sm:px-6 md:px-12 relative overflow-hidden section-muted">
       <div className="max-w-7xl mx-auto">
 
         {/* ── Subtitle Lead-in ── */}

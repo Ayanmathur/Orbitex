@@ -553,6 +553,35 @@ textarea.form-input {
   color: #2A2416;
 }
 
+/* ── Mobile Viewport Optimization (6.1" to 6.7" iOS Devices) ── */
+@media (max-width: 640px) {
+  html {
+    font-size: 14.5px;
+  }
+
+  .headline-display {
+    line-height: 1.25;
+    letter-spacing: -0.01em;
+  }
+
+  /* Prevent text overflow on small screens */
+  h1, h2, h3, p {
+    overflow-wrap: break-word;
+    word-break: break-word;
+  }
+
+  /* Tighten card padding on 6.1" to 6.7" phones */
+  .paper-card {
+    border-radius: 16px;
+  }
+
+  /* Optimize touch target sizes */
+  .btn-primary, .btn-outline {
+    padding: 9px 18px;
+    font-size: 0.8125rem;
+  }
+}
+
 /* Torn Edge Inner Rim (§4) */
 .torn-paper-edge {
   border-bottom: 2px solid #FAF4EB;

@@ -21,19 +21,19 @@ export default function ServiceGrid({
   subtitle = "Specialized engineering and growth solutions designed for scale and durability.",
 }: ServiceGridProps) {
   return (
-    <section className="py-20 px-6 md:px-12 relative">
+    <section className="py-12 sm:py-20 px-4 sm:px-6 md:px-12 relative">
       <div className="max-w-7xl mx-auto">
-        <div className="text-center max-w-3xl mx-auto mb-16 space-y-3">
-          <h2 className="headline-display text-3xl md:text-4xl text-[#2A2416]">
+        <div className="text-center max-w-3xl mx-auto mb-10 sm:mb-16 space-y-2.5 sm:space-y-3">
+          <h2 className="headline-display text-2xl sm:text-3xl md:text-4xl text-[#2A2416]">
             {title}
           </h2>
-          <p className="text-[#6B6152] text-base md:text-lg">
+          <p className="text-[#6B6152] text-sm sm:text-base md:text-lg">
             {subtitle}
           </p>
         </div>
 
         {/* 4-Card Grid (2x2 Layout) */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-5 sm:gap-8 max-w-5xl mx-auto">
           {services.slice(0, 4).map((service, idx) => {
             const numStr = String(idx + 1).padStart(2, '0');
             const isFeatured = service.isFeatured || idx === 0;
@@ -41,7 +41,7 @@ export default function ServiceGrid({
             return (
               <div
                 key={idx}
-                className={`paper-card p-8 relative flex flex-col justify-between min-h-[220px] bg-cream border border-tan group transition-all duration-300 hover:-translate-y-1.5 fold-corner ${
+                className={`paper-card p-5 sm:p-8 relative flex flex-col justify-between min-h-[190px] sm:min-h-[220px] bg-cream border border-tan group transition-all duration-300 hover:-translate-y-1.5 fold-corner ${
                   isFeatured ? 'tier-4 border-[var(--accent)]/50 torn-paper-edge' : 'tier-3'
                 }`}
               >
