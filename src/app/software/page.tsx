@@ -149,12 +149,21 @@ export default function SoftwareDivisionPage() {
           </div>
         </section>
 
-        {/* c) Products Showcase — 4-Sided Grainy Grey Paper Picture Frame Gallery */}
-        <section className="py-20 px-6 md:px-12 max-w-7xl mx-auto section-muted">
-          <div className="text-center max-w-3xl mx-auto mb-14 space-y-3">
-            <h2 className="headline-display text-3xl md:text-4xl text-[#2A2416]">6 Products Showcase</h2>
-            <p className="text-[#6B6152] text-base">In-house software products developed and maintained by our software engineering division.</p>
-          </div>
+        {/* c) Products Showcase — 4-Sided Grainy Grey Paper Picture Frame Gallery with Grainy Paper Background */}
+        <section className="py-20 px-6 md:px-12 max-w-7xl mx-auto section-muted relative overflow-hidden rounded-3xl border border-tan/60 my-8 shadow-sm">
+          {/* Paper Grainy Background Texture Layer */}
+          <div 
+            className="absolute inset-0 opacity-[0.14] pointer-events-none z-0" 
+            style={{
+              backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)'/%3E%3C/svg%3E")`,
+            }} 
+          />
+
+          <div className="relative z-10">
+            <div className="text-center max-w-3xl mx-auto mb-14 space-y-3">
+              <h2 className="headline-display text-3xl md:text-4xl text-[#2A2416]">6 Products Showcase</h2>
+              <p className="text-[#6B6152] text-base">In-house software products developed and maintained by our software engineering division.</p>
+            </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               {softwareProducts.map((p, i) => (
@@ -167,7 +176,7 @@ export default function SoftwareDivisionPage() {
 
                   {/* Inner Matting Bevel */}
                   <div className="wooden-frame-inner-mat h-full">
-                    <div className={`paper-card p-8 flex flex-col justify-between bg-cream border border-tan fold-corner paper-grain-card tier-3 cursor-pointer hover:border-[var(--accent)] transition-all h-full ${p.comingSoon ? 'border-dashed opacity-85' : ''}`}>
+                    <div className={`paper-card p-8 flex flex-col justify-between bg-cream border border-tan fold-corner tier-3 cursor-pointer hover:border-[var(--accent)] transition-all h-full ${p.comingSoon ? 'border-dashed opacity-85' : ''}`}>
                       <div className="space-y-3">
                         <div className="flex justify-between items-center">
                           <h3 className="headline-display text-2xl text-[#2A2416]">{p.name}</h3>
@@ -197,6 +206,7 @@ export default function SoftwareDivisionPage() {
                 </div>
               ))}
             </div>
+          </div>
         </section>
 
         {/* d) Process Timeline with Rope & Die-Cut Hole Punches */}
