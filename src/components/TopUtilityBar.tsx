@@ -5,7 +5,7 @@ import ThemeToggle from './ThemeToggle';
 
 export default function TopUtilityBar() {
   return (
-    <div className="bg-[#2A2416] text-[#FBF7F0] text-xs py-2 px-6 border-b border-tan/30">
+    <div className="top-utility-bar bg-[#2A2416] text-[#FBF7F0] text-xs py-2 px-6 border-b border-tan/30">
       <div className="max-w-7xl mx-auto flex flex-wrap justify-between items-center gap-2">
         <div className="flex items-center space-x-4">
           <span className="flex items-center space-x-1.5">

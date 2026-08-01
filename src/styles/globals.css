@@ -113,12 +113,39 @@
   border-color: #D9C8A9 !important;
 }
 
-/* Nav links font color override under Night Studio mode */
+/* TopUtilityBar theme consistency */
+.top-utility-bar,
+.theme-night .top-utility-bar {
+  background-color: #2A2416 !important;
+  color: #FBF7F0 !important;
+}
+.top-utility-bar *,
+.theme-night .top-utility-bar * {
+  color: #FBF7F0 !important;
+}
+.top-utility-bar button span.text-\[\#2A2416\],
+.theme-night .top-utility-bar button span.text-\[\#2A2416\] {
+  color: #2A2416 !important;
+}
+
+/* Nav links theme consistency across Daylight and Night Studio modes */
+.theme-night nav {
+  background-color: rgba(251, 247, 240, 0.92) !important;
+}
 .theme-night nav a:not(.btn-primary) {
   color: #2A2416 !important;
 }
 .theme-night nav a.font-bold {
   color: var(--accent) !important;
+}
+.theme-night nav .bg-cream\/90 {
+  background-color: rgba(245, 239, 227, 0.9) !important;
+}
+.theme-night nav .bg-cream {
+  background-color: #F5EFE3 !important;
+}
+.theme-night nav .border-tan\/60 {
+  border-color: rgba(217, 200, 169, 0.6) !important;
 }
 
 /* ── Base Resets ── */
@@ -200,8 +227,7 @@ h1, h2, h3, h4, h5, h6 {
 
 /* ── Paper Diorama Card (Tier 3 Default) ── */
 .paper-card {
-  background-color: var(--color-cream);
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='matrix' values='0 0 0 0 0.16 0 0 0 0 0.14 0 0 0 0 0.04 0'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)'/%3E%3C/svg%3E");
+  background: var(--color-cream);
   border: 1px solid var(--color-tan);
   border-radius: 20px;
   box-shadow: var(--shadow-tier-3);

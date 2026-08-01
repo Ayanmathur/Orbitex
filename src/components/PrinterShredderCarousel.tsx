@@ -7,7 +7,7 @@ import type { Product } from '@/lib/data';
 const SPEED       = 55;     // px/s — comfortable reading pace
 const CARD_W      = 340;    // px — fixed card width
 const CARD_H      = 220;    // px — fixed card height
-const GAP         = 24;     // px between cards
+const GAP         = 60;     // px — generous distance between cards
 const MACHINE_W   = 80;     // px — machine illustration width
 const EMERGE_MS   = 700;    // card emergence from printer
 const SHRED_MS    = 500;    // card consumption at shredder
@@ -55,28 +55,28 @@ function PrinterSVG() {
       {/* Main body */}
       <rect x="4" y="54" width="72" height="115" rx="8" fill="#EDE3D0" stroke="#D9C8A9" strokeWidth="1.5" />
 
-      {/* Front panel (output side — left face) */}
-      <rect x="4" y="72" width="36" height="56" rx="4" fill="#E5D9C6" />
+      {/* Front panel (output side — right face) */}
+      <rect x="40" y="72" width="36" height="56" rx="4" fill="#E5D9C6" />
 
-      {/* Output slot — thin opening on left */}
-      <rect x="0" y="96" width="10" height="5" rx="1.5" fill="#2A2416" opacity="0.3" />
+      {/* Output slot — opening on right edge */}
+      <rect x="70" y="96" width="10" height="5" rx="1.5" fill="#2A2416" opacity="0.35" />
 
       {/* Accent trim stripe */}
       <rect x="4" y="164" width="72" height="3" rx="1.5" fill="var(--accent)" opacity="0.6" />
 
       {/* Status light (accent, breathing pulse) */}
-      <circle cx="62" cy="66" r="3.5" fill="var(--accent)" className="animate-breathing-pulse" />
+      <circle cx="18" cy="66" r="3.5" fill="var(--accent)" className="animate-breathing-pulse" />
 
       {/* Detail dots */}
-      <circle cx="52" cy="66" r="2" fill="#D9C8A9" opacity="0.5" />
-      <circle cx="44" cy="66" r="2" fill="#D9C8A9" opacity="0.5" />
+      <circle cx="28" cy="66" r="2" fill="#D9C8A9" opacity="0.5" />
+      <circle cx="36" cy="66" r="2" fill="#D9C8A9" opacity="0.5" />
     </svg>
   );
 }
 
 /* ═══════════════════════════════════════════════════════════
-   SHREDDER SVG — flat paper-cutout, left edge, sink
-   Mouth faces RIGHT (toward the card lane) with teeth
+   SHREDDER SVG — flat paper-cutout, RIGHT edge (sink)
+   Mouth faces LEFT (toward the card lane) with teeth
    ═══════════════════════════════════════════════════════════ */
 function ShredderSVG() {
   return (
@@ -97,20 +97,20 @@ function ShredderSVG() {
       {/* Top panel */}
       <rect x="8" y="48" width="64" height="22" rx="4" fill="#E5D9C6" />
 
-      {/* Mouth slot (right face) — dark opening */}
-      <rect x="70" y="90" width="10" height="8" rx="1.5" fill="#2A2416" opacity="0.35" />
+      {/* Mouth slot (left face) — dark opening */}
+      <rect x="0" y="90" width="10" height="8" rx="1.5" fill="#2A2416" opacity="0.35" />
 
-      {/* Teeth — triangular blades in mouth */}
-      <polygon points="70,90 73,95 76,90" fill="#C4B18E" />
-      <polygon points="75,90 78,95 80,90" fill="#C4B18E" />
-      <polygon points="70,98 73,93 76,98" fill="#C4B18E" />
-      <polygon points="75,98 78,93 80,98" fill="#C4B18E" />
+      {/* Teeth — triangular blades in left mouth */}
+      <polygon points="0,90 3,95 6,90" fill="#C4B18E" />
+      <polygon points="5,90 8,95 10,90" fill="#C4B18E" />
+      <polygon points="0,98 3,93 6,98" fill="#C4B18E" />
+      <polygon points="5,98 8,93 10,98" fill="#C4B18E" />
 
       {/* Status light (muted accent, breathing pulse) */}
-      <circle cx="18" cy="60" r="3.5" fill="var(--accent)" opacity="0.35" className="animate-breathing-pulse" />
+      <circle cx="62" cy="60" r="3.5" fill="var(--accent)" opacity="0.35" className="animate-breathing-pulse" />
 
       {/* Detail dot */}
-      <circle cx="28" cy="60" r="2" fill="#D9C8A9" opacity="0.5" />
+      <circle cx="52" cy="60" r="2" fill="#D9C8A9" opacity="0.5" />
 
       {/* Waste bin at bottom */}
       <rect x="14" y="150" width="52" height="18" rx="4" fill="#E5D9C6" stroke="#D9C8A9" strokeWidth="0.75" />
@@ -172,13 +172,14 @@ export default function PrinterShredderCarousel({ products, onProductClick }: Pr
     const getW = () => cachedW.current;
     const isMobile = () => getW() < 768;
 
-    /* Spawn a new card */
+    /* Spawn a new card at Printer (left) */
     function spawn(ts: number, preX?: number) {
-      const w = getW();
+      const mobile  = isMobile();
+      const startX  = mobile ? -CARD_W : 0;
       const s: Slot = {
         key: keyCtr++,
         pIdx: nextP % products.length,
-        x: preX ?? w,
+        x: preX ?? startX,
         phase: preX !== undefined ? 'drift' : 'emerge',
         t0: ts,
       };
@@ -186,28 +187,29 @@ export default function PrinterShredderCarousel({ products, onProductClick }: Pr
       slots.current.push(s);
     }
 
-    /* Pre-fill the visible lane with drifting cards */
+    /* Pre-fill the visible lane with drifting cards (left to right) */
     function init(ts: number) {
       const w       = getW();
       const mobile  = isMobile();
-      const laneEnd = mobile ? w : w - MACHINE_W;
+      const minX    = mobile ? -CARD_W : MACHINE_W - CARD_W + 10;
+      const maxX    = mobile ? w : w - MACHINE_W;
       const spacing = CARD_W + GAP;
 
-      let cx = laneEnd - CARD_W;
-      while (cx + CARD_W > (mobile ? 0 : MACHINE_W) + 10) {
+      let cx = minX;
+      while (cx < maxX) {
         spawn(ts, cx);
-        cx -= spacing;
+        cx += spacing;
       }
       rerender(n => n + 1);
     }
 
-    /* Per-frame animation tick */
+    /* Per-frame animation tick (Left to Right) */
     function tick(ts: number) {
       if (!lastT) { lastT = ts; init(ts); }
       const dt = Math.min((ts - lastT) / 1000, 0.05);
       lastT = ts;
 
-      /* Keep lastT fresh even while paused to avoid jump on resume */
+      /* Keep lastT fresh while paused */
       if (pausedRef.current) {
         raf = requestAnimationFrame(tick);
         return;
@@ -215,31 +217,30 @@ export default function PrinterShredderCarousel({ products, onProductClick }: Pr
 
       const w         = getW();
       const mobile    = isMobile();
-      const printerX  = mobile ? w : w - MACHINE_W;
-      const shredderX = mobile ? 0 : MACHINE_W;
+      const printerX  = mobile ? 0 : MACHINE_W;
+      const shredderX = mobile ? w : w - MACHINE_W;
       let dirty       = false;
 
       for (const s of slots.current) {
         switch (s.phase) {
 
-          /* ── EMERGENCE: slide out from behind printer ──── */
+          /* ── EMERGENCE: slide out from printer on LEFT to RIGHT ─ */
           case 'emerge': {
             const p = Math.min((ts - s.t0) / EMERGE_MS, 1);
             const e = easeOutCubic(p);
-            // Start: x = printerX (hidden behind printer)
-            // End:   x = printerX - CARD_W (fully visible)
-            s.x = printerX - CARD_W * e;
+            // Start: x = printerX - CARD_W (behind printer on left)
+            // End:   x = printerX (fully emerged)
+            s.x = (printerX - CARD_W) + CARD_W * e;
             if (p >= 1) { s.phase = 'drift'; s.t0 = ts; }
             break;
           }
 
-          /* ── DRIFT: steady right-to-left scroll ───────── */
+          /* ── DRIFT: steady left-to-right scroll ────────── */
           case 'drift': {
-            s.x -= SPEED * dt;
-            const shredTrigger = mobile ? -CARD_W : shredderX + 30;
-            if (s.x <= shredTrigger) {
+            s.x += SPEED * dt;
+            const shredTrigger = mobile ? w : shredderX - CARD_W - 20;
+            if (s.x >= shredTrigger) {
               if (mobile) {
-                // On mobile (no shredder visual): just remove
                 s.phase = 'done';
               } else {
                 s.phase = 'shred';
@@ -250,10 +251,10 @@ export default function PrinterShredderCarousel({ products, onProductClick }: Pr
             break;
           }
 
-          /* ── SHRED: split into strips at shredder mouth ─ */
+          /* ── SHRED: split into strips at shredder mouth on RIGHT ─ */
           case 'shred': {
             const p = Math.min((ts - s.t0) / SHRED_MS, 1);
-            s.x -= SPEED * dt * 0.3; // decelerate
+            s.x += SPEED * dt * 0.3; // decelerate into shredder
             if (p >= 1) { s.phase = 'done'; dirty = true; }
 
             // Animate individual strips via direct DOM
@@ -265,7 +266,7 @@ export default function PrinterShredderCarousel({ products, onProductClick }: Pr
                 const sp     = Math.max(0, ts - s.t0 - delay) / Math.max(1, SHRED_MS - delay);
                 const se     = easeOutCubic(Math.min(sp, 1));
                 const dy     = se * (14 + i * 5);
-                const dx     = se * -(8 + i * 3);
+                const dx     = se * (8 + i * 3); // drift rightward into shredder
                 const rot    = se * (i % 2 ? 3 : -2.5);
                 strip.style.transform = `translate(${dx}px, ${dy}px) rotate(${rot}deg)`;
                 strip.style.opacity   = `${Math.max(0, 1 - se * 1.4)}`;
@@ -279,7 +280,6 @@ export default function PrinterShredderCarousel({ products, onProductClick }: Pr
         const el = els.current.get(s.key);
         if (el) {
           el.style.transform = `translateX(${s.x}px)`;
-          // "Just printed" contrast boost during early emergence
           if (s.phase === 'emerge') {
             const p = (ts - s.t0) / EMERGE_MS;
             el.style.filter = p < 0.35 ? 'contrast(1.06) brightness(1.03)' : '';
@@ -294,11 +294,13 @@ export default function PrinterShredderCarousel({ products, onProductClick }: Pr
       slots.current = slots.current.filter(s => s.phase !== 'done');
       if (slots.current.length !== before) dirty = true;
 
-      /* Spawn new card at printer when there's room */
-      const rightmost = slots.current.reduce<Slot | null>(
-        (m, s) => (!m || s.x > m.x ? s : m), null
+      /* Spawn new card at printer on LEFT when leftmost card has moved right enough */
+      const leftmost = slots.current.reduce<Slot | null>(
+        (m, s) => (!m || s.x < m.x ? s : m), null
       );
-      if (!rightmost || rightmost.x <= printerX - CARD_W - GAP) {
+
+      const spawnThreshold = (mobile ? -CARD_W : MACHINE_W - CARD_W) + GAP;
+      if (!leftmost || leftmost.x >= spawnThreshold) {
         spawn(ts);
         dirty = true;
       }
@@ -389,13 +391,13 @@ export default function PrinterShredderCarousel({ products, onProductClick }: Pr
             ))}
           </div>
 
-          {/* Printer bookend (right, desktop only) */}
+          {/* Shredder bookend (right, desktop only) */}
           <div
             className="hidden md:flex absolute right-0 top-0 bottom-0 z-20 items-center pointer-events-none"
             style={{ width: MACHINE_W }}
             aria-hidden="true"
           >
-            <PrinterSVG />
+            <ShredderSVG />
           </div>
         </div>
       </section>
@@ -430,13 +432,13 @@ export default function PrinterShredderCarousel({ products, onProductClick }: Pr
         role="region"
         aria-label="Our Products — continuously scrolling carousel"
       >
-        {/* ── SHREDDER (left edge) ─────────────────────── */}
+        {/* ── PRINTER (left edge) ─────────────────────── */}
         <div
           className="absolute left-0 top-0 bottom-0 z-20 hidden md:flex items-center pointer-events-none"
           style={{ width: MACHINE_W }}
           aria-hidden="true"
         >
-          <ShredderSVG />
+          <PrinterSVG />
         </div>
 
         {/* ── CARD LANE ────────────────────────────────── */}
@@ -516,7 +518,7 @@ export default function PrinterShredderCarousel({ products, onProductClick }: Pr
           })}
         </div>
 
-        {/* ── PRINTER (right edge) ─────────────────────── */}
+        {/* ── SHREDDER (right edge) ─────────────────────── */}
         <div
           className="absolute right-0 top-0 bottom-0 z-20 hidden md:flex items-center pointer-events-none"
           style={{ width: MACHINE_W }}
