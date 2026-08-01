@@ -29,11 +29,13 @@ export default function AboutPage() {
       
       <main className="pt-24">
         {/* Hero */}
-        <Hero
-          headline="Built on the belief that great products need one unified team."
-          subheadline="We are builders, designers, and growth engineers committed to transparency, quality, and measurable results."
-          primaryCta={{ text: 'Get in Touch', href: '#contact' }}
-        />
+        <div className="about-hero-preserve-light">
+          <Hero
+            headline="Built on the belief that great products need one unified team."
+            subheadline="We are builders, designers, and growth engineers committed to transparency, quality, and measurable results."
+            primaryCta={{ text: 'Get in Touch', href: '#contact' }}
+          />
+        </div>
 
         {/* Founder Section */}
         <section className="py-20">
