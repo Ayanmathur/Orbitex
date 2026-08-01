@@ -4,15 +4,15 @@ import React, { useState, useEffect, useRef } from 'react';
 import type { Product } from '@/lib/data';
 
 /* ─── Configuration ──────────────────────────────────────── */
-const SPEED       = 22;     // px/s — very slow, smooth, peaceful reading pace
+const SPEED       = 46;     // px/s — energetic, smooth reading drift pace
 const CARD_W      = 340;    // px — fixed card width
 const CARD_H      = 220;    // px — fixed card height
 const GAP         = 60;     // px — generous distance between cards
 const MACHINE_W   = 80;     // px — machine illustration width
 const EMERGE_MS   = 2000;   // card emergence from printer
-const SHRED_MS    = 1500;   // card consumption at shredder
+const SHRED_MS    = 1200;   // card consumption at shredder
 const STRIPS      = 5;      // vertical shred strips
-const STRIP_LAG   = 40;     // ms stagger per strip
+const STRIP_LAG   = 35;     // ms stagger per strip
 const RESUME_MS   = 3500;   // resume auto-scroll after interaction
 const LANE_PAD_Y  = 20;     // px vertical padding in lane
 
@@ -75,8 +75,8 @@ function PrinterSVG() {
 }
 
 /* ═══════════════════════════════════════════════════════════
-   SHREDDER SVG — flat paper-cutout, RIGHT edge (sink)
-   Mouth faces LEFT (toward the card lane) with teeth
+   SHREDDER SVG — Industrial paper shredder, RIGHT edge (sink)
+   Dark charcoal housing, cutter mouth on left, clear waste bin
    ═══════════════════════════════════════════════════════════ */
 function ShredderSVG() {
   return (
@@ -86,41 +86,40 @@ function ShredderSVG() {
       className="drop-shadow-lg"
     >
       {/* Shadow base */}
-      <ellipse cx="40" cy="213" rx="30" ry="5" fill="rgba(42,36,22,0.07)" />
+      <ellipse cx="40" cy="213" rx="30" ry="5" fill="rgba(42,36,22,0.12)" />
 
-      {/* Main body — slightly angular/utilitarian */}
-      <path
-        d="M 8 48 L 72 48 Q 76 48 76 52 L 78 170 Q 78 174 74 174 L 6 174 Q 2 174 2 170 L 4 52 Q 4 48 8 48 Z"
-        fill="#EDE3D0" stroke="#D9C8A9" strokeWidth="1.5"
-      />
+      {/* Main Shredder Housing (Dark industrial charcoal) */}
+      <rect x="4" y="45" width="72" height="162" rx="8" fill="#2A2416" stroke="#1C1914" strokeWidth="1.5" />
 
-      {/* Top panel */}
-      <rect x="8" y="48" width="64" height="22" rx="4" fill="#E5D9C6" />
+      {/* Shredder Head Unit (Top heavy control unit) */}
+      <rect x="2" y="42" width="76" height="42" rx="6" fill="#3D3526" stroke="#5A4E38" strokeWidth="1" />
+      <rect x="8" y="46" width="64" height="6" rx="2" fill="#1C1914" />
 
-      {/* Mouth slot (left face) — dark opening */}
-      <rect x="0" y="90" width="10" height="8" rx="1.5" fill="#2A2416" opacity="0.35" />
+      {/* Left Input Mouth Slot (where cards enter to be shredded) */}
+      <rect x="0" y="80" width="12" height="28" rx="2" fill="#1C1914" stroke="#4A3F2C" strokeWidth="1" />
 
-      {/* Teeth — triangular blades in left mouth */}
-      <polygon points="0,90 3,95 6,90" fill="#C4B18E" />
-      <polygon points="5,90 8,95 10,90" fill="#C4B18E" />
-      <polygon points="0,98 3,93 6,98" fill="#C4B18E" />
-      <polygon points="5,98 8,93 10,98" fill="#C4B18E" />
+      {/* Steel Shredder Blade Teeth inside left mouth */}
+      <polygon points="0,82 4,87 8,82" fill="#D9C8A9" />
+      <polygon points="0,90 4,95 8,90" fill="#D9C8A9" />
+      <polygon points="0,98 4,103 8,98" fill="#D9C8A9" />
+      <polygon points="0,106 4,111 8,106" fill="#D9C8A9" />
 
-      {/* Status light (muted accent, breathing pulse) */}
-      <circle cx="62" cy="60" r="3.5" fill="var(--accent)" opacity="0.35" className="animate-breathing-pulse" />
+      {/* Control buttons & warning status light */}
+      <circle cx="62" cy="58" r="4" fill="var(--accent)" className="animate-breathing-pulse" />
+      <rect x="44" y="56" width="10" height="4" rx="1" fill="#D9C8A9" opacity="0.6" />
+      <rect x="30" y="56" width="10" height="4" rx="1" fill="#D9C8A9" opacity="0.4" />
 
-      {/* Detail dot */}
-      <circle cx="52" cy="60" r="2" fill="#D9C8A9" opacity="0.5" />
+      {/* Translucent Waste Bin Window */}
+      <rect x="10" y="112" width="60" height="84" rx="6" fill="#1C1914" stroke="#4A3F2C" strokeWidth="1" />
+      <rect x="14" y="116" width="52" height="76" rx="4" fill="#24201A" opacity="0.9" />
 
-      {/* Waste bin at bottom */}
-      <rect x="14" y="150" width="52" height="18" rx="4" fill="#E5D9C6" stroke="#D9C8A9" strokeWidth="0.75" />
-
-      {/* Paper strips in bin */}
-      <rect x="22" y="154" width="3" height="9" rx="1" fill="#F5EFE3" transform="rotate(-8 23 158)" />
-      <rect x="30" y="153" width="3" height="10" rx="1" fill="#F5EFE3" transform="rotate(5 31 158)" />
-      <rect x="38" y="154" width="3" height="9" rx="1" fill="#F5EFE3" transform="rotate(-3 39 158)" />
-      <rect x="46" y="153" width="3" height="10" rx="1" fill="#F5EFE3" transform="rotate(6 47 158)" />
-      <rect x="54" y="154" width="3" height="9" rx="1" fill="#F5EFE3" transform="rotate(-5 55 158)" />
+      {/* Shredded paper strips accumulated inside waste bin */}
+      <rect x="18" y="145" width="4" height="42" rx="1" fill="#FBF7F0" opacity="0.85" transform="rotate(-12 20 166)" />
+      <rect x="26" y="135" width="4" height="52" rx="1" fill="#F5EFE3" opacity="0.9" transform="rotate(6 28 161)" />
+      <rect x="34" y="140" width="4" height="48" rx="1" fill="#EDE3D0" opacity="0.8" transform="rotate(-4 36 164)" />
+      <rect x="42" y="130" width="4" height="56" rx="1" fill="#FBF7F0" opacity="0.85" transform="rotate(10 44 158)" />
+      <rect x="50" y="142" width="4" height="45" rx="1" fill="#F5EFE3" opacity="0.9" transform="rotate(-8 52 164)" />
+      <rect x="58" y="150" width="4" height="36" rx="1" fill="#EDE3D0" opacity="0.75" transform="rotate(14 60 168)" />
     </svg>
   );
 }
