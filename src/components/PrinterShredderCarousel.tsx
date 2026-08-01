@@ -40,36 +40,36 @@ const easeOutCubic = (t: number) => 1 - (1 - t) ** 3;
 function PrinterSVG() {
   return (
     <svg
-      width="80" height="220" viewBox="0 0 80 220"
+      width="80" height="260" viewBox="0 0 80 260"
       fill="none" xmlns="http://www.w3.org/2000/svg"
       className="drop-shadow-lg"
     >
       {/* Shadow base */}
-      <ellipse cx="40" cy="213" rx="30" ry="5" fill="rgba(42,36,22,0.07)" />
+      <ellipse cx="40" cy="253" rx="32" ry="5" fill="rgba(42,36,22,0.08)" />
 
       {/* Paper tray (top) */}
-      <rect x="14" y="40" width="52" height="16" rx="4" fill="#F5EFE3" stroke="#D9C8A9" strokeWidth="1" />
-      <rect x="20" y="44" width="40" height="2" rx="1" fill="#FBF7F0" opacity="0.7" />
-      <rect x="18" y="48" width="44" height="2" rx="1" fill="#FBF7F0" opacity="0.5" />
+      <rect x="14" y="16" width="52" height="22" rx="4" fill="#F5EFE3" stroke="#D9C8A9" strokeWidth="1" />
+      <rect x="20" y="22" width="40" height="2" rx="1" fill="#FBF7F0" opacity="0.7" />
+      <rect x="18" y="28" width="44" height="2" rx="1" fill="#FBF7F0" opacity="0.5" />
 
-      {/* Main body */}
-      <rect x="4" y="54" width="72" height="115" rx="8" fill="#EDE3D0" stroke="#D9C8A9" strokeWidth="1.5" />
+      {/* Main body (taller vertical housing) */}
+      <rect x="4" y="34" width="72" height="210" rx="10" fill="#EDE3D0" stroke="#D9C8A9" strokeWidth="1.5" />
 
       {/* Front panel (output side — right face) */}
-      <rect x="40" y="72" width="36" height="56" rx="4" fill="#E5D9C6" />
+      <rect x="36" y="56" width="40" height="144" rx="6" fill="#E5D9C6" />
 
-      {/* Output slot — opening on right edge */}
-      <rect x="70" y="96" width="10" height="5" rx="1.5" fill="#2A2416" opacity="0.35" />
+      {/* Output slot — wide opening on right edge */}
+      <rect x="68" y="105" width="12" height="38" rx="2" fill="#2A2416" opacity="0.38" />
 
       {/* Accent trim stripe */}
-      <rect x="4" y="164" width="72" height="3" rx="1.5" fill="var(--accent)" opacity="0.6" />
+      <rect x="4" y="234" width="72" height="4" rx="2" fill="var(--accent)" opacity="0.6" />
 
       {/* Status light (accent, breathing pulse) */}
-      <circle cx="18" cy="66" r="3.5" fill="var(--accent)" className="animate-breathing-pulse" />
+      <circle cx="18" cy="52" r="4" fill="var(--accent)" className="animate-breathing-pulse" />
 
       {/* Detail dots */}
-      <circle cx="28" cy="66" r="2" fill="#D9C8A9" opacity="0.5" />
-      <circle cx="36" cy="66" r="2" fill="#D9C8A9" opacity="0.5" />
+      <circle cx="28" cy="52" r="2" fill="#D9C8A9" opacity="0.5" />
+      <circle cx="36" cy="52" r="2" fill="#D9C8A9" opacity="0.5" />
     </svg>
   );
 }
@@ -81,45 +81,46 @@ function PrinterSVG() {
 function ShredderSVG() {
   return (
     <svg
-      width="80" height="220" viewBox="0 0 80 220"
+      width="80" height="260" viewBox="0 0 80 260"
       fill="none" xmlns="http://www.w3.org/2000/svg"
       className="drop-shadow-lg"
     >
       {/* Shadow base */}
-      <ellipse cx="40" cy="213" rx="30" ry="5" fill="rgba(42,36,22,0.12)" />
+      <ellipse cx="40" cy="253" rx="32" ry="5" fill="rgba(42,36,22,0.14)" />
 
-      {/* Main Shredder Housing (Dark industrial charcoal) */}
-      <rect x="4" y="45" width="72" height="162" rx="8" fill="#2A2416" stroke="#1C1914" strokeWidth="1.5" />
+      {/* Main Shredder Housing (Taller dark industrial charcoal) */}
+      <rect x="4" y="22" width="72" height="225" rx="10" fill="#2A2416" stroke="#1C1914" strokeWidth="1.5" />
 
       {/* Shredder Head Unit (Top heavy control unit) */}
-      <rect x="2" y="42" width="76" height="42" rx="6" fill="#3D3526" stroke="#5A4E38" strokeWidth="1" />
-      <rect x="8" y="46" width="64" height="6" rx="2" fill="#1C1914" />
+      <rect x="2" y="18" width="76" height="54" rx="8" fill="#3D3526" stroke="#5A4E38" strokeWidth="1" />
+      <rect x="8" y="24" width="64" height="6" rx="2" fill="#1C1914" />
 
       {/* Left Input Mouth Slot (where cards enter to be shredded) */}
-      <rect x="0" y="80" width="12" height="28" rx="2" fill="#1C1914" stroke="#4A3F2C" strokeWidth="1" />
+      <rect x="0" y="98" width="12" height="42" rx="2" fill="#1C1914" stroke="#4A3F2C" strokeWidth="1" />
 
       {/* Steel Shredder Blade Teeth inside left mouth */}
-      <polygon points="0,82 4,87 8,82" fill="#D9C8A9" />
-      <polygon points="0,90 4,95 8,90" fill="#D9C8A9" />
-      <polygon points="0,98 4,103 8,98" fill="#D9C8A9" />
-      <polygon points="0,106 4,111 8,106" fill="#D9C8A9" />
+      <polygon points="0,100 5,106 10,100" fill="#D9C8A9" />
+      <polygon points="0,108 5,114 10,108" fill="#D9C8A9" />
+      <polygon points="0,116 5,122 10,116" fill="#D9C8A9" />
+      <polygon points="0,124 5,130 10,124" fill="#D9C8A9" />
+      <polygon points="0,132 5,138 10,132" fill="#D9C8A9" />
 
       {/* Control buttons & warning status light */}
-      <circle cx="62" cy="58" r="4" fill="var(--accent)" className="animate-breathing-pulse" />
-      <rect x="44" y="56" width="10" height="4" rx="1" fill="#D9C8A9" opacity="0.6" />
-      <rect x="30" y="56" width="10" height="4" rx="1" fill="#D9C8A9" opacity="0.4" />
+      <circle cx="62" cy="40" r="4.5" fill="var(--accent)" className="animate-breathing-pulse" />
+      <rect x="44" y="38" width="10" height="4" rx="1" fill="#D9C8A9" opacity="0.6" />
+      <rect x="30" y="38" width="10" height="4" rx="1" fill="#D9C8A9" opacity="0.4" />
 
-      {/* Translucent Waste Bin Window */}
-      <rect x="10" y="112" width="60" height="84" rx="6" fill="#1C1914" stroke="#4A3F2C" strokeWidth="1" />
-      <rect x="14" y="116" width="52" height="76" rx="4" fill="#24201A" opacity="0.9" />
+      {/* Translucent Waste Bin Window (Tall window) */}
+      <rect x="10" y="145" width="60" height="95" rx="6" fill="#1C1914" stroke="#4A3F2C" strokeWidth="1" />
+      <rect x="14" y="149" width="52" height="87" rx="4" fill="#24201A" opacity="0.9" />
 
       {/* Shredded paper strips accumulated inside waste bin */}
-      <rect x="18" y="145" width="4" height="42" rx="1" fill="#FBF7F0" opacity="0.85" transform="rotate(-12 20 166)" />
-      <rect x="26" y="135" width="4" height="52" rx="1" fill="#F5EFE3" opacity="0.9" transform="rotate(6 28 161)" />
-      <rect x="34" y="140" width="4" height="48" rx="1" fill="#EDE3D0" opacity="0.8" transform="rotate(-4 36 164)" />
-      <rect x="42" y="130" width="4" height="56" rx="1" fill="#FBF7F0" opacity="0.85" transform="rotate(10 44 158)" />
-      <rect x="50" y="142" width="4" height="45" rx="1" fill="#F5EFE3" opacity="0.9" transform="rotate(-8 52 164)" />
-      <rect x="58" y="150" width="4" height="36" rx="1" fill="#EDE3D0" opacity="0.75" transform="rotate(14 60 168)" />
+      <rect x="18" y="168" width="4" height="58" rx="1" fill="#FBF7F0" opacity="0.85" transform="rotate(-12 20 197)" />
+      <rect x="26" y="158" width="4" height="70" rx="1" fill="#F5EFE3" opacity="0.9" transform="rotate(6 28 193)" />
+      <rect x="34" y="163" width="4" height="64" rx="1" fill="#EDE3D0" opacity="0.8" transform="rotate(-4 36 195)" />
+      <rect x="42" y="152" width="4" height="74" rx="1" fill="#FBF7F0" opacity="0.85" transform="rotate(10 44 189)" />
+      <rect x="50" y="165" width="4" height="60" rx="1" fill="#F5EFE3" opacity="0.9" transform="rotate(-8 52 195)" />
+      <rect x="58" y="172" width="4" height="50" rx="1" fill="#EDE3D0" opacity="0.75" transform="rotate(14 60 197)" />
     </svg>
   );
 }
