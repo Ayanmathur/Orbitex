@@ -26,6 +26,14 @@ export default function Footer() {
 
   return (
     <footer className="bg-[#1A1814] relative z-30 pt-16 pb-8" style={{ color: '#FBF7F0' }}>
+      {/* Horizontal Rope Border — top of footer */}
+      <div className="absolute top-0 left-0 right-0 h-[6px] pointer-events-none z-10 overflow-hidden">
+        <svg className="w-full h-full" preserveAspectRatio="none" viewBox="0 0 1440 6">
+          <line x1="0" y1="3" x2="1440" y2="3" stroke="#D9C8A9" strokeWidth="2.5" />
+          <line x1="0" y1="3" x2="1440" y2="3" stroke="#C4B18E" strokeWidth="2" strokeDasharray="5 3" />
+          <line x1="0" y1="4.5" x2="1440" y2="4.5" stroke="rgba(42,36,22,0.3)" strokeWidth="1" />
+        </svg>
+      </div>
       <div className="max-w-7xl mx-auto px-6">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-8 mb-16">
           

@@ -4,8 +4,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import type { Product } from '@/lib/data';
 
 /* ─── Configuration ──────────────────────────────────────── */
-/* ─── Configuration ──────────────────────────────────────── */
-const SPEED       = 72;     // px/s — faster, energetic scroll pace
+const SPEED       = 115;    // px/s — high-energy, fast scroll pace
 const CARD_W      = 340;    // px — fixed card width
 const CARD_H      = 220;    // px — fixed card height
 const GAP         = 60;     // px — generous distance between cards
