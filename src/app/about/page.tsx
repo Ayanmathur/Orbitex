@@ -73,9 +73,16 @@ export default function AboutPage() {
           </div>
         </section>
 
-        {/* Bento Collage Section */}
-        <section className="py-20 section-muted">
-          <div className="max-w-7xl mx-auto px-6">
+        {/* Bento Collage Section — Grainy Grey Paper Background */}
+        <section className="py-20 section-muted relative overflow-hidden bg-[#D5CDC0]">
+          {/* Grainy Grey Paper SVG Noise Overlay */}
+          <div 
+            className="absolute inset-0 opacity-[0.18] pointer-events-none z-0" 
+            style={{
+              backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)'/%3E%3C/svg%3E")`,
+            }} 
+          />
+          <div className="max-w-7xl mx-auto px-6 relative z-10">
             <div className="text-center max-w-3xl mx-auto mb-14 space-y-3">
               <h2 className="headline-display text-3xl md:text-4xl text-[#2A2416]">The Orbitex Studio</h2>
               <p className="text-[#6B6152] text-base">A look into our multi-disciplinary product engineering and design environment.</p>
