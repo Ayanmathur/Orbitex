@@ -118,13 +118,20 @@
   opacity: 1 !important;
 }
 
-/* Preserve Light Mode style for About Hero section in Night Studio Mode */
+/* ── About Page Hero Section — Strict Light Mode Lock ── */
+.about-hero-preserve-light,
+.about-hero-preserve-light section,
 .theme-night .about-hero-preserve-light,
-.theme-night .about-hero-preserve-light section {
+.theme-night .about-hero-preserve-light section,
+.theme-night .about-hero-preserve-light .hero-light-theme {
   background-color: #FBF7F0 !important;
   color: #2A2416 !important;
 }
 
+.about-hero-preserve-light h1,
+.about-hero-preserve-light h2,
+.about-hero-preserve-light h3,
+.about-hero-preserve-light .headline-display,
 .theme-night .about-hero-preserve-light h1,
 .theme-night .about-hero-preserve-light h2,
 .theme-night .about-hero-preserve-light h3,
@@ -132,16 +139,33 @@
   color: #2A2416 !important;
 }
 
+.about-hero-preserve-light p,
+.about-hero-preserve-light .text-\[\#6B6152\],
 .theme-night .about-hero-preserve-light p,
-.theme-night .about-hero-preserve-light span,
-.theme-night .about-hero-preserve-light div {
+.theme-night .about-hero-preserve-light .text-\[\#6B6152\] {
   color: #6B6152 !important;
 }
 
-/* Hero section light theme override under Night Studio mode */
-.theme-night .hero-light-theme {
-  background-color: transparent !important;
+.theme-night .about-hero-preserve-light .bg-cream,
+.theme-night .about-hero-preserve-light .bg-cream\/80,
+.theme-night .about-hero-preserve-light .bg-cream\/70,
+.theme-night .about-hero-preserve-light .bg-cream\/90 {
+  background-color: #F5EFE3 !important;
   color: #2A2416 !important;
+}
+
+.theme-night .about-hero-preserve-light .bg-ivory {
+  background-color: #FBF7F0 !important;
+}
+
+.theme-night .about-hero-preserve-light .bg-beige {
+  background-color: #EDE3D0 !important;
+}
+
+.theme-night .about-hero-preserve-light .border-tan,
+.theme-night .about-hero-preserve-light .border-tan\/60,
+.theme-night .about-hero-preserve-light .border-tan\/80 {
+  border-color: #D9C8A9 !important;
 }
 .theme-night .hero-light-theme h1,
 .theme-night .hero-light-theme h1 * {
