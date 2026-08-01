@@ -167,6 +167,14 @@
 .theme-night .about-hero-preserve-light .border-tan\/80 {
   border-color: #D9C8A9 !important;
 }
+
+/* Bento Collage Background Paper Tabloid Backing — Retain Light Warm Beige Paper Color in Night Studio Mode */
+.bento-bg-tabloid,
+.theme-night .bento-bg-tabloid {
+  background-color: rgba(237, 227, 208, 0.65) !important;
+  border-color: rgba(217, 200, 169, 0.5) !important;
+  box-shadow: 0px 4px 8px -4px rgba(42, 36, 22, 0.12) !important;
+}
 .theme-night .hero-light-theme h1,
 .theme-night .hero-light-theme h1 * {
   color: #2A2416 !important;

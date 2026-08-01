@@ -6,7 +6,7 @@ export default function BentoCollage() {
   return (
     <div className="relative w-full max-w-5xl mx-auto py-8">
       {/* Crisp paper shape backdrop instead of blurred blob */}
-      <div className="absolute inset-0 max-w-3xl mx-auto rounded-[40px] bg-beige/60 border border-tan/30 -rotate-1 shadow-tier-1 pointer-events-none -z-10" />
+      <div className="absolute inset-0 max-w-3xl mx-auto rounded-[40px] bg-[#EDE3D0]/60 border border-[#D9C8A9]/40 -rotate-1 shadow-tier-1 pointer-events-none -z-10 bento-bg-tabloid" />
 
       {/* Layered Bento Photo Stack (Overlapped Left, Center, Right) */}
       <div className="grid grid-cols-1 md:grid-cols-12 gap-6 items-center relative z-10">
