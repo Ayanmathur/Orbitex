@@ -160,33 +160,30 @@
 footer,
 .theme-night footer {
   background-color: #1A1814 !important;
-  color: #F5EFE3 !important;
+  color: #FBF7F0 !important;
 }
 footer h3,
+footer h3.headline-display,
 footer p,
 footer li,
 footer span,
 footer a,
 .theme-night footer h3,
+.theme-night footer h3.headline-display,
 .theme-night footer p,
 .theme-night footer li,
 .theme-night footer span,
 .theme-night footer a {
-  color: #F5EFE3 !important;
-}
-footer p.text-\[\#D9C8A9\],
-footer ul.text-\[\#EDE3D0\] a,
-footer p.text-\[\#EDE3D0\],
-footer div.text-\[\#EDE3D0\],
-.theme-night footer p.text-\[\#D9C8A9\],
-.theme-night footer ul.text-\[\#EDE3D0\] a,
-.theme-night footer p.text-\[\#EDE3D0\],
-.theme-night footer div.text-\[\#EDE3D0\] {
-  color: #EDE3D0 !important;
+  color: #FBF7F0 !important;
 }
 footer a:hover,
 .theme-night footer a:hover {
   color: var(--accent) !important;
+}
+footer .social-icon-btn img,
+footer a.p-2 img {
+  filter: brightness(0) invert(1) !important;
+  opacity: 0.95 !important;
 }
 
 /* ── Base Resets ── */
@@ -417,7 +414,7 @@ textarea.form-input {
   font-family: var(--font-display);
   font-weight: 700;
   letter-spacing: -0.015em;
-  color: #2A2416 !important;
+  color: #2A2416;
 }
 
 /* Torn Edge Inner Rim (§4) */

@@ -38,17 +38,17 @@ export default function Footer() {
               Orbitex is a founder-led studio behind 6 products, 30+ client partnerships, and three specialist teams under one roof.
             </p>
             <div className="flex items-center space-x-3 pt-2">
-              <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="p-2 rounded-full bg-[#2A2416] border border-[#36322A] hover:border-[#D9C8A9] transition-colors">
-                <Icon name="facebook" size={16} />
+              <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="p-2.5 rounded-full bg-[#2E281E] border border-[#5A4E38] hover:border-[#FBF7F0] hover:bg-[#4A3F2E] transition-colors social-icon-btn">
+                <Icon name="facebook" size={16} className="brightness-0 invert opacity-95" />
               </a>
-              <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="p-2 rounded-full bg-[#2A2416] border border-[#36322A] hover:border-[#D9C8A9] transition-colors">
-                <Icon name="instagram" size={16} />
+              <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="p-2.5 rounded-full bg-[#2E281E] border border-[#5A4E38] hover:border-[#FBF7F0] hover:bg-[#4A3F2E] transition-colors social-icon-btn">
+                <Icon name="instagram" size={16} className="brightness-0 invert opacity-95" />
               </a>
-              <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="p-2 rounded-full bg-[#2A2416] border border-[#36322A] hover:border-[#D9C8A9] transition-colors">
-                <Icon name="linkedin" size={16} />
+              <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="p-2.5 rounded-full bg-[#2E281E] border border-[#5A4E38] hover:border-[#FBF7F0] hover:bg-[#4A3F2E] transition-colors social-icon-btn">
+                <Icon name="linkedin" size={16} className="brightness-0 invert opacity-95" />
               </a>
-              <a href="https://whatsapp.com" target="_blank" rel="noopener noreferrer" className="p-2 rounded-full bg-[#2A2416] border border-[#36322A] hover:border-[#D9C8A9] transition-colors">
-                <Icon name="whatsapp" size={16} />
+              <a href="https://whatsapp.com" target="_blank" rel="noopener noreferrer" className="p-2.5 rounded-full bg-[#2E281E] border border-[#5A4E38] hover:border-[#FBF7F0] hover:bg-[#4A3F2E] transition-colors social-icon-btn">
+                <Icon name="whatsapp" size={16} className="brightness-0 invert opacity-95" />
               </a>
             </div>
           </div>
